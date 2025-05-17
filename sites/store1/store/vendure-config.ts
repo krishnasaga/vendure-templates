@@ -1,5 +1,10 @@
 import { VendureConfig } from "@vendure/core";
-import { ManualPaymentMethodHandler } from "@vendure/core/dist/plugin/payment-method/manual-payment-method-handler";
+import {
+  PaymentMethodHandler,
+  CreatePaymentResult,
+  SettlePaymentResult,
+  LanguageCode,
+} from "@vendure/core";
 
 export const config: VendureConfig = {
   apiOptions: {
@@ -15,11 +20,48 @@ export const config: VendureConfig = {
   },
   dbConnectionOptions: {
     type: "sqlite",
-    database: "vendure",
+    database: "./vendure.sqlite",
     synchronize: false, // only for development
     logging: false,
   },
   paymentOptions: {
-    paymentMethodHandlers: [ManualPaymentMethodHandler],
+    paymentMethodHandlers: [
+      new PaymentMethodHandler({
+        code: "example-payment",
+        description: [
+          {
+            languageCode: LanguageCode.en,
+            value: "Example Payment Method",
+          },
+        ],
+        args: {
+          apiKey: { type: "string" },
+        },
+        createPayment: async (
+          ctx,
+          order,
+          amount,
+          args,
+          metadata
+        ): Promise<CreatePaymentResult> => {
+          // Implement payment creation logic here
+          return {
+            amount,
+            state: "Settled" as const,
+            transactionId: "txn_123456",
+            metadata: {},
+          };
+        },
+        settlePayment: async (
+          ctx,
+          order,
+          payment,
+          args
+        ): Promise<SettlePaymentResult> => {
+          // Implement payment settlement logic here
+          return { success: true };
+        },
+      }),
+    ],
   },
 };
