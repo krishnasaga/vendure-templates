@@ -11,10 +11,9 @@ export const config: VendureConfig = {
   plugins: [
     AdminUiPlugin.init({
       route: "admin",
-      port: 4001,
+      port: 4002,
       adminUiConfig: {
         apiHost: "indiastore1.douckdns.org",
-        apiPort: 443,
         adminApiPath: "/admin-api",
         tokenMethod: "bearer",
       },
