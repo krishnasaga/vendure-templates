@@ -13,7 +13,8 @@ export const config: VendureConfig = {
       route: "admin",
       port: 4002,
       adminUiConfig: {
-        apiHost: "indiastore1.douckdns.org",
+        apiHost: "https://indiastore1.douckdns.org",
+        apiPort: 443,
         adminApiPath: "/admin-api",
         tokenMethod: "bearer",
       },
