@@ -883,7 +883,7 @@
     "@types/node" "*"
     "@types/send" "*"
 
-"@vendure/admin-ui-plugin@3.3.0":
+"@vendure/admin-ui-plugin@^3.3.0":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@vendure/admin-ui-plugin/-/admin-ui-plugin-3.3.0.tgz#20d0b9bf7ffe6426832eb72f48343615e4804423"
   integrity sha512-9JOg8ufApOQCpH0b79+K2M6QvJOFZHIrhlfXZpS0NVdwUdRz3GfRDdArjwdu44nMUQgCCCFSZKHWtU2U/vPHvw==

@@ -5,8 +5,19 @@ import {
   SettlePaymentResult,
   LanguageCode,
 } from "@vendure/core";
+import { AdminUiPlugin } from "@vendure/admin-ui-plugin";
 
 export const config: VendureConfig = {
+  plugins: [
+    AdminUiPlugin.init({
+      route: "admin",
+      port: 4001,
+      adminUiConfig: {
+        apiPort: 443,
+        apiHost: 'indiastore1.douckdns.org'
+      },
+    }),
+  ],
   apiOptions: {
     port: 4001,
     adminApiPath: "admin-api",
