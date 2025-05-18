@@ -96,7 +96,7 @@ export const config: VendureConfig = {
       adminUiConfig: {
         apiHost: "https://indiastore1.duckdns.org",
         apiPort: 443,
-        adminApiPath: "/admin-api",
+        adminApiPath: "admin-api",
         tokenMethod: "bearer",
       },
     }),
