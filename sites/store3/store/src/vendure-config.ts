@@ -67,7 +67,9 @@ export const config: VendureConfig = {
       // For local dev, the correct value for assetUrlPrefix should
       // be guessed correctly, but for production it will usually need
       // to be set manually to match your production url.
-      assetUrlPrefix: IS_DEV ? undefined : "https://indiastore3.duckdns.org/assets/",
+      assetUrlPrefix: IS_DEV
+        ? undefined
+        : `${process.env.ROOT_UR}/assets/`,
     }),
     DefaultSchedulerPlugin.init(),
     DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true }),
@@ -94,7 +96,7 @@ export const config: VendureConfig = {
       route: "admin",
       port: serverPort + 2,
       adminUiConfig: {
-        apiHost: "https://indiastore3.duckdns.org",
+        apiHost: process.env.ROOT_URL,
         apiPort: 443,
         adminApiPath: "admin-api",
         tokenMethod: "bearer",

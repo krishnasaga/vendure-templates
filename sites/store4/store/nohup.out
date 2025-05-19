@@ -1,0 +1,133 @@
+yarn run v1.22.22
+$ concurrently npm:start:*
+[server] 
+[server] > store1@0.1.0 start:server
+[server] > node ./dist/src/index.js
+[server] 
+[worker] 
+[worker] > store1@0.1.0 start:worker
+[worker] > node ./dist/src/index-worker.js
+[worker] 
+[worker] info 5/18/25, 9:11 PM - [Vendure Worker] Bootstrapping Vendure Worker (pid: 116503)... 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] Bootstrapping Vendure Server (pid: 116501)... 
+[worker] info 5/18/25, 9:11 PM - [Vendure Worker] Vendure Worker is ready 
+[worker] info 5/18/25, 9:11 PM - [JobQueue] Starting queue: apply-collection-filters 
+[worker] info 5/18/25, 9:11 PM - [JobQueue] Starting queue: clean-sessions 
+[worker] info 5/18/25, 9:11 PM - [JobQueue] Starting queue: update-search-index 
+[worker] info 5/18/25, 9:11 PM - [JobQueue] Starting queue: send-email 
+[server] info 5/18/25, 9:11 PM - [AdminUiPlugin] Creating admin ui middleware (prod mode) 
+[server] info 5/18/25, 9:11 PM - [AssetServerPlugin] Creating asset server middleware 
+[server] info 5/18/25, 9:11 PM - [EmailPlugin] Creating dev mailbox middleware 
+[server] info 5/18/25, 9:11 PM - [RoutesResolver] HealthController {/health}: 
+[server] info 5/18/25, 9:11 PM - [RouterExplorer] Mapped {/health, GET} route 
+[server] info 5/18/25, 9:11 PM - [GraphQLModule] Mapped {/shop-api, POST} route 
+[server] info 5/18/25, 9:11 PM - [GraphQLModule] Mapped {/admin-api, POST} route 
+[server] info 5/18/25, 9:11 PM - [NestApplication] Nest application successfully started 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] ==================================================== 
+[server] info 5/18/25, 9:11 PM - [Vendure Server]   Vendure server (v3.3.0) now running on port 4002 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] ---------------------------------------------------- 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] Shop API:       http://localhost:4002/shop-api 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] Admin API:      http://localhost:4002/admin-api 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] GraphiQL Admin: http://localhost:4002/graphiql/admin 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] GraphiQL Shop:  http://localhost:4002/graphiql/shop 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] Asset server:   http://localhost:4002/assets 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] Dev mailbox:    http://localhost:4002/mailbox 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] Admin UI:       http://localhost:4002/admin 
+[server] info 5/18/25, 9:11 PM - [Vendure Server] ==================================================== 
+[server] info 5/18/25, 9:29 PM - [Vendure Server] Received shutdown signal:SIGTERM 
+[server] Terminated
+[server] npm run start:server exited with code 143
+yarn run v1.22.22
+$ concurrently npm:start:*
+[worker] 
+[worker] > store1@0.1.0 start:worker
+[worker] > node ./dist/src/index-worker.js
+[worker] 
+[server] 
+[server] > store1@0.1.0 start:server
+[server] > node ./dist/src/index.js
+[server] 
+[worker] info 5/18/25, 9:30 PM - [Vendure Worker] Bootstrapping Vendure Worker (pid: 117407)... 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] Bootstrapping Vendure Server (pid: 117406)... 
+[worker] info 5/18/25, 9:30 PM - [Vendure Worker] Vendure Worker is ready 
+[worker] info 5/18/25, 9:30 PM - [JobQueue] Starting queue: apply-collection-filters 
+[worker] info 5/18/25, 9:30 PM - [JobQueue] Starting queue: clean-sessions 
+[worker] info 5/18/25, 9:30 PM - [JobQueue] Starting queue: update-search-index 
+[worker] info 5/18/25, 9:30 PM - [JobQueue] Starting queue: send-email 
+[server] info 5/18/25, 9:30 PM - [AdminUiPlugin] Creating admin ui middleware (prod mode) 
+[server] info 5/18/25, 9:30 PM - [AssetServerPlugin] Creating asset server middleware 
+[server] info 5/18/25, 9:30 PM - [EmailPlugin] Creating dev mailbox middleware 
+[server] info 5/18/25, 9:30 PM - [RoutesResolver] HealthController {/health}: 
+[server] info 5/18/25, 9:30 PM - [RouterExplorer] Mapped {/health, GET} route 
+[server] info 5/18/25, 9:30 PM - [GraphQLModule] Mapped {/shop-api, POST} route 
+[server] info 5/18/25, 9:30 PM - [GraphQLModule] Mapped {/admin-api, POST} route 
+[server] info 5/18/25, 9:30 PM - [NestApplication] Nest application successfully started 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] ==================================================== 
+[server] info 5/18/25, 9:30 PM - [Vendure Server]   Vendure server (v3.3.0) now running on port 4002 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] ---------------------------------------------------- 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] Shop API:       http://localhost:4002/shop-api 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] Admin API:      http://localhost:4002/admin-api 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] GraphiQL Admin: http://localhost:4002/graphiql/admin 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] GraphiQL Shop:  http://localhost:4002/graphiql/shop 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] Asset server:   http://localhost:4002/assets 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] Dev mailbox:    http://localhost:4002/mailbox 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] Admin UI:       http://localhost:4002/admin 
+[server] info 5/18/25, 9:30 PM - [Vendure Server] ==================================================== 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: apply-collection-filters 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: clean-sessions 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: update-search-index 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: send-email 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: apply-collection-filters 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: clean-sessions 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: update-search-index 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Stopped queue: send-email 
+[server] info 5/18/25, 9:32 PM - [Vendure Server] Received shutdown signal:SIGHUP 
+[server] npm run start:server exited with code SIGHUP
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Received shutdown signal:SIGHUP 
+[worker] info 5/18/25, 9:32 PM - [Vendure Worker] Received shutdown signal:SIGHUP 
+[worker] [worker] npm run start:worker exited with code SIGHUP
+npm run start:worker exited with code SIGHUP
+yarn run v1.22.22
+$ concurrently npm:start:*
+[server] 
+[server] > store1@0.1.0 start:server
+[server] > node ./dist/src/index.js
+[server] 
+[worker] 
+[worker] > store1@0.1.0 start:worker
+[worker] > node ./dist/src/index-worker.js
+[worker] 
+[worker] info 5/18/25, 9:36 PM - [Vendure Worker] Bootstrapping Vendure Worker (pid: 117976)... 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] Bootstrapping Vendure Server (pid: 117975)... 
+[worker] info 5/18/25, 9:36 PM - [Vendure Worker] Vendure Worker is ready 
+[worker] info 5/18/25, 9:36 PM - [JobQueue] Starting queue: apply-collection-filters 
+[worker] info 5/18/25, 9:36 PM - [JobQueue] Starting queue: clean-sessions 
+[worker] info 5/18/25, 9:36 PM - [JobQueue] Starting queue: update-search-index 
+[worker] info 5/18/25, 9:36 PM - [JobQueue] Starting queue: send-email 
+[server] info 5/18/25, 9:36 PM - [AdminUiPlugin] Creating admin ui middleware (prod mode) 
+[server] info 5/18/25, 9:36 PM - [AssetServerPlugin] Creating asset server middleware 
+[server] info 5/18/25, 9:36 PM - [EmailPlugin] Creating dev mailbox middleware 
+[server] info 5/18/25, 9:36 PM - [RoutesResolver] HealthController {/health}: 
+[server] info 5/18/25, 9:36 PM - [RouterExplorer] Mapped {/health, GET} route 
+[server] info 5/18/25, 9:36 PM - [GraphQLModule] Mapped {/shop-api, POST} route 
+[server] info 5/18/25, 9:36 PM - [GraphQLModule] Mapped {/admin-api, POST} route 
+[server] info 5/18/25, 9:36 PM - [NestApplication] Nest application successfully started 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] ==================================================== 
+[server] info 5/18/25, 9:36 PM - [Vendure Server]   Vendure server (v3.3.0) now running on port 4002 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] ---------------------------------------------------- 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] Shop API:       http://localhost:4002/shop-api 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] Admin API:      http://localhost:4002/admin-api 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] GraphiQL Admin: http://localhost:4002/graphiql/admin 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] GraphiQL Shop:  http://localhost:4002/graphiql/shop 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] Asset server:   http://localhost:4002/assets 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] Dev mailbox:    http://localhost:4002/mailbox 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] Admin UI:       http://localhost:4002/admin 
+[server] info 5/18/25, 9:36 PM - [Vendure Server] ==================================================== 
+[worker] info 5/18/25, 9:37 PM - [Vendure Worker] Stopped queue: apply-collection-filters 
+[worker] info 5/18/25, 9:37 PM - [Vendure Worker] Stopped queue: clean-sessions 
+[worker] info 5/18/25, 9:37 PM - [Vendure Worker] Stopped queue: update-search-index 
+[worker] info 5/18/25, 9:37 PM - [Vendure Worker] Stopped queue: send-email 
+[server] info 5/18/25, 9:37 PM - [Vendure Server] Received shutdown signal:SIGHUP 
+[server] npm run start:server exited with code SIGHUP
+[worker] info 5/18/25, 9:37 PM - [Vendure Worker] Received shutdown signal:SIGHUP 
+[worker] npm run start:worker exited with code SIGHUP

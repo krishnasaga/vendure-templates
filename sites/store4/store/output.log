@@ -1,0 +1,37 @@
+nohup: ignoring input
+yarn run v1.22.22
+$ concurrently npm:start:*
+[server] 
+[server] > store1@0.1.0 start:server
+[server] > node ./dist/src/index.js
+[server] 
+[worker] 
+[worker] > store1@0.1.0 start:worker
+[worker] > node ./dist/src/index-worker.js
+[worker] 
+[worker] info 5/19/25, 10:26 AM - [Vendure Worker] Bootstrapping Vendure Worker (pid: 148913)... 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] Bootstrapping Vendure Server (pid: 148911)... 
+[worker] info 5/19/25, 10:26 AM - [Vendure Worker] Vendure Worker is ready 
+[worker] info 5/19/25, 10:26 AM - [JobQueue] Starting queue: apply-collection-filters 
+[worker] info 5/19/25, 10:26 AM - [JobQueue] Starting queue: clean-sessions 
+[worker] info 5/19/25, 10:26 AM - [JobQueue] Starting queue: update-search-index 
+[worker] info 5/19/25, 10:26 AM - [JobQueue] Starting queue: send-email 
+[server] info 5/19/25, 10:26 AM - [AdminUiPlugin] Creating admin ui middleware (prod mode) 
+[server] info 5/19/25, 10:26 AM - [AssetServerPlugin] Creating asset server middleware 
+[server] info 5/19/25, 10:26 AM - [EmailPlugin] Creating dev mailbox middleware 
+[server] info 5/19/25, 10:26 AM - [RoutesResolver] HealthController {/health}: 
+[server] info 5/19/25, 10:26 AM - [RouterExplorer] Mapped {/health, GET} route 
+[server] info 5/19/25, 10:26 AM - [GraphQLModule] Mapped {/shop-api, POST} route 
+[server] info 5/19/25, 10:26 AM - [GraphQLModule] Mapped {/admin-api, POST} route 
+[server] info 5/19/25, 10:26 AM - [NestApplication] Nest application successfully started 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] ==================================================== 
+[server] info 5/19/25, 10:26 AM - [Vendure Server]   Vendure server (v3.3.0) now running on port 4002 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] ---------------------------------------------------- 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] Shop API:       http://localhost:4002/shop-api 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] Admin API:      http://localhost:4002/admin-api 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] GraphiQL Admin: http://localhost:4002/graphiql/admin 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] GraphiQL Shop:  http://localhost:4002/graphiql/shop 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] Asset server:   http://localhost:4002/assets 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] Dev mailbox:    http://localhost:4002/mailbox 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] Admin UI:       http://localhost:4002/admin 
+[server] info 5/19/25, 10:26 AM - [Vendure Server] ==================================================== 
