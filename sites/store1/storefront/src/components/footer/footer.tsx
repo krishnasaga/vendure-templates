@@ -1,119 +1,46 @@
-import { component$, useContext } from '@qwik.dev/core';
-import { APP_STATE } from '~/constants';
-import GitIcon from '../icons/GitIcon';
+import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
-	const collections = useContext(APP_STATE).collections.filter(
-		(item) => item.parent?.name === '__root_collection__' && !!item.featuredAsset
-	);
-
-	const navigation = {
-		support: [
-			{ name: $localize`Help`, href: '#' },
-			{ name: $localize`Track order`, href: '#' },
-			{ name: $localize`Shipping`, href: '#' },
-			{ name: $localize`Returns`, href: '#' },
-		],
-		company: [
-			{ name: $localize`About`, href: '#' },
-			{ name: $localize`Blog`, href: '#' },
-			{ name: $localize`Corporate responsibility`, href: '#' },
-			{ name: $localize`Press`, href: '#' },
-		],
-	};
-
-	return (
-		<footer class="pt-6 border-t bg-gray-50">
-			<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 ">
-				<div class="xl:grid xl:grid-cols-3 xl:gap-8">
-					<div class="grid grid-cols-2 gap-8 xl:col-span-2">
-						<div class="md:grid md:grid-cols-2 md:gap-8">
-							<div>
-								<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">{$localize`Shop`}</h3>
-								<ul class="mt-4 space-y-4">
-									{collections.map((collection) => (
-										<li key={collection.id}>
-											<a
-												class="text-base text-gray-500 hover:text-gray-600"
-												href={`/collections/${collection.slug}`}
-												key={collection.id}
-											>
-												{collection.name}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-							<div class="mt-12 md:mt-0">
-								<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">
-									{$localize`Support`}
-								</h3>
-								<ul class="mt-4 space-y-4">
-									{navigation.support.map((item) => (
-										<li key={item.name}>
-											<a href={item.href} class="text-base text-gray-500 hover:text-gray-600">
-												{item.name}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-						<div class="md:grid md:grid-cols-2 md:gap-8">
-							<div>
-								<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">
-									{$localize`Company`}
-								</h3>
-								<ul class="mt-4 space-y-4">
-									{navigation.company.map((item) => (
-										<li key={item.name}>
-											<a href={item.href} class="text-base text-gray-500 hover:text-gray-600">
-												{item.name}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="mt-8 xl:mt-0">
-						<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">
-							{$localize`Subscribe to our newsletter`}
-						</h3>
-						<p class="mt-4 text-base text-gray-500">
-							{$localize`Be the first to know about exclusive offers & deals.`}
-						</p>
-						<div class="mt-4 sm:flex sm:max-w-md">
-							<label id="email-subscription" class="sr-only">
-								Email address
-							</label>
-							<input
-								type="email"
-								autoComplete="email"
-								required
-								class="input-text"
-								placeholder={$localize`Enter your email`}
-								aria-labelledby="email-subscription"
-							/>
-							<div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-								<button class="btn-primary" onClick$={() => {}}>
-									{$localize`Subscribe`}
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="mt-8 border-t pt-8">
-					<a
-						class="flex items-center space-x-4 font-medium text-gray-500 hover:text-gray-700"
-						target="_blank"
-						href="https://github.com/vendure-ecommerce/storefront-qwik-starter"
-					>
-						<GitIcon />
-						<span>github.com/vendure-ecommerce/storefront-qwik-starter</span>
-					</a>
-				</div>
-			</div>
-		</footer>
-	);
+  return (
+    <footer class="bg-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h2 class="font-bold text-gray-700 mb-4">SHOP</h2>
+            <ul>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Electronics</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Home & Garden</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Sports & Outdoor</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="font-bold text-gray-700 mb-4">SUPPORT</h2>
+            <ul>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Help</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Track order</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Shipping</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Returns</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="font-bold text-gray-700 mb-4">COMPANY</h2>
+            <ul>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">About</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Blog</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Corporate responsibility</a></li>
+              <li><a href="#" class="text-gray-600 hover:text-gray-800">Press</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="font-bold text-gray-700 mb-4">SUBSCRIBE TO OUR NEWSLETTER</h2>
+            <p class="text-gray-600 mb-4">Be the first to know about exclusive offers & deals.</p>
+            <form>
+              <input type="email" placeholder="Enter your email" class="border border-gray-300 p-2 w-full mb-4" />
+              <button type="submit" class="bg-blue-500 text-white p-2 w-full">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 });

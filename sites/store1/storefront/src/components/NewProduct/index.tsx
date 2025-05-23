@@ -122,9 +122,9 @@ export const AuthenticPicklesAndOils = component$(() => {
     <div class="font-sans bg-gray-50 min-h-screen py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center mb-8">
-          <h1 class="text-3xl font-bold text-gray-800">Authentic Pickles & Oils</h1>
+          <h1 class="text-3xl font-bold text-gray-800 text-center">Authentic Pickles & Oils</h1>
           <div class="flex space-x-3">
-            <button class="bg-orange-800 text-white text-sm px-4 py-2 rounded-full shadow-md hover:bg-orange-900 transition duration-300">
+            <button class="bg-white-800 text-black text-sm px-4 py-2 rounded-full shadow-md hover:bg-orange-900 transition duration-300">
               Pickles
             </button>
             <button class="bg-white border border-gray-300 text-gray-700 text-sm px-4 py-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
