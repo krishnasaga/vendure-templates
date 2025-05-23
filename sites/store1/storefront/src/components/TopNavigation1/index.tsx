@@ -1,8 +1,6 @@
-import { component$, useContext } from '@qwik.dev/core';
-import { APP_STATE } from '~/constants';
+import { component$ } from '@qwik.dev/core';
 
 export default component$(() => {
-  const collections = useContext(APP_STATE).collections; // Keep existing context usage
   return (
     <header class="bg-[#faf7ef] border-b-[3px] border-orange-500">
       <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">

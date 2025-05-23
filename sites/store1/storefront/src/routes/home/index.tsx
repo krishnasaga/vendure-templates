@@ -1,7 +1,7 @@
 import { component$, useContext } from '@qwik.dev/core';
 import { Image } from 'qwik-image';
 import CollectionCard from '~/components/collection-card/CollectionCard';
-import { APP_STATE, HOMEPAGE_IMAGE } from '~/constants';
+import { APP_STATE } from '~/constants';
 
 export default component$(() => {
 	const collections = useContext(APP_STATE).collections;

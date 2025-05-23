@@ -1,4 +1,4 @@
-import { component$, Signal, useSignal, $, QRL } from '@builder.io/qwik';
+import { component$, useSignal, $, QRL } from '@builder.io/qwik';
 
 // Define a type for a single product
 interface Product {
