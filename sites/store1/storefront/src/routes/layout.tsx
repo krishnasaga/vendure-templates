@@ -20,9 +20,11 @@ import { extractLang } from '~/utils/i18n';
 import Cart from '../components/cart/Cart';
 import Footer from '../components/footer/footer';
 import Header from '../components/header/header';
-import TopNav from '~/components/TopNavigation1';
+import TopNav from '../components/TopNavigation1';
 import HeroBan from '~/components/hero banner';
 import Cat1 from '~/components/category1';
+import NewPro from '~/components/NewProduct';
+
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	cacheControl({ staleWhileRevalidate: 60 * 60 * 24 * 7, maxAge: 5 });
 };
@@ -108,6 +110,7 @@ export default component$(() => {
 			<TopNav/>
 			<HeroBan/>
             <Cat1/>
+			<NewPro/>
 			<Cart />
 			<Menu />
 			<main class="pb-12 bg-gray-50">
