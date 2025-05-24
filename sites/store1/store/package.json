@@ -18,7 +18,8 @@
     "@vendure/email-plugin": "3.3.0",
     "@vendure/graphiql-plugin": "3.3.0",
     "better-sqlite3": "11.10.0",
-    "dotenv": "16.5.0"
+    "dotenv": "16.5.0",
+    "razorpay": "^2.9.6"
   },
   "devDependencies": {
     "@vendure/cli": "3.3.0",
