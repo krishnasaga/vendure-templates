@@ -29,26 +29,22 @@ function HeroBanner() {
 				<div class="h-[100%] md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center">
 					<div class="relative w-full h-[100%] overflow-hidden">
 						<img
-							width={'20%'}
 							src={gheeImage}
 							alt="Image 1"
 							class="absolute inset-0 w-full h-full object-cover animate-slide-fade-1"
 						/>
 						4
 						<img
-							width={'20%'}
 							src={gheeImage}
 							alt="Image 2"
 							class="absolute inset-0 w-full h-full object-cover animate-slide-fade-2"
 						/>
 						<img
-							width={'20%'}
 							src={gheeImage}
 							alt="Image 3"
 							class="absolute inset-0 w-full h-full object-cover animate-slide-fade-3"
 						/>
 						<img
-							width={'20%'}
 							src={gheeImage}
 							alt="Image 4"
 							class="absolute inset-0 w-full h-full object-cover animate-slide-fade-4"
