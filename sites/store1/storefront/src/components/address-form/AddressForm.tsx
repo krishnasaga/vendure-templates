@@ -13,7 +13,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 			{shippingAddress.countryCode && (
 				<div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
 					<div>
-						<label html-for="fullName" class="block text-sm font-medium text-gray-700">
+						<label html-for="fullName" class="block text-sm font-medium text-secondary">
 							{$localize`Full name`}
 						</label>
 						<div class="mt-1">
@@ -23,7 +23,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 								name="fullName"
 								value={shippingAddress.fullName}
 								autoComplete="given-name"
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 								onChange$={(_, el) => {
 									appState.shippingAddress = {
 										...appState.shippingAddress,
@@ -35,7 +35,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 					</div>
 
 					<div class="sm:col-span-2">
-						<label html-for="company" class="block text-sm font-medium text-gray-700">
+						<label html-for="company" class="block text-sm font-medium text-secondary">
 							{$localize`Company`}
 						</label>
 						<div class="mt-1">
@@ -44,7 +44,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 								name="company"
 								id="company"
 								value={shippingAddress.company}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 								onChange$={(_, el) => {
 									appState.shippingAddress = {
 										...appState.shippingAddress,
@@ -56,7 +56,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 					</div>
 
 					<div class="sm:col-span-2">
-						<label html-for="streetLine1" class="block text-sm font-medium text-gray-700">
+						<label html-for="streetLine1" class="block text-sm font-medium text-secondary">
 							{$localize`Address`}
 						</label>
 						<div class="mt-1">
@@ -72,13 +72,13 @@ export default component$<IProps>(({ shippingAddress }) => {
 										streetLine1: el.value,
 									};
 								}}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 							/>
 						</div>
 					</div>
 
 					<div class="sm:col-span-2">
-						<label html-for="streetLine2" class="block text-sm font-medium text-gray-700">
+						<label html-for="streetLine2" class="block text-sm font-medium text-secondary">
 							{$localize`Apartment, suite, etc.`}
 						</label>
 						<div class="mt-1">
@@ -87,7 +87,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 								name="streetLine2"
 								id="streetLine2"
 								value={shippingAddress.streetLine2}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 								onChange$={(_, el) => {
 									appState.shippingAddress = {
 										...appState.shippingAddress,
@@ -99,7 +99,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 					</div>
 
 					<div>
-						<label html-for="city" class="block text-sm font-medium text-gray-700">
+						<label html-for="city" class="block text-sm font-medium text-secondary">
 							{$localize`City`}
 						</label>
 						<div class="mt-1">
@@ -109,7 +109,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 								id="city"
 								autoComplete="address-level2"
 								value={shippingAddress.city}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 								onChange$={(_, el) => {
 									appState.shippingAddress = { ...appState.shippingAddress, city: el.value };
 								}}
@@ -118,7 +118,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 					</div>
 
 					<div>
-						<label html-for="countryCode" class="block text-sm font-medium text-gray-700">
+						<label html-for="countryCode" class="block text-sm font-medium text-secondary">
 							{$localize`Country`}
 						</label>
 						<div class="mt-1">
@@ -127,7 +127,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 									id="countryCode"
 									name="countryCode"
 									value={shippingAddress.countryCode}
-									class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+									class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 									onChange$={(_, el) => {
 										appState.shippingAddress = {
 											...appState.shippingAddress,
@@ -150,7 +150,7 @@ export default component$<IProps>(({ shippingAddress }) => {
 					</div>
 
 					<div>
-						<label html-for="province" class="block text-sm font-medium text-gray-700">
+						<label html-for="province" class="block text-sm font-medium text-secondary">
 							{$localize`State / Province`}
 						</label>
 						<div class="mt-1">
@@ -166,13 +166,13 @@ export default component$<IProps>(({ shippingAddress }) => {
 										province: el.value,
 									};
 								}}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 							/>
 						</div>
 					</div>
 
 					<div>
-						<label html-for="postalCode" class="block text-sm font-medium text-gray-700">
+						<label html-for="postalCode" class="block text-sm font-medium text-secondary">
 							{$localize`Postal code`}
 						</label>
 						<div class="mt-1">
@@ -188,13 +188,13 @@ export default component$<IProps>(({ shippingAddress }) => {
 										postalCode: el.value,
 									};
 								}}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 							/>
 						</div>
 					</div>
 
 					<div class="sm:col-span-2">
-						<label html-for="phoneNumber" class="block text-sm font-medium text-gray-700">
+						<label html-for="phoneNumber" class="block text-sm font-medium text-secondary">
 							{$localize`Phone`}
 						</label>
 						<div class="mt-1">
@@ -210,14 +210,14 @@ export default component$<IProps>(({ shippingAddress }) => {
 										phoneNumber: el.value,
 									};
 								}}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 							/>
 						</div>
 					</div>
 					<div class="sm:col-span-1">
 						<label
 							html-for="defaultShippingAddress"
-							class="block text-sm font-medium text-gray-700"
+							class="block text-sm font-medium text-secondary"
 						>
 							{$localize`Default Shipping Address`}
 						</label>
@@ -237,7 +237,10 @@ export default component$<IProps>(({ shippingAddress }) => {
 						</div>
 					</div>
 					<div class="sm:col-span-1">
-						<label html-for="defaultBillingAddress" class="block text-sm font-medium text-gray-700">
+						<label
+							html-for="defaultBillingAddress"
+							class="block text-sm font-medium text-secondary"
+						>
 							{$localize`Default Billing Address`}
 						</label>
 						<div class="mt-1">

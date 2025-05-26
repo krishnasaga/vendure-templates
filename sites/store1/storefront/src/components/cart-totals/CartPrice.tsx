@@ -9,7 +9,7 @@ type Props = {
 	order?: Order;
 };
 
-export default component$<Props>(({ field, forcedClass, order }) => {
+export default component$<Props>(({ field, forcedClass = 'text-primary', order }) => {
 	const currencyCode = order?.currencyCode || 'USD';
 	const priceWithTax = order?.[field] || 0;
 	return <div class={forcedClass}>{formatPrice(priceWithTax, currencyCode)}</div>;
