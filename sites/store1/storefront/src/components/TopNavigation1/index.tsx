@@ -1,4 +1,4 @@
-import { component$, useContext, useSignal } from '@qwik.dev/core';
+import { $, component$, useContext, useSignal } from '@qwik.dev/core';
 import { APP_STATE } from '~/constants';
 
 export default component$(() => {
@@ -8,6 +8,10 @@ export default component$(() => {
 	const collections = appState.collections.filter(
 		(item) => item.parent?.name === '__root_collection__' && !!item.featuredAsset
 	);
+
+	const toggleCart$ = $(() => {
+		appState.showCart = !appState.showCart;
+	});
 
 	return (
 		<header class="bg-neutral-light border-b-[3px] border-primary-500 relative z-20">
@@ -89,9 +93,7 @@ export default component$(() => {
 						<a
 							href="#"
 							class="hover:text-primary-500"
-							onClick$={() => {
-								appState.showCart = !appState.showCart;
-							}}
+							onClick$={toggleCart$}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
