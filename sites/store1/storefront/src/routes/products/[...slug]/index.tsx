@@ -4,7 +4,6 @@ import { Image } from 'qwik-image';
 import Alert from '~/components/alert/Alert';
 import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs';
 import CheckIcon from '~/components/icons/CheckIcon';
-import HeartIcon from '~/components/icons/HeartIcon';
 import Price from '~/components/products/Price';
 import StockLevelLabel from '~/components/stock-level-label/StockLevelLabel';
 import TopReviews from '~/components/top-reviews/TopReviews';
@@ -173,13 +172,6 @@ export default component$(() => {
 										) : (
 											$localize`Add to cart`
 										)}
-									</button>
-									<button
-										type="button"
-										class="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-									>
-										<HeartIcon />
-										<span class="sr-only">{$localize`Add to favorites`}</span>
 									</button>
 								</div>
 							</div>
