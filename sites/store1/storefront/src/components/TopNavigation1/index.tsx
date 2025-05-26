@@ -1,6 +1,5 @@
-import { component$, useContext, useSignal, useVisibleTask$ } from '@qwik.dev/core';
+import { component$, useContext, useSignal } from '@qwik.dev/core';
 import { APP_STATE } from '~/constants';
-import { logoutMutation } from '~/providers/shop/account/account';
 
 export default component$(() => {
 	const isMenuOpen = useSignal(false);
