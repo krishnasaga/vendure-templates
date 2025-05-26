@@ -2,10 +2,10 @@ import { component$ } from '@qwik.dev/core';
 
 export default component$(() => {
   return (
-    <header class="bg-[#faf7ef] border-b-[3px] border-orange-500">
+    <header class=" bg-[#faf7ef] border-b-[3px] border-orange-500">
       <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Navigation Links */}
-        <nav class="flex-1 flex justify-center space-x-6 font-semibold text-sm text-gray-900">
+        <nav class="hidden md:block flex-1 flex justify-center space-x-6 font-semibold text-sm text-gray-900">
           <a href="#" class="hover:text-orange-500">Home</a>
           <div class="relative group">
             <button class="hover:text-orange-500">View Collections ▾</button>
