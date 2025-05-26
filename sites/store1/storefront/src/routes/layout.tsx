@@ -113,3 +113,5 @@ export default component$(() => {
 		</div>
 	);
 });
+
+export const prerender = true;
