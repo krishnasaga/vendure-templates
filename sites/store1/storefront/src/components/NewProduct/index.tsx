@@ -114,12 +114,8 @@ export const ProductCard = component$<{ product: Product }>(({ product }) => {
 export const AuthenticPicklesAndOils = component$(() => {
     const productData = useStore({ products: products });
 
-    const scrollToTop = $(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
   return (
-    <div class="font-sans bg-gray-50 min-h-screen py-8">
+    <div class="font-sans bg-gray-50  pt-0 pb-1"> {/* Adjusted padding-top to 0 */}
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center mb-8">
           <h1 class="text-3xl font-bold text-gray-800 text-center">Authentic Pickles & Oils</h1>
@@ -135,7 +131,7 @@ export const AuthenticPicklesAndOils = component$(() => {
 
         <div class="relative">
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {productData.products.map((product: Product) => ( // Explicitly type 'product' here too
+            {productData.products.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -143,22 +139,15 @@ export const AuthenticPicklesAndOils = component$(() => {
           {/* Navigation Arrows */}
           <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 hidden md:block">
             <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              <path stroke-linecapp="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
           </button>
           <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 hidden md:block">
             <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              <path stroke-linecapp="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </button>
         </div>
-
-        {/* Scroll to top button */}
-        <button class="fixed bottom-8 right-8 bg-orange-500 text-white p-3 rounded-full shadow-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition-all duration-300 flex items-center justify-center" onClick$={scrollToTop}>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-            </svg>
-        </button>
       </div>
     </div>
   );

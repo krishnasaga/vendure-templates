@@ -1,29 +1,25 @@
 import { component$, useSignal, $, QRL } from '@builder.io/qwik';
 
-// Define a type for a single product
 interface Product {
   id: string;
   name: string;
   image: string;
   price: number;
-  rating: number; // 1-5
+  rating: number;
   category: 'All' | 'Vegetables' | 'Fruits' | 'Bread' | 'Meat';
   inStock: boolean;
 }
 
-// --- ProductCard Component ---
-// This is a sub-component for displaying an individual product
 interface ProductCardProps {
   product: Product;
-  onAddToCart$?: QRL<(productId: string) => void>; // Optional QRL for add to cart action
+  onAddToCart$?: QRL<(productId: string) => void>;
 }
 
 export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$ }) => {
   return (
     <div class="bg-white rounded-lg shadow-md p-4 relative overflow-hidden transform transition-transform duration-200 hover:scale-[1.02]">
-      {/* "Out Of Stock" Overlay */}
       {!product.inStock && (
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white font-bold text-xl rounded-lg z-10">
+        <div class="absolute inset-0 bg-muted/70 flex items-center justify-center text-white font-bold text-xl rounded-lg z-10">
           Out Of Stock
         </div>
       )}
@@ -32,21 +28,20 @@ export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$
         <img
           src={product.image}
           alt={product.name}
-          width={150} // Approximate width based on image, adjust as needed
-          height={150} // Approximate height based on image, adjust as needed
+          width={150}
+          height={150}
           class="object-contain max-h-full max-w-full"
           loading="lazy"
         />
       </div>
 
-      <h3 class="font-semibold text-gray-800 text-base mb-1">{product.name}</h3>
+      <h3 class="font-semibold text-primary text-base mb-1">{product.name}</h3>
 
-      {/* Star Rating */}
       <div class="flex items-center space-x-0.5 text-yellow-400 text-sm mb-2">
         {Array.from({ length: 5 }).map((_, index) => (
           <svg
             key={index}
-            class={`w-4 h-4 ${index < product.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+            class={`w-4 h-4 ${index < product.rating ? 'text-yellow-400' : 'text-muted'}`}
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -56,19 +51,18 @@ export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$
         ))}
       </div>
 
-      <p class="text-lg font-bold text-green-600 mb-4">£{product.price.toFixed(2)}</p>
+      <p class="text-lg font-bold text-accent mb-4">£{product.price.toFixed(2)}</p>
 
-      {/* Action Button */}
       {product.inStock ? (
         <button
           onClick$={() => onAddToCart$?.(product.id)}
-          class="w-full py-2 px-4 bg-green-500 text-white rounded-md text-sm font-medium hover:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+          class="w-full py-2 px-4 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
         >
           ADD TO CART
         </button>
       ) : (
         <button
-          class="w-full py-2 px-4 bg-gray-200 text-gray-700 rounded-md text-sm font-medium cursor-not-allowed"
+          class="w-full py-2 px-4 bg-muted text-secondary rounded-md text-sm font-medium cursor-not-allowed"
           disabled
         >
           READ MORE
@@ -78,17 +72,9 @@ export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$
   );
 });
 
-// --- ProductListing Component ---
-/**
- * ProductListing component displays a grid of products with category filtering.
- * It includes a sub-component for individual product cards.
- */
 export const ProductListing = component$(() => {
-  // Use useSignal to manage the active filter state
   const activeFilter = useSignal<Product['category']>('All');
 
-  // Dummy product data
-  // NOTE: Ensure your /public/images/ directory contains the images referenced here.
   const products: Product[] = [
     { id: '1', name: 'Papaya Single', image: '/images/papaya.png', price: 745.64, rating: 5, category: 'Fruits', inStock: true },
     { id: '2', name: 'Cauliflower Pack 350g', image: '/images/cauliflower.png', price: 527.32, rating: 4, category: 'Vegetables', inStock: false },
@@ -102,28 +88,22 @@ export const ProductListing = component$(() => {
     { id: '10', name: 'Gourmet Beef Sausages Per kg', image: '/images/beef-sausages.png', price: 648.97, rating: 3, category: 'Meat', inStock: false },
   ];
 
-  // Categories for the filter buttons
   const categories: Product['category'][] = ['All', 'Vegetables', 'Fruits', 'Bread', 'Meat'];
 
-  // Filtered products based on the active filter
   const filteredProducts = products.filter(product =>
     activeFilter.value === 'All' ? true : product.category === activeFilter.value
   );
 
-  // Event handler for filter button clicks
   const handleFilterClick = $((category: Product['category']) => {
     activeFilter.value = category;
   });
 
-  // Event handler for "Add to Cart" button (you would integrate actual cart logic here)
   const handleAddToCart = $((productId: string) => {
     console.log(`Product with ID ${productId} added to cart!`);
-    // In a real app, you'd dispatch an action, update cart state, etc.
   });
 
   return (
     <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
-      {/* Category Filter Buttons */}
       <div class="flex flex-wrap justify-center gap-4 mb-8">
         {categories.map((category) => (
           <button
@@ -132,8 +112,8 @@ export const ProductListing = component$(() => {
             class={[
               'px-6 py-2 rounded-full font-medium transition-colors duration-200',
               activeFilter.value === category
-                ? 'bg-green-500 text-white hover:bg-green-600'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300',
+                ? 'bg-primary text-white hover:bg-primary/90'
+                : 'bg-muted text-secondary hover:bg-muted/70',
             ]}
           >
             {category}
@@ -141,7 +121,6 @@ export const ProductListing = component$(() => {
         ))}
       </div>
 
-      {/* Product Grid */}
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-6">
         {filteredProducts.map((product) => (
           <ProductCard
@@ -151,10 +130,11 @@ export const ProductListing = component$(() => {
           />
         ))}
         {filteredProducts.length === 0 && (
-          <p class="col-span-full text-center text-gray-600 text-lg">No products found for this category.</p>
+          <p class="col-span-full text-center text-muted text-lg">No products found for this category.</p>
         )}
       </div>
     </div>
   );
 });
-export default ProductListing
+
+export default ProductListing;

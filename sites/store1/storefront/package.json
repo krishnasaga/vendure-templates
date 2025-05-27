@@ -80,10 +80,5 @@
 		"razorpay": "^2.9.6",
 		"react-icons": "^5.5.0",
 		"zod": "^3.22.4"
-	},
-	"overrides": {
-		"@angular/compiler-cli": {
-			"typescript": "5.3.3"
-		}
 	}
 }

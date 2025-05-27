@@ -38,10 +38,15 @@ export default component$(() => {
 							placeholder={$localize`Enter a coupon code`}
 							value={couponCodeSignal.value}
 							onInput$={(_, el) => (couponCodeSignal.value = el.value)}
-							class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+							class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
 							required
 						/>
-						<button class="btn-primary max-w-24">{$localize`Apply`}</button>
+						<button
+							type="submit"
+							class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+						>
+							{$localize`Apply`}
+						</button>
 					</div>
 				</form>
 			</div>
