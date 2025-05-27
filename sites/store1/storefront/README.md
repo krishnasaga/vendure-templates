@@ -143,3 +143,13 @@ The resulting language should match your browser language. You can also override
 - [Qwik Github](https://github.com/BuilderIO/qwik)
 - [@QwikDev](https://twitter.com/QwikDev)
 - [Qwik Discord](https://qwik.builder.io/chat)
+
+## Static Site Generator (Node.js)
+
+Be sure to configure your server to serve very long cache headers for the `build/**/*.js` files.
+
+Typically you'd set the `Cache-Control` header for those files to `public, max-age=31536000, immutable`.
+
+```shell
+yarn build.server
+```

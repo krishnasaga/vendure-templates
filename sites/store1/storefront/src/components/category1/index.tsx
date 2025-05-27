@@ -1,40 +1,44 @@
 import { component$ } from '@builder.io/qwik';
+
 export default component$(() => {
 	return (
-		<div class="bg-orange-500 p-8">
+		<div class="bg-primary-500 py-16">
 			<h2 class="text-white text-5xl font-bold mb-8 text-center">Shop Our Category</h2>
-			<div class="grid grid-cols-1 md:grid-cols-4 gap-8 container mx-auto">
+			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 container mx-auto px-4">
 				{/* Category Card Component */}
 				{[
 					{
-						name: 'Electronics',
-						desc: 'Explore a wide range',
-						img: 'https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&w=600',
+						name: 'Dry Fruits and Nuts',
+						desc: 'Rich and Nutty.',
+						img: 'https://images.unsplash.com/photo-1541349400435-8899a68bad76?auto=format&fit=crop&w=600&q=60',
 					},
-
 					{
-						name: 'Computer',
-						desc: 'Browse our collection of desktops.',
-						img: 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVza3RvcCUyMGNvbXB1dGVyfGVufDB8fDB8fHww',
+						name: 'Dairy Products',
+						desc: 'Ghee, butter, and more.',
+						img: 'https://images.pexels.com/photos/20689447/pexels-photo-20689447/free-photo-of-bowls-with-liquid-and-food-ingredients.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 					},
-
 					{
-						name: 'Equipment',
-						desc: 'Stay fit and active with our range of gym and exercise equipment.',
-						img: 'https://images.unsplash.com/photo-1470940511639-1068d7764233?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtZXJhc3xlbnwwfHwwfHx8MA%3D%3D',
+						name: 'Sweets and Snacks',
+						desc: 'Crunchy treats.',
+						img: 'https://images.unsplash.com/photo-1681476747916-8a8fc7e2001e?auto=format&fit=crop&w=600&q=60',
 					},
-
 					{
-						name: 'Camera and Photo',
-						desc: 'Capture every moment with our wide selection of cameras',
-						img: 'https://images.unsplash.com/photo-1470940511639-1068d7764233?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtZXJhc3xlbnwwfHwwfHx8MA%3D%3D',
+						name: 'Vegetables',
+						desc: 'Farm-fresh veggies.',
+						img: 'https://images.pexels.com/photos/57556/pexels-photo-57556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 					},
 				].map((category) => (
-					<div key={category.name} class="bg-white  rounded-sm shadow-md">
-						<img src={category.img} alt={category.name} class="w-full h-80 object-cover" />
+					<div key={category.name} class="bg-white rounded-md shadow-md overflow-hidden">
+						<div class="aspect-[1/1] w-full overflow-hidden">
+							<img
+								src={category.img}
+								alt={category.name}
+								class="w-full h-full object-cover hover:scale-[1.1] transition-transform duration-200"
+							/>
+						</div>
 						<div class="p-4 text-center">
-							<h2 class="text-lg font-semibold">{category.name}</h2>
-							<p class="text-gray-600">{category.desc}</p>
+							<h2 class="text-xl font-semibold text-primary">{category.name}</h2>
+							<p class="text-md text-secondary">{category.desc}</p>
 						</div>
 					</div>
 				))}

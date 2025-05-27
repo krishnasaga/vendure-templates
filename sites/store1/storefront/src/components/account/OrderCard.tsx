@@ -25,14 +25,16 @@ export default component$<IProps>(({ order }) => {
 			/>
 			<div class="items-center">
 				<div>
-					<h1 class="mt-5 text-sm">
+					<h1 class="mt-5 text-sm text-primary">
 						Order:
-						<span class="ml-2 text-xl font-semibold">{order?.code}</span>
+						<span class="ml-2 text-xl font-semibold text-primary">{order?.code}</span>
 					</h1>
-					<span class="bg-teal-200 text-teal-800 text-xs px-2 py-2 mt-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+					<span class="bg-accent/20 text-accent text-xs px-2 py-2 mt-2 inline-block rounded-full uppercase font-semibold tracking-wide">
 						{order.state}
 					</span>
-					<p class="my-2">{formatPrice(order?.totalWithTax, order?.currencyCode || 'USD')}</p>
+					<p class="my-2 text-secondary">
+						{formatPrice(order?.totalWithTax, order?.currencyCode || 'USD')}
+					</p>
 				</div>
 			</div>
 			<div>
