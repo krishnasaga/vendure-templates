@@ -38,12 +38,12 @@ export default component$<{
 
 	return (
 		<div class="flow-root">
-			<ul class="-my-6 divide-y divide-muted">
+			<ul class="-my-6 divide-y divide-gray-200">
 				{rowsSignal.value.map((line) => {
 					const { linePriceWithTax } = line;
 					return (
 						<li key={line.id} class="py-6 flex">
-							<div class="flex-shrink-0 w-24 h-24 border border-muted rounded-md overflow-hidden">
+							<div class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
 								<Image
 									layout="fixed"
 									width="100"
@@ -56,7 +56,7 @@ export default component$<{
 
 							<div class="ml-4 flex-1 flex flex-col">
 								<div>
-									<div class="flex justify-between text-base font-medium text-primary">
+									<div class="flex justify-between text-base font-medium text-gray-900">
 										<h3>
 											<a href={`/products/${line.productVariant.product.slug}/`}>
 												{line.productVariant.name}
@@ -72,7 +72,7 @@ export default component$<{
 								<div class="flex-1 flex items-center text-sm">
 									{isInEditableUrl ? (
 										<form>
-											<label html-for={`quantity-${line.id}`} class="mr-2 text-secondary">
+											<label html-for={`quantity-${line.id}`} class="mr-2">
 												{$localize`Quantity`}
 											</label>
 											<select
@@ -83,7 +83,7 @@ export default component$<{
 												onChange$={(_, el) => {
 													currentOrderLineSignal.value = { id: line.id, value: +el.value };
 												}}
-												class="max-w-full rounded-md border border-muted py-1.5 text-base leading-5 font-medium text-secondary text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
+												class="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
 											>
 												{[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
 													<option key={num} value={num} selected={line.quantity === num}>
@@ -93,7 +93,7 @@ export default component$<{
 											</select>
 										</form>
 									) : (
-										<div class="text-secondary">
+										<div class="text-gray-800">
 											<span class="mr-1">{$localize`Quantity`}</span>
 											<span class="font-medium">{line.quantity}</span>
 										</div>
@@ -103,7 +103,7 @@ export default component$<{
 										{isInEditableUrl && (
 											<button
 												value={line.id}
-												class="font-medium text-primary hover:text-primary/80"
+												class="font-medium text-primary-600 hover:text-primary-500"
 												onClick$={async () => {
 													appState.activeOrder = await removeOrderLineMutation(line.id);
 													if (
