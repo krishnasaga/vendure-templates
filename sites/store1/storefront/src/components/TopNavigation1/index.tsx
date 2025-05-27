@@ -1,5 +1,5 @@
-import { $, component$, useContext, useSignal } from '@qwik.dev/core';
 import { APP_STATE } from '~/constants';
+import { $, component$, useContext, useSignal } from '@qwik.dev/core';
 
 export default component$(() => {
 	const isMenuOpen = useSignal(false);
@@ -9,7 +9,7 @@ export default component$(() => {
 		(item) => item.parent?.name === '__root_collection__' && !!item.featuredAsset
 	);
 
-	const toggleCart$ = $(() => {
+	const toggleCart = $(() => {
 		appState.showCart = !appState.showCart;
 	});
 
@@ -90,10 +90,9 @@ export default component$(() => {
 						</svg>
 					</a>
 					<div class="relative">
-						<a
-							href="#"
+						<button
 							class="hover:text-primary-500"
-							onClick$={toggleCart$}
+							onClick$={toggleCart}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +102,7 @@ export default component$(() => {
 							>
 								<path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-8.7-4.5h7.4c.73 0 1.34-.49 1.52-1.21L22 6.5h-4.3l-2.45-5.26c-.44-.94-1.56-1.3-2.5-.87-.94.44-1.3 1.56-.87 2.5L14.7 6.5H5.2L4.5 3.13c-.15-.65-.75-1.13-1.42-1.13H1.9c-.55 0-1 .45-1 1s.45 1 1 1h.7l1.7 8.5c-.32 1.07-.63 2.13-.7 3.2C2.7 18.23 3.94 19 5 19h12c.55 0 1-.45 1-1s-.45-1-1-1H5c-.17 0-.34-.02-.5-.07-.27-.08-.43-.3-.43-.59l-.02-.12c-.08-.3-.06-.52-.01-.73L4.7 12.5h8.9c1.61 0 2.91-1.39 2.76-3.05l-.04-.2-.5-2.22c-.15-.65-.75-1.13-1.42-1.13H7z" />
 							</svg>
-						</a>
+						</button>
 						<span class="absolute -top-2 -right-2 bg-primary-500 text-neutral-light text-xs rounded-full px-[6px] py-[1px] font-bold">
 							1
 						</span>
