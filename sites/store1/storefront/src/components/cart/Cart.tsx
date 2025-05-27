@@ -35,7 +35,7 @@ export default component$(() => {
 											</div>
 										</div>
 										<div class="mt-8">
-											{!!appState.activeOrder && appState.activeOrder.totalQuantity ? (
+											{!!appState?.activeOrder && appState.activeOrder.totalQuantity ? (
 												<CartContents />
 											) : (
 												<div class="flex items-center justify-center h-48 text-xl text-muted">
