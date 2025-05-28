@@ -48,6 +48,9 @@ type CollectionsResponse = {
 	};
 };
 
+const controller = new AbortController();
+const timeout = setTimeout(() => controller.abort(), 80000); // 80 seconds
+
 async function getCollections() {
 	const response = await fetch('https://www.indiastore1.duckdns.org/shop-api', {
 		method: 'POST',
@@ -55,7 +58,10 @@ async function getCollections() {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({ query: query.loc?.source.body }),
+		signal: controller.signal,
 	});
+	
+	clearTimeout(timeout);
 
 	const result = (await response.json()) as CollectionsResponse;
 	return result.data.collections.items;
