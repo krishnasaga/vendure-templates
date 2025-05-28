@@ -28,7 +28,7 @@ export default component$(() => {
 					</svg>
 				</button>
 				{/* Logo */}
-				<a href="/" class="flex items-center space-x-2">
+				<a href="/" class="flex items-center space-x-2 sm:hidden md:block">
 					<img src="/logo.png" alt="Store Logo" class="h-14 w-auto" object-fit="contain" />
 				</a>
 				{/* Desktop nav */}
