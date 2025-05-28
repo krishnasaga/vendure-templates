@@ -8,10 +8,10 @@ export default function App() {
 // HeroBanner Component
 function HeroBanner() {
 	return (
-		<div class="relative w-full overflow-hidden bg-yellow-400 md:h-[600px] h-auto flex flex-col md:flex-row items-center justify-center p-4 md:p-8">
+		<div class="relative w-full overflow-hidden bg-yellow-400 md:h-[600px] h-auto flex flex-col md:flex-row items-center justify-center py-4 md:py-8">
 			{/* Left Section - Text Content */}
 			<div class="container">
-				<div class="flex flex-col items-center md:items-start text-center md:text-left p-4 md:p-8 z-10">
+				<div class="flex flex-col items-center md:items-start text-center md:text-left py-4 md:py-8 z-10">
 					<p class="text-sm md:text-base text-gray-800 mb-2 uppercase tracking-wide">Farm Market</p>
 					<h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
 						High Quality <br /> Fruits Nuts Products

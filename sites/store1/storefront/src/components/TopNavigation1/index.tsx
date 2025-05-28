@@ -27,7 +27,10 @@ export default component$(() => {
 						/>
 					</svg>
 				</button>
-
+				{/* Logo */}
+				<a href="/" class="flex items-center space-x-2">
+					<img src="/logo.png" alt="Store Logo" class="h-14 w-auto" object-fit="contain" />
+				</a>
 				{/* Desktop nav */}
 				<nav class="hidden md:flex flex-1 justify-center space-x-6 font-semibold text-md text-neutral-dark">
 					<a href="/" class="hover:text-primary-500 py-5 px-4">
@@ -90,10 +93,7 @@ export default component$(() => {
 						</svg>
 					</a>
 					<div class="relative">
-						<button
-							class="hover:text-primary-500"
-							onClick$={toggleCart}
-						>
+						<button class="hover:text-primary-500" onClick$={toggleCart}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="currentColor"
