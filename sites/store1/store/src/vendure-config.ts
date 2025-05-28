@@ -36,6 +36,7 @@ export const config: VendureConfig = {
       {
         route: "assets",
         handler: cors({
+          credentials: true,
           origin: [
             "http://localhost:8080",
             "https://singular-salamander-093b82.netlify.app",
