@@ -136,7 +136,7 @@ export default component$(() => {
 					/>
 				)}
 				<div class="sm:col-span-5 lg:col-span-4">
-					<div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+					<div class="grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
 						{state.search.items.map((item) => (
 							<ProductCard
 								key={item.productId}
@@ -153,7 +153,6 @@ export default component$(() => {
 		</div>
 	);
 });
-
 export const head: DocumentHead = ({ resolveValue, url }) => {
 	const collection = resolveValue(useCollectionLoader);
 	let image = collection.children?.[0]?.featuredAsset?.preview || undefined;
