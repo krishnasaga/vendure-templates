@@ -103,10 +103,10 @@ export default component$(() => {
 
 	return (
 		<div>
-			<TopNav/>
+			<TopNav />
 			<Cart />
 			<Menu />
-			<main class="pb-12 bg-gray-50">
+			<main>
 				<Slot />
 			</main>
 			<Footer />

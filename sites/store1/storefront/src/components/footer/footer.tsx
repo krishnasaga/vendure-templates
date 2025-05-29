@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
 	return (
-		<footer class="bg-secondary-300 py-0">
+		<footer class="bg-secondary-200 py-5">
 			<div class="container mx-auto px-4">
 				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 					<div>
