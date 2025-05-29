@@ -17,7 +17,6 @@ interface ProductCardProps {
 
 export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$ }) => {
 	return (
-		// Keep ProductCard's internal padding (p-4) to maintain card appearance
 		<div class="bg-white rounded-lg shadow-md p-4 relative overflow-hidden transform transition-transform duration-200 hover:scale-[1.02]">
 			{!product.inStock && (
 				<div class="absolute inset-0 bg-muted/70 flex items-center justify-center text-white font-bold text-xl rounded-lg z-10">
@@ -184,26 +183,27 @@ export const ProductListing = component$(() => {
 	});
 
 	return (
-		// Drastically reduced vertical padding (py-0) and minimal horizontal padding (px-2)
-		<div class="bg-primary-100 min-h-screen py-0 px-2 sm:px-4 lg:px-6">
+		// Reduced vertical padding (py-4 instead of py-8) and horizontal padding (px-2 sm:px-4 lg:px-6)
+		<div class="bg-primary-100 min-h-screen py-4 px-2 sm:px-4 lg:px-6">
 			<div class="container mx-auto">
-				{/* New Products Title - minimal margin-bottom */}
-				<div class="text-center mb-2">
-					<h2 class="text-2xl font-bold text-gray-800">New Products</h2>
-					<div class="w-20 h-1 bg-primary mx-auto mt-1 rounded"></div> {/* Reduced mt-2 to mt-1 */}
+				{/* New Products Title */}
+				<div class="text-center mb-4">
+					{' '}
+					{/* Reduced mb-6 to mb-4 */}
+					<h2 class="text-3xl font-bold text-gray-800">New Products</h2>
+					<div class="w-20 h-1 bg-primary mx-auto mt-2 rounded"></div>
 				</div>
 
-				{/* Category Filter Buttons - reduced gap and margin-bottom */}
-				<div class="flex flex-wrap justify-center gap-1 mb-4">
+				{/* Category Filter Buttons */}
+				<div class="flex flex-wrap justify-center gap-2 mb-6">
 					{' '}
-					{/* Reduced gap to gap-1, mb to mb-4 */}
+					{/* Reduced gap-4 to gap-2 and mb-8 to mb-6 */}
 					{categories.map((category) => (
 						<button
 							key={category}
 							onClick$={() => handleFilterClick(category)}
 							class={[
-								// Further reduced padding on buttons for a tighter look
-								'px-3 py-1 text-sm rounded-full font-medium transition-colors duration-200',
+								'px-4 py-1.5 rounded-full font-medium text-sm transition-colors duration-200', // Adjusted padding and font size
 								activeFilter.value === category
 									? 'bg-primary-500 text-black hover:bg-primary/90'
 									: 'bg-secondary-200 text-secondary hover:bg-muted/70',
@@ -214,15 +214,14 @@ export const ProductListing = component$(() => {
 					))}
 				</div>
 
-				{/* Product Cards - Removed vertical gap (gap-y-0) and slightly reduced horizontal gap (gap-x-3) */}
-				<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-x-3 gap-y-0">
+				{/* Product Cards */}
+				{/* Reduced gap-y-2 to gap-y-1, or remove it for no vertical gap, and adjusted gap-x-4 */}
+				<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-4">
 					{filteredProducts.map((product) => (
 						<ProductCard key={product.id} product={product} onAddToCart$={handleAddToCart} />
 					))}
 					{filteredProducts.length === 0 && (
-						<p class="col-span-full text-center text-muted text-lg mt-4">
-							{' '}
-							{/* Added some top margin for clarity */}
+						<p class="col-span-full text-center text-muted text-lg">
 							No products found for this category.
 						</p>
 					)}
