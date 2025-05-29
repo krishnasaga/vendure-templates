@@ -19,6 +19,66 @@ import {
 	generateDocumentHead,
 	groupFacetValues,
 } from '~/utils';
+import { type StaticGenerateHandler } from '@builder.io/qwik-city';
+import { gql } from 'graphql-tag';
+
+const query = gql`
+	query GetCollections {
+		collections {
+			items {
+				id
+				name
+				slug
+			}
+		}
+	}
+`;
+
+type CollectionItem = {
+	id: string;
+	name: string;
+	slug: string;
+};
+
+type CollectionsResponse = {
+	data: {
+		collections: {
+			items: CollectionItem[];
+		};
+	};
+};
+
+const controller = new AbortController();
+const timeout = setTimeout(() => controller.abort(), 80000); // 80 seconds
+
+async function getCollections() {
+	const response = await fetch('https://www.indiastore1.duckdns.org/shop-api', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ query: query.loc?.source.body }),
+		signal: controller.signal,
+	});
+	
+	clearTimeout(timeout);
+
+	const result = (await response.json()) as CollectionsResponse;
+	return result.data.collections.items;
+}
+
+export const onStaticGenerate: StaticGenerateHandler = async () => {
+	const collections = await getCollections();
+	return {
+		params: collections
+			?.filter(({ slug }) => {
+				return !!slug;
+			})
+			.map(({ id, slug, name }) => {
+				return { id, slug, name };
+			}),
+	};
+};
 
 export const useCollectionLoader = routeLoader$(async ({ params }) => {
 	return await getCollectionBySlug(params.slug);
