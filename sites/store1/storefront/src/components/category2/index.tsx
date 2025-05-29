@@ -17,6 +17,7 @@ interface ProductCardProps {
 
 export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$ }) => {
 	return (
+		// Keep ProductCard's internal padding (p-4) to maintain card appearance
 		<div class="bg-white rounded-lg shadow-md p-4 relative overflow-hidden transform transition-transform duration-200 hover:scale-[1.02]">
 			{!product.inStock && (
 				<div class="absolute inset-0 bg-muted/70 flex items-center justify-center text-white font-bold text-xl rounded-lg z-10">
@@ -24,7 +25,7 @@ export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$
 				</div>
 			)}
 
-			<div class="w-full h-40 flex items-center justify-center mb-4">
+			<div class="w-full h-40 flex items-center justify-center mb-2">
 				<img
 					src={product.image}
 					alt={product.name}
@@ -35,9 +36,9 @@ export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$
 				/>
 			</div>
 
-			<h3 class="font-semibold text-primary text-base mb-1">{product.name}</h3>
+			<h3 class="text-center font-semibold text-primary text-base mb-1">{product.name}</h3>
 
-			<div class="flex items-center space-x-0.5 text-yellow-400 text-sm mb-2">
+			<div class="flex justify-center space-x-0.5 text-yellow-400 text-sm mb-2">
 				{Array.from({ length: 5 }).map((_, index) => (
 					<svg
 						key={index}
@@ -51,12 +52,12 @@ export const ProductCard = component$<ProductCardProps>(({ product, onAddToCart$
 				))}
 			</div>
 
-			<p class="text-lg font-bold text-accent mb-4">£{product.price.toFixed(2)}</p>
+			<p class="text-center text-lg font-bold text-accent mb-2">£{product.price.toFixed(2)}</p>
 
 			{product.inStock ? (
 				<button
 					onClick$={() => onAddToCart$?.(product.id)}
-					class="w-full py-2 px-4 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+					class="w-full py-2 px-4 bg-primary-500 text-black rounded-md text-sm font-medium hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
 				>
 					ADD TO CART
 				</button>
@@ -183,18 +184,29 @@ export const ProductListing = component$(() => {
 	});
 
 	return (
-		<div class="bg-rose-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+		// Drastically reduced vertical padding (py-0) and minimal horizontal padding (px-2)
+		<div class="bg-primary-100 min-h-screen py-0 px-2 sm:px-4 lg:px-6">
 			<div class="container mx-auto">
-				<div class="flex flex-wrap justify-center gap-4 mb-8">
+				{/* New Products Title - minimal margin-bottom */}
+				<div class="text-center mb-2">
+					<h2 class="text-2xl font-bold text-gray-800">New Products</h2>
+					<div class="w-20 h-1 bg-primary mx-auto mt-1 rounded"></div> {/* Reduced mt-2 to mt-1 */}
+				</div>
+
+				{/* Category Filter Buttons - reduced gap and margin-bottom */}
+				<div class="flex flex-wrap justify-center gap-1 mb-4">
+					{' '}
+					{/* Reduced gap to gap-1, mb to mb-4 */}
 					{categories.map((category) => (
 						<button
 							key={category}
 							onClick$={() => handleFilterClick(category)}
 							class={[
-								'px-6 py-2 rounded-full font-medium transition-colors duration-200',
+								// Further reduced padding on buttons for a tighter look
+								'px-3 py-1 text-sm rounded-full font-medium transition-colors duration-200',
 								activeFilter.value === category
-									? 'bg-primary text-white hover:bg-primary/90'
-									: 'bg-muted text-secondary hover:bg-muted/70',
+									? 'bg-primary-500 text-black hover:bg-primary/90'
+									: 'bg-secondary-200 text-secondary hover:bg-muted/70',
 							]}
 						>
 							{category}
@@ -202,12 +214,15 @@ export const ProductListing = component$(() => {
 					))}
 				</div>
 
-				<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-6">
+				{/* Product Cards - Removed vertical gap (gap-y-0) and slightly reduced horizontal gap (gap-x-3) */}
+				<div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-x-3 gap-y-0">
 					{filteredProducts.map((product) => (
 						<ProductCard key={product.id} product={product} onAddToCart$={handleAddToCart} />
 					))}
 					{filteredProducts.length === 0 && (
-						<p class="col-span-full text-center text-muted text-lg">
+						<p class="col-span-full text-center text-muted text-lg mt-4">
+							{' '}
+							{/* Added some top margin for clarity */}
 							No products found for this category.
 						</p>
 					)}
