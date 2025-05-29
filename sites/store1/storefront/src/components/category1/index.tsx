@@ -2,9 +2,9 @@ import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
 	return (
-		<div class="bg-primary-500 py-16">
+		<div class="bg-primary-500 py-10">
 			<h2 class="text-white text-5xl font-bold mb-8 text-center">Shop Our Category</h2>
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 container mx-auto px-4">
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 container mx-auto px-4">
 				{/* Category Card Component */}
 				{[
 					{
