@@ -13,13 +13,81 @@ import { addItemToOrderMutation } from '~/providers/shop/orders/order';
 import { getProductBySlug } from '~/providers/shop/products/products';
 import { Variant } from '~/types';
 import { cleanUpParams, generateDocumentHead, isEnvVariableEnabled } from '~/utils';
+import { type StaticGenerateHandler } from '@builder.io/qwik-city';
+import { gql } from 'graphql-tag';
+
+const query = gql`
+	query GetCollectionBySlug($slug: String!) {
+		collection(slug: $slug) {
+			id
+			name
+			slug
+			description
+			breadcrumbs {
+				id
+				name
+				slug
+			}
+			productVariants {
+				items {
+					id
+					name
+					priceWithTax
+					product {
+						slug
+					}
+				}
+			}
+		}
+	}
+`;
+
+type ProductItem = {
+	id: string;
+	name: string;
+	slug: string;
+};
+
+type ProductsResponse = {
+	data: {
+		products: {
+			items: ProductItem[];
+		};
+	};
+};
+
+async function getProducts() {
+	const response = await fetch('https://indiastore1.duckdns.org/shop-api', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ query: query.loc?.source.body }),
+	});
+
+	const result = (await response.json()) as ProductsResponse;
+	return result.data?.products.items;
+}
+
+export const onStaticGenerate: StaticGenerateHandler = async () => {
+	const products = await getProducts();
+	return {
+		params: products
+			?.filter((product) => {
+				return !!product.slug;
+			})
+			.map((product) => {
+				return product;
+			}),
+	};
+};
 
 export const useProductLoader = routeLoader$(async ({ params }) => {
 	const { slug } = cleanUpParams(params);
 	const product = await getProductBySlug(slug);
-	if (product.assets.length === 1) {
-		product.assets.push({
-			...product.assets[0],
+	if (product?.assets.length === 1) {
+		product?.assets.push({
+			...product?.assets[0],
 			id: 'placeholder_2',
 			name: 'placeholder',
 			preview: '/asset_placeholder.webp',
@@ -31,10 +99,10 @@ export const useProductLoader = routeLoader$(async ({ params }) => {
 export default component$(() => {
 	const appState = useContext(APP_STATE);
 	const productSignal = useProductLoader();
-	const currentImageSig = useSignal(productSignal.value.assets[0]);
-	const selectedVariantIdSignal = useSignal(productSignal.value.variants[0].id);
+	const currentImageSig = useSignal(productSignal.value?.assets[0]);
+	const selectedVariantIdSignal = useSignal(productSignal.value.variants[0]?.id);
 	const selectedVariantSignal = useComputed$(() =>
-		productSignal.value.variants.find((v) => v.id === selectedVariantIdSignal.value)
+		productSignal?.value.variants.find((v) => v?.id === selectedVariantIdSignal.value)
 	);
 	const addItemToOrderErrorSignal = useSignal('');
 	const quantitySignal = useComputed$<Record<string, number>>(() => {
@@ -42,10 +110,10 @@ export default component$(() => {
 		(productSignal.value.variants || []).forEach((variant: Variant) => {
 			const orderLine = (appState.activeOrder?.lines || []).find(
 				(l: OrderLine) =>
-					l.productVariant.id === variant.id &&
-					l.productVariant.product.id === productSignal.value.id
+					l?.productVariant?.id === variant?.id &&
+					l?.productVariant?.product?.id === productSignal?.value?.id
 			);
-			result[variant.id] = orderLine?.quantity || 0;
+			result[variant?.id] = orderLine?.quantity || 0;
 		});
 		return result;
 	});
@@ -79,15 +147,15 @@ export default component$(() => {
 										alt={`Image of: ${currentImageSig.value.name}`}
 									/>
 								</div>
-								{productSignal.value.assets.length > 1 && (
+								{productSignal.value?.assets.length > 1 && (
 									<div class="w-full md:w-[400px] my-2 flex flex-wrap gap-3 justify-center">
-										{productSignal.value.assets.map((asset, key) => (
+										{productSignal.value?.assets.map((asset, key) => (
 											<Image
 												key={key}
 												layout="fixed"
 												class={{
 													'object-center object-cover rounded-lg': true,
-													'border-b-8 border-primary-600': currentImageSig.value.id === asset.id,
+													'border-b-8 border-primary-600': currentImageSig.value?.id === asset?.id,
 												}}
 												width="80"
 												height="80"
@@ -120,9 +188,9 @@ export default component$(() => {
 									>
 										{productSignal.value.variants.map((variant) => (
 											<option
-												key={variant.id}
-												value={variant.id}
-												selected={selectedVariantIdSignal.value === variant.id}
+												key={variant?.id}
+												value={variant?.id}
+												selected={selectedVariantIdSignal.value === variant?.id}
 											>
 												{variant.name}
 											</option>

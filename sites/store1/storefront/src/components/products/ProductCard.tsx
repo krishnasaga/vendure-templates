@@ -1,12 +1,12 @@
 import { component$ } from '@qwik.dev/core';
 
-export default component$(({ productName }: any) => {
+export default component$(({ productName, CurrencyCode, productAsset, varients }: any) => {
 	return (
 		<div class="max-w-sm rounded-md overflow-hidden shadow-sm border border-gray-200 bg-white">
 			{/* Header */}
 			<div class="relative">
 				<img
-					src="/computers.jpg" // Replace with actual image path
+					src={productAsset}
 					alt="Two Brothers A2 Ghee"
 					class="w-full h-64 object-cover bg-yellow-100"
 				/>
@@ -28,16 +28,24 @@ export default component$(({ productName }: any) => {
 
 				{/* Price Section */}
 				<div class="mb-3">
-					<span class="text-lg font-bold text-neutral-darkest mr-2">£27.73</span>
-					<span class="line-through text-gray-400">£31.20</span>
+					<span class="text-lg font-bold text-neutral-darkest mr-2">{CurrencyCode}27.73</span>
+					<span class="line-through text-gray-400">{CurrencyCode} 31.20</span>
 				</div>
 
 				{/* Size Selector */}
-				<div class="mb-3">
-					<select class="w-full border border-gray-300 rounded px-3 py-2 text-sm">
-						<option>1000 ml (Glass Bottle)</option>
-					</select>
-				</div>
+				{varients?.length > 0 ? (
+					<div class="mb-3">
+						<select class="w-full border border-gray-300 rounded px-3 py-2 text-sm">
+							{varients.map((variant: any) => (
+								<option key={variant.id} value={variant.id}>
+									{`${variant.name} - ${CurrencyCode}${variant.price}`}
+								</option>
+							))}
+						</select>
+					</div>
+				) : null}
+
+				{/* Quantity Selector */}
 
 				{/* Add to Cart Button */}
 				<button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 rounded transition">

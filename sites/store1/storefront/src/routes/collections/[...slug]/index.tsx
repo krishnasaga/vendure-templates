@@ -52,7 +52,7 @@ const controller = new AbortController();
 const timeout = setTimeout(() => controller.abort(), 80000); // 80 seconds
 
 async function getCollections() {
-	const response = await fetch('https://www.indiastore1.duckdns.org/shop-api', {
+	const response = await fetch('https://indiastore1.duckdns.org/shop-api', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ async function getCollections() {
 		body: JSON.stringify({ query: query.loc?.source.body }),
 		signal: controller.signal,
 	});
-	
+
 	clearTimeout(timeout);
 
 	const result = (await response.json()) as CollectionsResponse;
@@ -200,11 +200,12 @@ export default component$(() => {
 						{state.search.items.map((item) => (
 							<ProductCard
 								key={item.productId}
-								productAsset={item.productAsset}
+								productAsset={item.productAsset?.preview}
 								productName={item.productName}
 								slug={item.slug}
 								priceWithTax={item.priceWithTax}
 								currencyCode={item.currencyCode}
+								variants={item.varients}
 							></ProductCard>
 						))}
 					</div>
@@ -213,6 +214,7 @@ export default component$(() => {
 		</div>
 	);
 });
+
 export const head: DocumentHead = ({ resolveValue, url }) => {
 	const collection = resolveValue(useCollectionLoader);
 	let image = collection.children?.[0]?.featuredAsset?.preview || undefined;
