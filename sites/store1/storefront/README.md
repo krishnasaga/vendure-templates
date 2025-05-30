@@ -1,8 +1,6 @@
 # Vendure Qwik Storefront Starter️
 
-An e-commerce storefront for [Vendure](https://www.vendure.io) built with [Qwik](https://qwik.builder.io/) & [Qwik City](https://qwik.builder.io/qwikcity/overview).
-
-👉 [qwik-storefront.vendure.io](https://qwik-storefront.vendure.io)
+👉 This is a fork of  [qwik-storefront.vendure.io](https://qwik-storefront.vendure.io)
 
 ## Core Web Vitals
 
