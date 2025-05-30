@@ -3150,6 +3150,18 @@ export type SearchResponse = {
 	totalItems: Scalars['Int']['output'];
 };
 
+export type Variant = {
+	id: string;
+	name: string;
+	sku: string;
+	price: number;
+	priceWithTax: number;
+	options: {
+		name: string;
+		value: string;
+	}[];
+};
+
 export type SearchResult = {
 	__typename?: 'SearchResult';
 	/** An array of ids of the Collections in which this result appears */
@@ -3171,6 +3183,7 @@ export type SearchResult = {
 	score: Scalars['Float']['output'];
 	sku: Scalars['String']['output'];
 	slug: Scalars['String']['output'];
+	varients: Variant[];
 };
 
 export type SearchResultAsset = {

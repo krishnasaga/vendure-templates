@@ -50,7 +50,7 @@ export default component$(() => {
 							))}
 						</div>
 					</div>
-					<a href="#" class="hover:text-primary-500 py-5 px-4">
+					<a href="/collections/shop-all" class="hover:text-primary-500 py-5 px-4">
 						Shop All
 					</a>
 					<a href="#" class="hover:text-primary-500 py-5 px-4">
