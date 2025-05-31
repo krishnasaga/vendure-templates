@@ -37,7 +37,9 @@ This starter helps developers and agencies create production-ready storefronts f
 
 ---
 
-## Food
+## Starters
+
+### Food
 
 | #  | Template Name    | Visual Description                                                                 | Ideal For                                             | Preview URL                     |
 |----|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------------|----------------------------------|
