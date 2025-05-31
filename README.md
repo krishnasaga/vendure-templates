@@ -1,4 +1,4 @@
-# 🇮🇳 Vendure Indian Storefront Starter
+# 🇮🇳 Vendure Indian Storefront Starters
 
 A starter template and component library to rapidly build modern Indian e-commerce storefronts powered by [Vendure](https://www.vendure.io/) (headless GraphQL commerce engine).
 
