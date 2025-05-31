@@ -37,3 +37,20 @@ This starter helps developers and agencies create production-ready storefronts f
 
 ---
 
+## Food
+
+| #  | Template Name    | Visual Description                                                                 | Ideal For                                             | Preview URL                     |
+|----|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------------|----------------------------------|
+| 1  | RusticShelf       | Earthy tones, wooden textures, grid layout like a traditional Indian store shelf    | Organic groceries, native grains, cold-pressed oils    | /preview/rusticshelf             |
+| 2  | SpiceGrid         | Bright spice-colored grid layout, tile-based visuals with bold product highlights   | Masala brands, spice mixes, regional seasonings        | /preview/spicegrid               |
+| 3  | HeritageBox       | Boxed layout with handcrafted borders, vintage fonts, and regional patterns         | Traditional sweets, snacks, festival gift hampers      | /preview/heritagebox             |
+| 4  | ClayJar           | Rounded elements, terracotta-style palette, focus on jars and small containers      | Pickles, chutneys, fermented/local preserves           | /preview/clayjar                 |
+| 5  | LeafCart          | Fresh green theme, leaf motifs, eco-conscious visual cues                           | Organic, vegan, eco-friendly food products             | /preview/leafcart                |
+| 6  | MinimalMithai     | Clean, pastel colors, plenty of white space, elegant product focus                  | Boutique mithai stores, sweet gift boxes               | /preview/minimalmithai           |
+| 7  | SnackStack        | Card-style stacking UI, bright CTA buttons, bold colors                             | Indian snacks, combo packs, street food brands         | /preview/snackstack              |
+| 8  | TiffinFlow        | Linear scroll layout, meal cards, calendar integration                              | Tiffin subscriptions, home-cooked meal delivery        | /preview/tiffinflow              |
+| 9  | FlavorTiles       | Mosaic-style tiles, multi-category layout with vibrant visuals                      | Multi-product food stores (sweets + spices + snacks)   | /preview/flavortiles             |
+| 10 | BazaarBlocks      | Marketplace-style vendor cards, bold headers, colorful imagery                      | Multi-vendor food e-commerce platform                  | /preview/bazaarblocks            |
+
+
+
