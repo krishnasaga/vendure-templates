@@ -39,7 +39,7 @@ This starter helps developers and agencies create production-ready storefronts f
 
 ## Starters
 
-### Food
+### 🪵🥥 Food
 
 | #  | Template Name    | Visual Description                                                                 | Ideal For                                             | Preview URL                     |
 |----|------------------|--------------------------------------------------------------------------------------|--------------------------------------------------------|----------------------------------|
@@ -55,7 +55,7 @@ This starter helps developers and agencies create production-ready storefronts f
 | 10 | BazaarBlocks      | Marketplace-style vendor cards, bold headers, colorful imagery                      | Multi-vendor food e-commerce platform                  | /preview/bazaarblocks            |
 
 
-### Fashion
+### 👗 Fashion
 
 | #  | Template Name     | Visual Description                                                                 | Ideal For                                         | Preview URL                      |
 |----|-------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|---------------------------------|
