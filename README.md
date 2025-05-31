@@ -43,7 +43,7 @@ This starter helps developers and agencies create production-ready storefronts f
 
 | #  | Template Name    | Visual Description                                                                   | Status        | Preview URL                     |
 |----|------------------|----------------------------------------------------------------------------------------|---------------|----------------------------------|
-| 1  | SpiceLeaf         | Earthy tones, wooden textures, grid layout like a traditional Indian store shelf      | Inprogress    | [/preview/rusticshelf](https://singular-salamander-093b82.netlify.app/)             |
+| 1  | SpiceLeaf         | Earthy tones, wooden textures, grid layout like a traditional Indian store shelf      | Inprogress    | [Spiceleaf](https://singular-salamander-093b82.netlify.app/)             |
 | 2  | SpiceGrid         | Bright spice-colored grid layout, tile-based visuals with bold product highlights     | Planned       | /preview/spicegrid               |
 | 3  | HeritageBox       | Boxed layout with handcrafted borders, vintage fonts, and regional patterns           | Planned       | /preview/heritagebox             |
 | 4  | ClayJar           | Rounded elements, terracotta-style palette, focus on jars and small containers        | Planned       | /preview/clayjar                 |
