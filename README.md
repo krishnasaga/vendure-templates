@@ -55,4 +55,18 @@ This starter helps developers and agencies create production-ready storefronts f
 | 10 | BazaarBlocks      | Marketplace-style vendor cards, bold headers, colorful imagery                      | Multi-vendor food e-commerce platform                  | /preview/bazaarblocks            |
 
 
+### Fashion
+
+| #  | Template Name     | Visual Description                                                                 | Ideal For                                         | Preview URL                      |
+|----|-------------------|--------------------------------------------------------------------------------------|--------------------------------------------------|---------------------------------|
+| 1  | VogueRack         | High-contrast, magazine-style grid with bold typefaces and hero banners             | High-street fashion, boutique brands              | /preview/voguerack              |
+| 2  | PastelWeave       | Soft color palette with flowing sections and rounded product cards                  | Women’s fashion, indie labels, pastel themes      | /preview/pastelweave            |
+| 3  | UrbanDrape        | Modern card layout with dark themes and edge-to-edge imagery                        | Urban fashion, Gen-Z streetwear                   | /preview/urbandrape             |
+| 4  | SareeScroll       | Long scroll-based showcase with drape movement-inspired animations                  | Sarees, ethnic wear, handcrafted textiles         | /preview/sareescroll            |
+| 5  | LuxeLookbook      | Minimalist layout with focus on collections, editorials, and large visuals          | Designer collections, curated catalogs            | /preview/luxelookbook           |
+| 6  | ChicGrid          | Product grid with subtle hover effects, monochrome accents, and clean lines         | Contemporary fashion, western wear                | /preview/chicgrid               |
+| 7  | EthnoBazaar       | Marketplace-style layout with handcrafted textures and regional fonts               | Multi-seller ethnic wear and accessories          | /preview/ethnobazaar            |
+| 8  | DrapeDeck         | Carousel-centric layout with bold typography and vertical transitions               | Occasion wear, lehengas, wedding fashion          | /preview/drapedeck              |
+| 9  | CapsuleCo         | Modular, block-style layout to showcase capsule wardrobes or seasonal drops         | Capsule collections, fashion minimalism           | /preview/capsuleco              |
+| 10 | GlimmerCart       | Shiny UI with sparkly transitions, ideal for glam and glitter-heavy styles          | Partywear, bling fashion, nightwear               | /preview/glimmercart            |
 
