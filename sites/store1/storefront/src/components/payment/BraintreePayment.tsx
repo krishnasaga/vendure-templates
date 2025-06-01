@@ -23,7 +23,7 @@ export default component$(() => {
 
 	useVisibleTask$(async () => {
 		store.clientToken =
-			(await generateBraintreeClientTokenQuery(appState.activeOrder.id, true)) || '';
+			(await generateBraintreeClientTokenQuery(appState?.activeOrder?.id || '', true)) || '';
 		client.dropin = await braintree.create({
 			authorization: store.clientToken,
 			// This assumes a div in your view with the corresponding ID
@@ -39,8 +39,8 @@ export default component$(() => {
 			// Braintree account.
 			paypal: {
 				flow: 'checkout',
-				amount: appState.activeOrder.totalWithTax / 100,
-				currency: appState.activeOrder.currencyCode,
+				amount: appState?.activeOrder?.totalWithTax / 100,
+				currency: appState?.activeOrder?.currencyCode,
 			},
 		});
 	});
@@ -65,21 +65,25 @@ export default component$(() => {
 			<button
 				class="flex px-6 bg-primary-600 hover:bg-primary-700 items-center justify-center space-x-2 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
 				onClick$={$(async () => {
-					if (!client.dropin.isPaymentMethodRequestable()) {
-						return;
-					}
-					const paymentResult = await client.dropin.requestPaymentMethod();
-					await transitionOrderToStateMutation();
-					const activeOrder = await addPaymentToOrderMutation({
-						method: 'braintree-payment',
-						metadata: paymentResult,
-					});
-					if (activeOrder.__typename === 'Order') {
-						appState.activeOrder = activeOrder;
-						navigate(`/checkout/confirmation/${activeOrder.code}`);
-					} else {
+					try {
+						if (!client.dropin.isPaymentMethodRequestable()) {
+							return;
+						}
+						const paymentResult = await client.dropin.requestPaymentMethod();
+						await transitionOrderToStateMutation();
+						const activeOrder = await addPaymentToOrderMutation({
+							method: 'braintree-payment',
+							metadata: paymentResult,
+						});
+						if (activeOrder?.__typename === 'Order' && appState) {
+							appState.activeOrder = activeOrder;
+							navigate(`/checkout/confirmation/${activeOrder?.code}`);
+						} else {
+							// @ts-ignore
+							store.error = activeOrder?.message;
+						}
+					} catch (error) {
 						// @ts-ignore
-						store.error = activeOrder.message;
 					}
 				})}
 			>

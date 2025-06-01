@@ -1,6 +1,5 @@
 import { component$, useComputed$, useContext, useSignal } from '@qwik.dev/core';
 import { DocumentHead, routeLoader$ } from '@qwik.dev/router';
-import { Image } from 'qwik-image';
 import Alert from '~/components/alert/Alert';
 import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs';
 import CheckIcon from '~/components/icons/CheckIcon';
@@ -17,24 +16,51 @@ import { type StaticGenerateHandler } from '@builder.io/qwik-city';
 import { gql } from 'graphql-tag';
 
 const query = gql`
-	query GetCollectionBySlug($slug: String!) {
-		collection(slug: $slug) {
+	query GetProducts {
+		products {
+			items {
 			id
 			name
-			slug
 			description
+				slug
+				collections {
+					id
+					slug
+					name
 			breadcrumbs {
 				id
 				name
 				slug
 			}
-			productVariants {
-				items {
+				}
+				facetValues {
+					facet {
+						id
+						code
+						name
+					}
+					id
+					code
+					name
+				}
+				featuredAsset {
+					id
+					preview
+				}
+				assets {
+					id
+					preview
+				}
+				variants {
 					id
 					name
 					priceWithTax
-					product {
-						slug
+					currencyCode
+					sku
+					stockLevel
+					featuredAsset {
+						id
+						preview
 					}
 				}
 			}
@@ -119,11 +145,11 @@ export default component$(() => {
 	});
 
 	return (
-		<div>
+		<div class="bg-primary-100">
 			{selectedVariantSignal.value?.id && (
 				<span class="hidden">{selectedVariantSignal.value?.id}</span>
 			)}
-			<div class="max-w-6xl mx-auto px-4 py-10">
+			<div class="container mx-auto px-4 py-10">
 				<div>
 					<h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
 						{productSignal.value.name}
@@ -135,14 +161,13 @@ export default component$(() => {
 						}
 					></Breadcrumbs>
 					<div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start mt-4 md:mt-12">
-						<div class="w-full max-w-2xl mx-auto sm:block lg:max-w-none">
+						<div class="w-full mx-auto sm:block lg:max-w-none">
 							<span class="rounded-md overflow-hidden">
-								<div class="h-[400px] w-full md:w-[400px]">
-									<Image
-										layout="fixed"
+								<div class="w-full overflow-hidden">
+									<img
 										class="object-center object-cover rounded-lg mx-auto"
-										width="400"
-										height="400"
+										width="800"
+										height="800"
 										src={currentImageSig.value.preview + '?w=400&h=400&format=webp'}
 										alt={`Image of: ${currentImageSig.value.name}`}
 									/>
@@ -150,9 +175,8 @@ export default component$(() => {
 								{productSignal.value?.assets.length > 1 && (
 									<div class="w-full md:w-[400px] my-2 flex flex-wrap gap-3 justify-center">
 										{productSignal.value?.assets.map((asset, key) => (
-											<Image
+											<img
 												key={key}
-												layout="fixed"
 												class={{
 													'object-center object-cover rounded-lg': true,
 													'border-b-8 border-primary-600': currentImageSig.value?.id === asset?.id,

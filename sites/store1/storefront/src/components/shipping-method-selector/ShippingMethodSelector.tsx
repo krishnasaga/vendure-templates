@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default component$<Props>(({ appState }) => {
-	const currencyCode = appState.activeOrder.currencyCode || 'USD';
+	const currencyCode = appState?.activeOrder?.currencyCode || 'USD';
 	const state = useStore<{ selectedMethodId: string; methods: EligibleShippingMethods[] }>({
 		selectedMethodId: '',
 		methods: [],
@@ -23,7 +23,7 @@ export default component$<Props>(({ appState }) => {
 
 	useTask$(async (tracker) => {
 		const selected = tracker.track(() => state.selectedMethodId);
-		if (selected) {
+		if (selected && appState) {
 			appState.activeOrder = await setOrderShippingMethodMutation([selected]);
 		}
 	});
