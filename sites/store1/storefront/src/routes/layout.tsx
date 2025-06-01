@@ -79,7 +79,11 @@ export default component$(() => {
 	useContextProvider(APP_STATE, state);
 
 	useVisibleTask$(async () => {
-		state.activeOrder = await getActiveOrderQuery();
+		try {
+			state.activeOrder = await getActiveOrderQuery();
+		} catch (error) {
+			console.error('Error fetching active order:', error);
+		}
 	});
 
 	useVisibleTask$(({ track }) => {

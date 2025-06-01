@@ -63,7 +63,7 @@ export default component$(() => {
 							elements: store.stripeElements,
 							clientSecret: store.clientSecret,
 							confirmParams: {
-								return_url: `${baseUrl}/checkout/confirmation/${appState.activeOrder.code}`,
+								return_url: `${baseUrl}/checkout/confirmation/${appState?.activeOrder?.code}`,
 							},
 						});
 						if (result?.error) {

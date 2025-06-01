@@ -14,19 +14,19 @@ export default component$<{
 	const location = useLocation();
 	const appState = useContext(APP_STATE);
 	const currentOrderLineSignal = useSignal<{ id: string; value: number }>();
-	const rowsSignal = useComputed$(() => order?.lines || appState.activeOrder?.lines || []);
+	const rowsSignal = useComputed$(() => order?.lines || appState?.activeOrder?.lines || []);
 	const isInEditableUrl = !isCheckoutPage(location.url.toString()) || !order;
-	const currencyCode = order?.currencyCode || appState.activeOrder?.currencyCode || 'USD';
+	const currencyCode = order?.currencyCode || appState?.activeOrder?.currencyCode || 'USD';
 
 	useTask$(({ track, cleanup }) => {
 		track(() => currentOrderLineSignal.value);
 		let id: NodeJS.Timeout;
 		if (currentOrderLineSignal.value) {
 			id = setTimeout(async () => {
-				appState.activeOrder = await adjustOrderLineMutation(
+				appState.activeOrder = (await adjustOrderLineMutation(
 					currentOrderLineSignal.value!.id,
 					currentOrderLineSignal.value!.value
-				);
+				)) || { lines: [] };
 			}, 300);
 		}
 		cleanup(() => {
@@ -107,7 +107,7 @@ export default component$<{
 												onClick$={async () => {
 													appState.activeOrder = await removeOrderLineMutation(line.id);
 													if (
-														appState.activeOrder?.lines?.length === 0 &&
+														appState?.activeOrder?.lines?.length === 0 &&
 														isCheckoutPage(location.url.toString())
 													) {
 														appState.showCart = false;

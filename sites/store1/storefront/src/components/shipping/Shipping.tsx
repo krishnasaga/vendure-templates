@@ -29,7 +29,7 @@ export default component$<IProps>(({ onForward$ }) => {
 	useVisibleTask$(async () => {
 		const activeOrder = await getActiveOrderQuery();
 		if (activeOrder?.customer) {
-			const customer = activeOrder.customer;
+			const customer = activeOrder?.customer;
 			appState.customer = {
 				title: customer.title ?? '',
 				firstName: customer.firstName,

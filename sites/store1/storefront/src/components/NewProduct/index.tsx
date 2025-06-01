@@ -13,17 +13,19 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 				Save
 			</div>
 			<div class={'w-[100%] h-[280px] overflow-hidden relative'}>
-				<img
-					src={(product as unknown as any)?.featuredAsset.preview + '?w=400&h=400&format=webp'}
-					alt={product.name}
-					object-fit="cover"
-					object-position="center"
-					width={400}
-					height={400}
-					class={
-						'object-cover w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 transition-transform duration-300 group-hover:scale-105'
-					}
-				/>
+				<a href={`/products/${product.slug}`} class="block">
+					<img
+						src={(product as unknown as any)?.featuredAsset.preview + '?w=400&h=400&format=webp'}
+						alt={product.name}
+						object-fit="cover"
+						object-position="center"
+						width={400}
+						height={400}
+						class={
+							'object-cover w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 transition-transform duration-300 group-hover:scale-105'
+						}
+					/>
+				</a>
 			</div>
 			<div class="p-4">
 				<div class="flex items-center justify-center mb-2">
