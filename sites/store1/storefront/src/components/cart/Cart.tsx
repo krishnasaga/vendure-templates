@@ -62,15 +62,13 @@ const CartBody = component$(() => {
 	const appState = useContext(APP_STATE);
 	const hasItems = !!appState?.activeOrder?.totalQuantity;
 
-	return (
-		<div class={`mt-8 px-4 sm:px-6 flex flex-col ${hasItems ? 'flex-1' : 'h-full justify-center'}`}>
-			{hasItems ? (
-				<CartContents />
-			) : (
-				<div class="flex items-center justify-center text-xl text-muted flex flex-col">
-					<h2 class="text-4xl font-bold">{$localize`Your cart is empty`}</h2>
-				</div>
-			)}
+	return hasItems ? (
+		<div class={`mt-8 px-4 sm:px-6 flex h-full flex-col justify-start`}>
+			<CartContents />
+		</div>
+	) : (
+		<div class="flex flex-col items-center justify-center text-xl text-muted ">
+			<h2 class="text-4xl font-bold">{$localize`Your cart is empty`}</h2>
 		</div>
 	);
 });
@@ -96,7 +94,7 @@ const CartFooter = component$(({ isInEditableUrl }: { isInEditableUrl: boolean }
 			<div class="mt-6">
 				<a
 					href="/checkout/"
-					class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-primary/90 w-full"
+					class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-800 hover:bg-primary-900 w-full"
 				>
 					{$localize`Checkout`}
 				</a>
