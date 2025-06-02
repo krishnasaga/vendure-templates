@@ -21,7 +21,7 @@ export const ShipmentTracker = component$(() => {
 	});
 
 	return (
-		<div class="p-6 bg-white rounded-lg shadow-md max-w-2xl mx-auto my-10">
+		<div class="container p-6 bg-white rounded-lg shadow-md max-w-3xl mx-auto my-10">
 			<div class="flex items-center mb-6">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

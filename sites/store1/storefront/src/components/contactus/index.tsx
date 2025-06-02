@@ -38,7 +38,7 @@ export const ContactForm = component$(() => {
 						// .catch(error => console.error('Error:', error));
 					}}
 				>
-					<div class="mb-5">
+					<div class="container mb-5">
 						<label for="name" class="block text-gray-700 text-sm font-semibold mb-2">
 							NAME
 						</label>
@@ -112,7 +112,7 @@ export const ContactForm = component$(() => {
 					<div>
 						<h3 class="text-lg font-semibold text-gray-700">Phone</h3>
 						<a href="tel:+918977021193" class="text-orange-600 font-medium text-xl hover:underline">
-							+91 89770 21193
+							+91 99999 99999
 						</a>
 					</div>
 				</div>
@@ -139,10 +139,10 @@ export const ContactForm = component$(() => {
 					<div>
 						<h3 class="text-lg font-semibold text-gray-700">email</h3>
 						<a
-							href="mailto:vaaradhifarms@gmail.com"
+							href="mailto:abc@gmail.com"
 							class="text-orange-600 font-medium text-xl hover:underline"
 						>
-							vaaradhifarms@gmail.com
+							abc@gmail.com
 						</a>
 					</div>
 				</div>
@@ -173,7 +173,7 @@ export const ContactForm = component$(() => {
 					</span>
 					<div>
 						<h3 class="text-lg font-semibold text-gray-700">Address</h3>
-						<p class="text-gray-600 text-xl">Manikonda Hyderabad, Telangana , Pin - 500089</p>
+						<p class="text-gray-600 text-xl">test</p>
 					</div>
 				</div>
 			</div>
