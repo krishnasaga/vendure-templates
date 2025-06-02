@@ -1,0 +1,12 @@
+# netlify.toml  ── final, working version
+#################################################################
+[build]
+command        = "npm run build"
+publish        = "sites/store1/storefront/dist"
+edge_functions = "netlify/edge-functions"   # ← keep this unless you moved the folder
+
+[[edge_functions]]            # ← must be an ARRAY-OF-OBJECTS block
+function = "entry.netlify-edge" # ← folder name Netlify just built 👈
+path     = "/*"                # catch-all so every request hits Qwik
+#################################################################
+
