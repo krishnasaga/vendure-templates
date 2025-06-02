@@ -1,43 +1,76 @@
-import { component$, useContext } from '@qwik.dev/core';
+import { component$, useContext, useSignal, useTask$ } from '@qwik.dev/core';
 import { useLocation } from '@qwik.dev/router';
 import { APP_STATE } from '~/constants';
 import { isCheckoutPage } from '~/utils';
 import CartContents from '../cart-contents/CartContents';
 import CartPrice from '../cart-totals/CartPrice';
 import CloseIcon from '../icons/CloseIcon';
+import { AppState } from '~/types';
+import { Signal } from '@qwik.dev/core';
+import emptyCartImage from './empty-cart.png';
 
 export default component$(() => {
 	const location = useLocation();
 	const appState = useContext(APP_STATE);
 	const isInEditableUrl = !isCheckoutPage(location.url.toString());
 
-	return appState.showCart ? <CartPanel isInEditableUrl={isInEditableUrl} /> : null;
+	return <CartPanel isInEditableUrl={isInEditableUrl} appState={appState} />;
 });
 
 // --- CartPanel ---
-const CartPanel = component$(({ isInEditableUrl }: { isInEditableUrl: boolean }) => {
-	return (
-		<div class="fixed inset-0 overflow-hidden z-20">
-			<div class="absolute inset-0 overflow-hidden">
-				<div class="absolute inset-0 bg-muted bg-opacity-75 transition-opacity opacity-100"></div>
-				<div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-					<div class="w-screen max-w-md translate-x-0">
-						<div class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
-							<CartHeader />
-							<CartBody />
-							<CartFooter isInEditableUrl={isInEditableUrl} />
+const CartPanel = component$(
+	({ isInEditableUrl, appState }: { isInEditableUrl: boolean; appState: AppState }) => {
+		const shouldRender = useSignal(false);
+
+		useTask$(({ track }) => {
+			const open = track(() => appState.showCart);
+
+			if (open) {
+				setTimeout(() => {
+					shouldRender.value = true;
+				}, 200);
+			} else {
+				setTimeout(() => {
+					shouldRender.value = false;
+				}, 200);
+			}
+		});
+
+		return (
+			<div class={`fixed inset-0 overflow-hidden z-20 ${appState.showCart ? 'block' : 'hidden'}`}>
+				<div class="absolute inset-0 overflow-hidden">
+					<div
+						class="absolute inset-0 bg-muted bg-opacity-75 transition-opacity opacity-100"
+						onClick$={() => {
+							shouldRender.value = false;
+						}}
+					></div>
+					<div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+						<div
+							class={`w-screen max-w-md transform transition-transform duration-200 ease-out ${
+								shouldRender.value ? 'translate-x-0' : 'translate-x-full'
+							}`}
+							onTransitionEnd$={() => {
+								if (!shouldRender.value) {
+									appState.showCart = false;
+								}
+							}}
+						>
+							<div class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
+								<CartHeader shouldRender={shouldRender} />
+								<CartBody />
+								<CartFooter isInEditableUrl={isInEditableUrl} />
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	);
-});
+		);
+	}
+);
 
 // --- CartHeader ---
-const CartHeader = component$(() => {
-	const appState = useContext(APP_STATE);
-
+const CartHeader = component$(({ shouldRender }: { shouldRender: Signal<boolean> }) => {
 	return (
 		<div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
 			<div class="flex items-start justify-between">
@@ -46,7 +79,7 @@ const CartHeader = component$(() => {
 					<button
 						type="button"
 						class="-m-2 p-2 text-muted hover:text-secondary"
-						onClick$={() => (appState.showCart = false)}
+						onClick$={() => (shouldRender.value = false)}
 					>
 						<span class="sr-only">Close panel</span>
 						<CloseIcon />
@@ -67,8 +100,12 @@ const CartBody = component$(() => {
 			<CartContents />
 		</div>
 	) : (
-		<div class="flex flex-col items-center justify-center text-xl text-muted ">
-			<h2 class="text-4xl font-bold">{$localize`Your cart is empty`}</h2>
+		<div class="flex h-full flex-col items-center justify-center text-xl text-muted">
+			<img width={100} height={100} alt={'empty-shoping-cart'} src={emptyCartImage} />
+			<h2 class="text-2xl font-bold text-neutral-dark">{$localize`Your cart is empty`}</h2>
+			<a class={'text-lg text-netural-darkest font-medium'} href={'/collections/shop-all'}>
+				Continue Shoping
+			</a>
 		</div>
 	);
 });

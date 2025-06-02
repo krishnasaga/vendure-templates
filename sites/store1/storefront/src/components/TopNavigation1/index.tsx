@@ -1,5 +1,10 @@
 import { APP_STATE } from '~/constants';
-import { $, component$, useContext, useSignal } from '@builder.io/qwik';
+import {
+	$,
+	component$,
+	useContext,
+	useSignal,
+} from '@builder.io/qwik';
 import { Link } from '@qwik.dev/router'; // Make sure this import path is correct for your setup
 
 export default component$(() => {
@@ -11,12 +16,13 @@ export default component$(() => {
 	);
 	const quantity = appState?.activeOrder?.totalQuantity;
 
+
 	const toggleCart = $(() => {
 		appState.showCart = !appState.showCart;
 	});
 
 	return (
-		<header class="bg-neutral-light border-b-[3px] border-primary-500 relative z-20">
+		<header class="bg-neutral-light border-b-[3px] border-primary-500 relative z-20 sticky top-0">
 			<div class="container mx-auto px-4 py-3 flex items-center justify-between">
 				{/* Mobile menu button */}
 				<button onClick$={() => (isMenuOpen.value = true)} class="md:hidden text-neutral-dark">
