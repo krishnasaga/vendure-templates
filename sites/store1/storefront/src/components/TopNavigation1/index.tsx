@@ -1,5 +1,6 @@
 import { APP_STATE } from '~/constants';
-import { $, component$, useContext, useSignal } from '@qwik.dev/core';
+import { $, component$, useContext, useSignal } from '@builder.io/qwik';
+import { Link } from '@qwik.dev/router'; // Make sure this import path is correct for your setup
 
 export default component$(() => {
 	const isMenuOpen = useSignal(false);
@@ -27,44 +28,49 @@ export default component$(() => {
 						/>
 					</svg>
 				</button>
+
 				{/* Logo */}
 				<a href="/" class="flex items-center space-x-2">
 					<img src="/logo.png" alt="Store Logo" class="h-14 w-auto" object-fit="contain" />
 				</a>
+
 				{/* Desktop nav */}
 				<nav class="hidden md:flex flex-1 justify-center space-x-6 font-semibold text-md text-neutral-dark">
-					<a href="/" class="hover:text-primary-500 py-5 px-4">
+					<Link href="/" class="hover:text-primary-500 py-5 px-4">
 						Home
-					</a>
+					</Link>
 					<div class="relative group">
 						<button class="hover:text-primary-500 py-5 px-4">View Collections ▾</button>
 						<div class="absolute hidden group-hover:block bg-neutral-light border shadow-md mt-2 z-10">
 							{collections.map((collection: { name: string; id: string }) => (
-								<a
+								<Link
 									key={collection.id}
-									href="#"
+									href={`/collections/${collection.id}`}
 									class="block px-4 py-2 hover:bg-neutral-accent-light"
 								>
 									{collection.name}
-								</a>
+								</Link>
 							))}
 						</div>
 					</div>
-					<a href="/collections/shop-all" class="hover:text-primary-500 py-5 px-4">
+					<Link href="/collections/shop-all" class="hover:text-primary-500 py-5 px-4">
 						Shop All
-					</a>
-					<a href="#" class="hover:text-primary-500 py-5 px-4">
+					</Link>
+					<Link href="/faq" class="hover:text-primary-500 py-5 px-4">
 						FAQ
-					</a>
-					<a href="#" class="hover:text-primary-500 py-5 px-4">
+					</Link>
+
+					<Link href="/track" class="hover:text-primary-500 py-5 px-4">
 						Track Your Order
-					</a>
-					<a href="#" class="hover:text-primary-500 py-5 px-4">
+					</Link>
+
+					{/* ✨ UPDATED: Contact Us link for Desktop Nav */}
+					<Link href="/contact" class="hover:text-primary-500 py-5 px-4">
 						Contact Us
-					</a>
+					</Link>
 				</nav>
 
-				{/* Icons (always right) */}
+				{/* Icons */}
 				<div class="flex items-center space-x-5 text-neutral-dark text-lg">
 					<a href="#" class="hover:text-primary-500">
 						<svg
@@ -110,7 +116,7 @@ export default component$(() => {
 				</div>
 			</div>
 
-			{/* Full-screen mobile overlay menu */}
+			{/* Mobile menu */}
 			{isMenuOpen.value && (
 				<div class="fixed inset-0 bg-neutral-light text-neutral-dark z-50 p-6 flex flex-col">
 					<div class="flex justify-between items-center mb-8">
@@ -128,24 +134,52 @@ export default component$(() => {
 					</div>
 
 					<nav class="space-y-4 text-lg font-semibold">
-						<a href="#" class="block hover:text-primary-500">
+						<Link
+							href="/"
+							class="block hover:text-primary-500"
+							onClick$={() => (isMenuOpen.value = false)}
+						>
 							Home
-						</a>
-						<a href="#" class="block hover:text-primary-500">
+						</Link>
+						{/* Consider using Link here if you have a collection route */}
+						<a
+							href="#"
+							class="block hover:text-primary-500"
+							onClick$={() => (isMenuOpen.value = false)}
+						>
 							View Collections
 						</a>
-						<a href="#" class="block hover:text-primary-500">
+						<Link
+							href="/collections/shop-all"
+							class="block hover:text-primary-500"
+							onClick$={() => (isMenuOpen.value = false)}
+						>
 							Shop All
-						</a>
-						<a href="#" class="block hover:text-primary-500">
+						</Link>
+						<Link
+							href="/faq"
+							class="block hover:text-primary-500"
+							onClick$={() => (isMenuOpen.value = false)}
+						>
 							FAQ
-						</a>
-						<a href="#" class="block hover:text-primary-500">
+						</Link>
+
+						<Link
+							href="/track"
+							class="block hover:text-primary-500"
+							onClick$={() => (isMenuOpen.value = false)}
+						>
 							Track Your Order
-						</a>
-						<a href="#" class="block hover:text-primary-500">
+						</Link>
+
+						{/* ✨ UPDATED: Contact Us link for Mobile Nav */}
+						<Link
+							href="/contactus"
+							class="block hover:text-primary-500"
+							onClick$={() => (isMenuOpen.value = false)}
+						>
 							Contact Us
-						</a>
+						</Link>
 					</nav>
 				</div>
 			)}
