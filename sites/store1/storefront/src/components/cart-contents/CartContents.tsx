@@ -1,6 +1,5 @@
 import { component$, useComputed$, useContext, useSignal, useTask$ } from '@qwik.dev/core';
 import { useLocation, useNavigate } from '@qwik.dev/router';
-import { Image } from 'qwik-image';
 import { APP_STATE } from '~/constants';
 import { Order } from '~/generated/graphql';
 import { adjustOrderLineMutation, removeOrderLineMutation } from '~/providers/shop/orders/order';
@@ -44,8 +43,7 @@ export default component$<{
 					return (
 						<li key={line.id} class="py-6 flex">
 							<div class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
-								<Image
-									layout="fixed"
+								<img
 									width="100"
 									height="100"
 									class="w-full h-full object-center object-cover"
