@@ -1,4 +1,4 @@
-import { component$, PropsOf } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 
 // Enum to represent the order statuses
 export enum OrderStatus {

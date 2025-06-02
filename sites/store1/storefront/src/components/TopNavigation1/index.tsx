@@ -9,6 +9,7 @@ export default component$(() => {
 	const collections = appState.collections.filter(
 		(item) => item.parent?.name === '__root_collection__' && !!item.featuredAsset
 	);
+	const quantity = appState?.activeOrder?.totalQuantity;
 
 	const toggleCart = $(() => {
 		appState.showCart = !appState.showCart;
@@ -110,7 +111,7 @@ export default component$(() => {
 							</svg>
 						</button>
 						<span class="absolute -top-2 -right-2 bg-primary-500 text-neutral-light text-xs rounded-full px-[6px] py-[1px] font-bold">
-							1
+							{quantity}
 						</span>
 					</div>
 				</div>
