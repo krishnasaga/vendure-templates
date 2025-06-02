@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { routeLoader$, useLocation } from '@builder.io/qwik-city';
+import { routeLoader$ } from '@builder.io/qwik-city';
 import { OrderProgress, OrderStatus } from '~/components/orderprogress'; // Ensure correct path to your component
 
 // Define the type for the order data that will be fetched by the loader
