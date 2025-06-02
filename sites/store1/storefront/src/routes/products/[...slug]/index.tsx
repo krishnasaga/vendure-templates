@@ -19,19 +19,19 @@ const query = gql`
 	query GetProducts {
 		products {
 			items {
-			id
-			name
-			description
+				id
+				name
+				description
 				slug
 				collections {
 					id
 					slug
 					name
-			breadcrumbs {
-				id
-				name
-				slug
-			}
+					breadcrumbs {
+						id
+						name
+						slug
+					}
 				}
 				facetValues {
 					facet {
@@ -126,9 +126,9 @@ export default component$(() => {
 	const appState = useContext(APP_STATE);
 	const productSignal = useProductLoader();
 	const currentImageSig = useSignal(productSignal.value?.assets[0]);
-	const selectedVariantIdSignal = useSignal(productSignal.value.variants[0]?.id);
+	const selectedVariantIdSignal = useSignal(productSignal.value?.variants[0]?.id);
 	const selectedVariantSignal = useComputed$(() =>
-		productSignal?.value.variants.find((v) => v?.id === selectedVariantIdSignal.value)
+		productSignal?.value?.variants.find((v) => v?.id === selectedVariantIdSignal.value)
 	);
 	const addItemToOrderErrorSignal = useSignal('');
 	const quantitySignal = useComputed$<Record<string, number>>(() => {
@@ -202,13 +202,17 @@ export default component$(() => {
 									dangerouslySetInnerHTML={productSignal.value.description}
 								/>
 							</div>
-							{1 < productSignal.value.variants.length && (
+							{1 < productSignal?.value?.variants?.length && (
 								<div class="mt-4">
 									<label class="block text-sm font-medium text-gray-700">Select option</label>
 									<select
 										class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
 										value={selectedVariantIdSignal.value}
-										onChange$={(_, el) => (selectedVariantIdSignal.value = el.value)}
+										onChange$={(_, el) => {
+											if (selectedVariantIdSignal) {
+												selectedVariantIdSignal.value = el?.value;
+											}
+										}}
 									>
 										{productSignal.value.variants.map((variant) => (
 											<option
