@@ -1,10 +1,5 @@
 import { APP_STATE } from '~/constants';
-import {
-	$,
-	component$,
-	useContext,
-	useSignal,
-} from '@builder.io/qwik';
+import { $, component$, useContext, useSignal } from '@builder.io/qwik';
 import { Link } from '@qwik.dev/router'; // Make sure this import path is correct for your setup
 
 export default component$(() => {
@@ -14,15 +9,13 @@ export default component$(() => {
 	const collections = appState.collections.filter(
 		(item) => item.parent?.name === '__root_collection__' && !!item.featuredAsset
 	);
-	const quantity = appState?.activeOrder?.totalQuantity;
-
 
 	const toggleCart = $(() => {
 		appState.showCart = !appState.showCart;
 	});
 
 	return (
-		<header class="bg-neutral-light border-b-[3px] border-primary-500 relative z-20 sticky top-0">
+		<header class="bg-neutral-light border-b-[3px] border-primary-500 relative z-20">
 			<div class="container mx-auto px-4 py-3 flex items-center justify-between">
 				{/* Mobile menu button */}
 				<button onClick$={() => (isMenuOpen.value = true)} class="md:hidden text-neutral-dark">
@@ -66,12 +59,9 @@ export default component$(() => {
 					<Link href="/faq" class="hover:text-primary-500 py-5 px-4">
 						FAQ
 					</Link>
-
 					<Link href="/track" class="hover:text-primary-500 py-5 px-4">
 						Track Your Order
 					</Link>
-
-					{/* ✨ UPDATED: Contact Us link for Desktop Nav */}
 					<Link href="/contact" class="hover:text-primary-500 py-5 px-4">
 						Contact Us
 					</Link>
@@ -95,7 +85,9 @@ export default component$(() => {
 							/>
 						</svg>
 					</a>
-					<a href="#" class="hover:text-primary-500">
+
+					{/* ✅ Updated: User Profile Icon navigates to /user-profile */}
+					<Link href="/profile" class="hover:text-primary-500">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
@@ -104,7 +96,8 @@ export default component$(() => {
 						>
 							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.93 0 3.5 1.57 3.5 3.5S13.93 12 12 12 8.5 10.43 8.5 8.5 10.07 5 12 5zm0 14.5c-2.73 0-5.32-1.39-6.84-3.81C6.67 13.93 9.21 13 12 13s5.33.93 6.84 2.69c-1.52 2.42-4.11 3.81-6.84 3.81z" />
 						</svg>
-					</a>
+					</Link>
+
 					<div class="relative">
 						<button class="hover:text-primary-500" onClick$={toggleCart}>
 							<svg
@@ -117,7 +110,7 @@ export default component$(() => {
 							</svg>
 						</button>
 						<span class="absolute -top-2 -right-2 bg-primary-500 text-neutral-light text-xs rounded-full px-[6px] py-[1px] font-bold">
-							{quantity}
+							1
 						</span>
 					</div>
 				</div>
@@ -148,7 +141,6 @@ export default component$(() => {
 						>
 							Home
 						</Link>
-						{/* Consider using Link here if you have a collection route */}
 						<a
 							href="#"
 							class="block hover:text-primary-500"
@@ -170,7 +162,6 @@ export default component$(() => {
 						>
 							FAQ
 						</Link>
-
 						<Link
 							href="/track"
 							class="block hover:text-primary-500"
@@ -178,8 +169,6 @@ export default component$(() => {
 						>
 							Track Your Order
 						</Link>
-
-						{/* ✨ UPDATED: Contact Us link for Mobile Nav */}
 						<Link
 							href="/contactus"
 							class="block hover:text-primary-500"
