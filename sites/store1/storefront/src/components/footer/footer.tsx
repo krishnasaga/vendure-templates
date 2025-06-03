@@ -6,78 +6,83 @@ export default component$(() => {
 			<div class="container mx-auto px-4">
 				<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 					<div>
-						<h2 class="font-bold text-neutral-dark mb-4">SHOP</h2>
+						<h2 class="font-bold text-primary-500 mb-4">SHOP</h2>
 						<ul>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
-									Electronics
+								<a href="#" class="text-secondary-500 hover:text-secondary-300">
+									Dairy Products
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
-									Home & Garden
+								<a href="#" class="text-secondary-500 hover:text-secondary-300">
+									Spices and Masala
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
-									Sports & Outdoor
+								<a href="#" class="text-secondary-500 hover:text-secondary-300">
+									Dry Fruits and Nuts
 								</a>
 							</li>
 						</ul>
 					</div>
 					<div>
-						<h2 class="font-bold text-neutral-dark mb-4">SUPPORT</h2>
+						<h2 class="font-bold text-primary-500 mb-4">SUPPORT</h2>
 						<ul>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a href="/contact" class="text-secondary-500 hover:text-secondary-300">
 									Help
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a href="/track" class="text-secondary-500 hover:text-secondary-300">
 									Track order
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a href="#" class="text-secondary-500 hover:text-secondary-300">
 									Shipping
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a href="#" class="text-secondary-500 hover:text-secondary-300">
 									Returns
 								</a>
 							</li>
 						</ul>
 					</div>
 					<div>
-						<h2 class="font-bold text-neutral-dark mb-4">COMPANY</h2>
+						<h2 class="font-bold text-primary-500 mb-4">COMPANY</h2>
 						<ul>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a href="/about" class="text-secondary-500 hover:text-secondary-300">
 									About
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a href="/blog" class="text-secondary-500 hover:text-secondary-300">
 									Blog
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
-									Corporate responsibility
+								<a href="/privacy-policy" class="text-secondary-500 hover:text-secondary-300">
+									Privacy Policy
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
-									Press
+								<a href="/cookie-policy" class="text-secondary-500 hover:text-secondary-300">
+									Cookie Policy
+								</a>
+							</li>
+							<li>
+								<a href="/terms-conditions" class="text-secondary-500 hover:text-secondary-300">
+									Terms & Conditions
 								</a>
 							</li>
 						</ul>
 					</div>
 					<div>
-						<h2 class="font-bold text-neutral-dark mb-4">SUBSCRIBE TO OUR NEWSLETTER</h2>
-						<p class="text-neutral-accent mb-4">
+						<h2 class="font-bold text-primary-500 mb-4">SUBSCRIBE TO OUR NEWSLETTER</h2>
+						<p class="text-secondary-500 mb-4">
 							Be the first to know about exclusive offers & deals.
 						</p>
 						<form>
