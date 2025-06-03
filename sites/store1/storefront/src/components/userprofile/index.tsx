@@ -19,7 +19,7 @@ export const LoginSignup = component$(() => {
 						Forgot your password?
 					</a>
 
-					<button class="w-full bg-[#4b341e] text-white font-bold py-3 mt-4 rounded hover:bg-[#3a2715]">
+					<button class="w-full bg-primary-500 text-white font-bold py-3 mt-4 rounded hover:bg-secondary-300">
 						SIGN IN
 					</button>
 				</div>
@@ -32,7 +32,7 @@ export const LoginSignup = component$(() => {
 						a new account set up for you in no time. This will only ask you for info to make the
 						purchase process faster and easier.
 					</p>
-					<button class="w-full bg-[#4b341e] text-white font-bold py-3 rounded hover:bg-[#3a2715]">
+					<button class="w-full bg-secondary-500 text-white font-bold py-3 rounded hover:bg-secondary-300">
 						CREATE ACCOUNT
 					</button>
 				</div>
