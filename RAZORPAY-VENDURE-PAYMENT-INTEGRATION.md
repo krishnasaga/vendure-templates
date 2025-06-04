@@ -2,7 +2,7 @@
 # Razorpay Payment Integration with Vendure (Two Parts) 
 
 ## Introduction
-This document explains the implementation of Razorpay integration with Vendure using a two-part (two-phase) payment flow, as outlined in the official Vendure documentation.
+This document explains the implementation of Razorpay integration with Vendure using a two-part (two-phase) payment flow, as outlined in the [official Vendure documentation](https://docs.vendure.io/guides/core-concepts/payment/#two-phase-payments).
 In this approach, the payment process is split into two distinct phases:
 
 *Authorization* – The customer authorizes the payment during checkout, but funds are not immediately captured.
