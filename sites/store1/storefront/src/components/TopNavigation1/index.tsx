@@ -70,7 +70,7 @@ export default component$(() => {
 				{/* Icons */}
 				<div class="flex items-center space-x-5 text-neutral-dark text-lg">
 					{/* ✅ Updated: User Profile Icon navigates to /user-profile */}
-					<Link href="/profile" class="hover:text-primary-500">
+					<Link href="/sign-in" class="hover:text-primary-500">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"

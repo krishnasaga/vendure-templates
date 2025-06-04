@@ -6,7 +6,7 @@ import { component$ } from '@builder.io/qwik';
  */
 export const ContactForm = component$(() => {
 	return (
-		<div class="flex flex-col md:flex-row bg-white p-8 rounded-lg shadow-xl max-w-4xl mx-auto my-8">
+		<div class="container flex flex-col md:flex-row bg-white p-4 rounded-lg max-w-4xl mx-auto my-8">
 			{/* Get In Touch Section - Form */}
 			<div class="flex-1 mb-8 md:mb-0 md:mr-8 p-4 bg-gray-50 rounded-lg">
 				<h2 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 border-orange-500 pb-2">
@@ -38,7 +38,7 @@ export const ContactForm = component$(() => {
 						// .catch(error => console.error('Error:', error));
 					}}
 				>
-					<div class="container mb-5">
+					<div class="mb-5">
 						<label for="name" class="block text-gray-700 text-sm font-semibold mb-2">
 							NAME
 						</label>
