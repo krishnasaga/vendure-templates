@@ -27,10 +27,12 @@ export default component$(() => {
 
 	return (
 		<div class="container mx-auto px-4 py-10">
-			<h1 class="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h1>
+			<h1 class="text-3xl text-primary-500 font-bold mb-6 text-center">
+				Frequently Asked Questions
+			</h1>
 			<div class="space-y-4 max-w-3xl mx-auto">
 				{faqs.map((faq, index) => (
-					<div key={index} class="bg-white p-4 border rounded-lg shadow">
+					<div key={index} class="bg-white text-neutral-dark p-4 border rounded-lg shadow">
 						<h2 class="text-lg font-semibold">{faq.question}</h2>
 						<p class="mt-2 text-gray-700">{faq.answer}</p>
 					</div>
