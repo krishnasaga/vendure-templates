@@ -43,7 +43,9 @@ export default component$(() => {
 	return (
 		<div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 			<div class="sm:mx-auto sm:w-full sm:max-w-md">
-				<h2 class="mt-6 text-center text-3xl text-gray-900">Create a new account</h2>
+				<h2 class="mt-6 text-center text-3xl text-primary-500 text-gray-900">
+					Create a new account
+				</h2>
 				<p class="mt-2 text-center text-sm text-gray-600">
 					Or{' '}
 					<a href="/sign-in" class="font-medium text-primary-600 hover:text-primary-500">
@@ -54,25 +56,9 @@ export default component$(() => {
 
 			<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 				<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-					{successSignal.value && (
-						<div class="mb-6 bg-yellow-50 border border-yellow-400 text-yellow-800 rounded p-4 text-center text-sm">
-							<p>
-								Account registration successful! We sent email verification to {email.value}, you
-								must verify before logging in.
-							</p>
-						</div>
-					)}
-					{isEnvVariableEnabled('VITE_IS_READONLY_INSTANCE') && (
-						<div class="mb-6 bg-yellow-50 border border-yellow-400 text-yellow-800 rounded p-4 text-center text-sm">
-							<p>
-								Account registration is not supported by the demo Vendure instance. In order to use
-								it, please connect to your own local / production instance.
-							</p>
-						</div>
-					)}
 					<div class="space-y-6">
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Email address</label>
+							<label class="block text-sm font-medium text-neutral-dark">Email address</label>
 							<div class="mt-1">
 								<input
 									type="email"
@@ -86,7 +72,7 @@ export default component$(() => {
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Firstname</label>
+							<label class="block text-sm font-medium text-neutral-dark">Firstname</label>
 							<div class="mt-1">
 								<input
 									type="text"
@@ -99,7 +85,7 @@ export default component$(() => {
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Lastname</label>
+							<label class="block text-sm font-medium text-neutral-dark">Lastname</label>
 							<div class="mt-1">
 								<input
 									type="text"
@@ -112,7 +98,7 @@ export default component$(() => {
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Password</label>
+							<label class="block text-sm font-medium text-neutral-dark">Password</label>
 							<div class="mt-1">
 								<input
 									type="password"
@@ -125,7 +111,7 @@ export default component$(() => {
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Repeat Password</label>
+							<label class="block text-sm font-medium text-neutral-dark">Repeat Password</label>
 							<div class="mt-1">
 								<input
 									type="password"

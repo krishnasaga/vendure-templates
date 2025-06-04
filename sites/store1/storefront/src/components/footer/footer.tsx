@@ -9,18 +9,19 @@ export default component$(() => {
 						<h2 class="font-bold text-neutral-dark mb-4">SHOP</h2>
 						<ul>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a
+									href="/collections/diary-products/"
+									class="text-neutral-accent hover:text-neutral-darkest"
+								>
 									Dairy Products
 								</a>
 							</li>
 							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
+								<a
+									href="/collections/spices-and-masalas/"
+									class="text-neutral-accent hover:text-neutral-darkest"
+								>
 									Spices and Masala
-								</a>
-							</li>
-							<li>
-								<a href="#" class="text-neutral-accent hover:text-neutral-darkest">
-									Dry Fruits and Nuts
 								</a>
 							</li>
 						</ul>
@@ -56,11 +57,6 @@ export default component$(() => {
 							<li>
 								<a href="/about" class="text-neutral-accent hover:text-neutral-darkest">
 									About
-								</a>
-							</li>
-							<li>
-								<a href="/blog" class="text-neutral-accent hover:text-neutral-darkest">
-									Blog
 								</a>
 							</li>
 							<li>
