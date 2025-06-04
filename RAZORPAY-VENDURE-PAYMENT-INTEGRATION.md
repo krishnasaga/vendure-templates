@@ -2,14 +2,14 @@
 # Razorpay Payment Integration with Vendure (Two Parts) 
 
 ## Introduction
-This document outlines the implementation details for integrating Razorpay with Vendure using a two-step payment flow: authorization followed by capture (settlement). This design provides better control over the payment lifecycle and improves handling of edge cases such as inventory validation or fraud checks prior to fund capture.
+This document explains the implementation of Razorpay integration with Vendure using a two-part (two-phase) payment flow, as outlined in the official Vendure documentation.
+In this approach, the payment process is split into two distinct phases:
 
-## Integration Flow Overview
-The integration consists of two distinct phases:
+*Authorization* – The customer authorizes the payment during checkout, but funds are not immediately captured.
 
-*Payment Authorization* – Performed during checkout from the storefront.
+*Capture (Settlement)* – The payment is captured later, typically after order validation, fraud checks, or inventory confirmation.
 
-*Payment Capture (Settlement)* – Performed via Admin UI or Admin API once conditions are met (e.g., stock validation, fraud verification).
+This model is ideal for merchants who require operational control between payment authorization and final settlement.
 
 ![image](https://github.com/user-attachments/assets/4f8a0781-f892-48fd-ab98-d4ab2f4ef244)
 
