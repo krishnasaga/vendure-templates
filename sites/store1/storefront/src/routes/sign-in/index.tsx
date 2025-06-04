@@ -21,10 +21,10 @@ export default component$(() => {
 	return (
 		<div class="container py-12 sm:px-6 lg:px-8">
 			<div class="sm:mx-auto sm:w-full sm:max-w-md">
-				<h2 class="mt-6 text-center text-3xl text-gray-900">Sign in to your account</h2>
-				<p class="mt-2 text-center text-sm text-gray-600">
+				<h2 class="mt-6 text-center text-3xl text-primary-500">Sign in to your account</h2>
+				<p class="mt-2 text-center text-sm text-secondary-500">
 					Or{' '}
-					<a href="/sign-up" class="font-medium text-primary-600 hover:text-primary-500">
+					<a href="/sign-up" class="font-medium text-secondary-500 hover:text-neutral">
 						register a new account
 					</a>
 				</p>
@@ -32,10 +32,9 @@ export default component$(() => {
 
 			<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 				<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-			
 					<div class="space-y-6">
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Email address</label>
+							<label class="block text-sm font-medium text-neutral-dark">Email address</label>
 							<div class="mt-1">
 								<input
 									type="email"
@@ -49,7 +48,7 @@ export default component$(() => {
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700">Password</label>
+							<label class="block text-sm font-medium text-neutral-dark">Password</label>
 							<div class="mt-1">
 								<input
 									type="password"
@@ -74,7 +73,7 @@ export default component$(() => {
 									onChange$={(_, el) => (rememberMe.value = el.checked)}
 									class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
 								/>
-								<label class="ml-2 block text-sm text-gray-900">Remember me</label>
+								<label class="ml-2 block text-sm text-neutral-dark">Remember me</label>
 							</div>
 
 							<div class="text-sm">

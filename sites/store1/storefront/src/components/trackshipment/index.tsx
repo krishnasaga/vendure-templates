@@ -21,7 +21,7 @@ export const ShipmentTracker = component$(() => {
 	});
 
 	return (
-		<div class="container p-6 bg-white rounded-lg shadow-md max-w-3xl mx-auto my-10">
+		<div class="container  p-6 bg-white rounded-lg shadow-md max-w-3xl mx-auto my-10">
 			<div class="flex items-center mb-6">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ export const ShipmentTracker = component$(() => {
 						clip-rule="evenodd"
 					/>
 				</svg>
-				<h1 class="text-xl font-semibold text-gray-800">Track / Return your shipment</h1>
+				<h1 class="text-xl font-semibold text-primary-500">Track / Return your shipment</h1>
 			</div>
 
 			<form onSubmit$={handleSubmit}>
@@ -51,9 +51,9 @@ export const ShipmentTracker = component$(() => {
 							value="orderId"
 							checked={searchType.value === 'orderId'}
 							onChange$={() => (searchType.value = 'orderId')}
-							class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
+							class="form-radio h-4 w-4 text-secondary-500 border-gray-300 focus:ring-secondary-500"
 						/>
-						<span class="ml-2 text-gray-700">Order ID</span>
+						<span class="ml-2 text-neutral-dark">Order ID</span>
 					</label>
 					<label class="inline-flex items-center cursor-pointer">
 						<input
@@ -62,9 +62,9 @@ export const ShipmentTracker = component$(() => {
 							value="awb"
 							checked={searchType.value === 'awb'}
 							onChange$={() => (searchType.value = 'awb')}
-							class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
+							class="form-radio h-4 w-4 text-secondary-500 border-gray-300 focus:ring-secondary-500"
 						/>
-						<span class="ml-2 text-gray-700">AWB</span>
+						<span class="ml-2 text-neutral-dark">AWB</span>
 					</label>
 				</div>
 				<div class="mb-6">
@@ -79,7 +79,7 @@ export const ShipmentTracker = component$(() => {
 				<div>
 					<button
 						type="submit"
-						class="w-full sm:w-auto px-6 py-2 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors duration-200"
+						class="w-full sm:w-auto px-6 py-2 bg-primary-500 text-white font-medium rounded-md hover:bg-secondary-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors duration-200"
 					>
 						Submit
 					</button>
