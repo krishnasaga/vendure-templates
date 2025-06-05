@@ -25,9 +25,11 @@ export default component$<{ onForward$: QRL<() => void> }>(() => {
 		store.order = await getOrderByCodeQuery(code);
 	});
 
+	console.log(store);
+
 	return (
 		<div>
-			{store.order?.id && (
+			{store.order?.id ? (
 				<div class="bg-gray-50 pb-48">
 					<div class="lg:max-w-3xl mx-auto max-w-2xl pt-8 px-4 sm:px-6 lg:px-8">
 						<h2 class="sr-only">{$localize`Checkout`}</h2>
@@ -63,6 +65,29 @@ export default component$<{ onForward$: QRL<() => void> }>(() => {
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			) : (
+				<div
+					class="flex items-start gap-3 p-4 bg-red-100 text-red-800 border border-red-300 rounded"
+					role="alert"
+				>
+					<svg
+						class="w-5 h-5 mt-0.5 text-red-600"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M12 9v2m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
+						/>
+					</svg>
+					<div>
+						<strong class="block font-semibold">Error:</strong>
+						<span>There was a problem retrieving the order details. Please try again later.</span>
 					</div>
 				</div>
 			)}

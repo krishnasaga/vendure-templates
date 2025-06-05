@@ -19,96 +19,115 @@ export default component$(() => {
 		}
 	});
 	return (
-		<div class="container py-12 sm:px-6 lg:px-8">
-			<div class="sm:mx-auto sm:w-full sm:max-w-md">
-				<h2 class="mt-6 text-center text-3xl text-primary-500">Sign in to your account</h2>
-				<p class="mt-2 text-center text-sm text-secondary-500">
-					Or{' '}
-					<a href="/sign-up" class="font-medium text-secondary-500 hover:text-neutral">
-						register a new account
-					</a>
-				</p>
-			</div>
-
-			<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-				<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-					<div class="space-y-6">
-						<div>
-							<label class="block text-sm font-medium text-neutral-dark">Email address</label>
-							<div class="mt-1">
-								<input
-									type="email"
-									autoComplete="email"
-									value={email.value}
-									required
-									onInput$={(_, el) => (email.value = el.value)}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-								/>
-							</div>
-						</div>
-
-						<div>
-							<label class="block text-sm font-medium text-neutral-dark">Password</label>
-							<div class="mt-1">
-								<input
-									type="password"
-									value={password.value}
-									required
-									onInput$={(_, el) => (password.value = el.value)}
-									onKeyUp$={(ev, el) => {
-										if (ev.key === 'Enter' && !!el.value) {
-											login();
-										}
-									}}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-								/>
-							</div>
-						</div>
-
-						<div class="flex items-center justify-between">
-							<div class="flex items-center">
-								<input
-									type="checkbox"
-									checked
-									onChange$={(_, el) => (rememberMe.value = el.checked)}
-									class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-								/>
-								<label class="ml-2 block text-sm text-neutral-dark">Remember me</label>
-							</div>
-
-							<div class="text-sm">
-								<button
-									onClick$={() => navigate('/forgot-password')}
-									class="font-medium text-primary-600 hover:text-primary-500"
-								>
-									Forgot your password?
-								</button>
-							</div>
-						</div>
-
-						{error.value !== '' && (
-							<div class="rounded-md bg-red-50 p-4">
-								<div class="flex">
-									<div class="flex-shrink-0">
-										<XCircleIcon />
-									</div>
-									<div class="ml-3">
-										<h3 class="text-sm font-medium text-red-800">
-											We ran into a problem signing you in!
-										</h3>
-										<p class="text-sm text-red-700 mt-2">{error.value}</p>
+		<div class="w-full min-h-[calc(100vh-100px)]">
+			<div class={'container grid sm:grid-col-1 md:grid-cols-2 h-full min-h-[calc(100vh-100px)]'}>
+				<div
+					class={'flex flex-col items-start justify-center h-full border-r-2 border-neutral-light'}
+				>
+					<div class={'w-full pr-10'}>
+						<h2 class={'mt-6 text-4xl text-neutral-dark font-bold'}>Login</h2>
+						<p class="my-4 text-neutral-darkest">
+							If you've created an account with us, please enter.
+						</p>
+						<div class="bg-white">
+							<div class="space-y-6">
+								<div>
+									<label class="block text-sm font-bold text-neutral-dark">EMAIL</label>
+									<div class="mt-1">
+										<input
+											type="email"
+											autoComplete="email"
+											value={email.value}
+											required
+											onInput$={(_, el) => (email.value = el.value)}
+											class="text-md appearance-none block w-full p-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+										/>
 									</div>
 								</div>
+
+								<div>
+									<label class="block text-sm font-bold text-neutral-dark">PASSWORD</label>
+									<div class="mt-1">
+										<input
+											type="password"
+											value={password.value}
+											required
+											onInput$={(_, el) => (password.value = el.value)}
+											onKeyUp$={(ev, el) => {
+												if (ev.key === 'Enter' && !!el.value) {
+													login();
+												}
+											}}
+											class="text-md appearance-none block w-full p-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+										/>
+									</div>
+								</div>
+
+								<div class="flex items-center justify-between">
+									<div class="flex items-center">
+										<input
+											type="checkbox"
+											checked
+											onChange$={(_, el) => (rememberMe.value = el.checked)}
+											class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+										/>
+										<label class="ml-2 block text-sm text-neutral-dark">Remember me</label>
+									</div>
+
+									<div class="text-sm">
+										<button
+											onClick$={() => navigate('/forgot-password')}
+											class="font-medium text-primary-600 hover:text-primary-500"
+										>
+											Forgot your password?
+										</button>
+									</div>
+								</div>
+
+								{error.value !== '' && (
+									<div class="rounded-md bg-red-50 p-4">
+										<div class="flex">
+											<div class="flex-shrink-0">
+												<XCircleIcon />
+											</div>
+											<div class="ml-3">
+												<h3 class="text-sm font-medium text-red-800">
+													We ran into a problem signing you in!
+												</h3>
+												<p class="text-sm text-red-700 mt-2">{error.value}</p>
+											</div>
+										</div>
+									</div>
+								)}
+								<div>
+									<button
+										class="w-full bg-primary-500 text-white font-bold py-3 mt-4 rounded hover:bg-primary-800"
+										onClick$={login}
+									>
+										Sign in
+									</button>
+								</div>
 							</div>
-						)}
-						<div>
-							<button
-								class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-								onClick$={login}
-							>
-								Sign in
-							</button>
 						</div>
+					</div>
+				</div>
+				<div class={'flex flex-col items-center justify-center pl-10'}>
+					<div class={'w-full'}>
+						<h2 class="mt-6 text-4xl text-neutral-dark font-bold">Create an account</h2>
+						<p class={'my-4 text-neutral-darkest'}>
+							Creating an account allows you to view your order status and history. We'll set up
+							your new account quickly and only ask for the information needed to make your shopping
+							experience faster and easier.
+						</p>
+						<a href="/sign-up" class="font-medium text-secondary-500 hover:text-neutral">
+							<button
+								class={
+									'w-full bg-secondary-500 text-white font-bold py-3 mt-4 rounded hover:bg-secondary-800'
+								}
+							>
+								CREATE ACCOUNT
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>
