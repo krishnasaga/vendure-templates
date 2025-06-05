@@ -3727,6 +3727,7 @@ export type AddPaymentToOrderMutation = {
 				subTotalWithTax: any;
 				shippingWithTax: any;
 				totalWithTax: any;
+				transactionId: any;
 				discounts: Array<{
 					__typename?: 'Discount';
 					type: AdjustmentType;
@@ -5337,6 +5338,13 @@ export const OrderDetailFragmentDoc = gql`
 			type
 			description
 			amountWithTax
+		}
+		payments {
+			id
+			state
+			amount
+			transactionId
+			metadata
 		}
 		totalQuantity
 		subTotal

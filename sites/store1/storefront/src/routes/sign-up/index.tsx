@@ -1,7 +1,7 @@
 import { $, component$, useSignal } from '@qwik.dev/core';
 import XCircleIcon from '~/components/icons/XCircleIcon';
 import { registerCustomerAccountMutation } from '~/providers/shop/account/account';
-import { isEnvVariableEnabled } from '~/utils';
+
 export default component$(() => {
 	const email = useSignal('');
 	const firstName = useSignal('');

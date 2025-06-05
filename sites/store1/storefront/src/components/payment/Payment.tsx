@@ -1,10 +1,7 @@
-import { $, component$, QRL, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, QRL, useSignal, useVisibleTask$, $ } from '@builder.io/qwik';
 import { getEligiblePaymentMethodsQuery } from '~/providers/shop/checkout/checkout';
 import { EligiblePaymentMethods } from '~/types';
-interface RazorpayOrderResponse {
-	orderId: string;
-	amount: number;
-}
+import { shopSdk } from '~/graphql-wrapper';
 
 declare global {
 	interface Window {
@@ -20,7 +17,6 @@ export default component$<{ onForward$: QRL<() => void> }>(({ onForward$ }) => {
 	});
 
 	useVisibleTask$(() => {
-		// Load Razorpay script once
 		if (!document.querySelector('#razorpay-script')) {
 			const script = document.createElement('script');
 			script.id = 'razorpay-script';
@@ -35,33 +31,35 @@ export default component$<{ onForward$: QRL<() => void> }>(({ onForward$ }) => {
 			<button
 				class="flex px-6 bg-black hover:bg-gray-800 items-center justify-center space-x-2 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
 				onClick$={$(async () => {
-					try {
-						const res = await fetch('/api/razorpay-order', {
-							method: 'POST',
-						});
-						const data: RazorpayOrderResponse = await res.json();
+					await shopSdk.setOrderShippingMethod({
+						shippingMethodId: '1',
+					});
 
-						const options = {
+					await shopSdk.transitionOrderToState({ state: 'ArrangingPayment' });
+
+					try {
+						const order = await shopSdk.addPaymentToOrder({
+							input: {
+								method: 'razorpay',
+								metadata: {},
+							},
+						});
+
+						console.log(order);
+						const amount = (order as any)?.addPaymentToOrder.payments[0].amount;
+						const razorpayOrderId = (order as any)?.addPaymentToOrder.payments[0].transactionId;
+						if (!razorpayOrderId) {
+							alert('Payment setup failed (missing order ID).');
+							return;
+						}
+
+						const rzp = new window.Razorpay({
 							key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-							amount: data.amount,
+							amount: amount * 100,
 							currency: 'INR',
-							order_id: data.orderId,
-							handler: async (response: any) => {
-								await fetch('/api/add-razorpay-payment', {
-									method: 'POST',
-									headers: {
-										'Content-Type': 'application/json',
-									},
-									body: JSON.stringify({
-										method: 'razorpay',
-										metadata: {
-											razorpayPaymentId: response.razorpay_payment_id,
-											razorpayOrderId: response.razorpay_order_id,
-											razorpaySignature: response.razorpay_signature,
-										},
-									}),
-								});
-								await onForward$();
+							order_id: razorpayOrderId,
+							handler: async () => {
+								onForward$();
 							},
 							prefill: {
 								name: 'Customer',
@@ -70,13 +68,12 @@ export default component$<{ onForward$: QRL<() => void> }>(({ onForward$ }) => {
 							theme: {
 								color: '#3399cc',
 							},
-						};
+						});
 
-						const rzp = new window.Razorpay(options);
 						rzp.open();
 					} catch (err) {
-						console.error('Razorpay payment error:', err);
-						alert('Failed to start payment. Please try again.');
+						console.error('Razorpay error:', err);
+						alert('Something went wrong. Try again.');
 					}
 				})}
 			>
