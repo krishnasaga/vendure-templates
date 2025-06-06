@@ -1,5 +1,6 @@
 import { $, component$, useContext, useStore, useVisibleTask$ } from '@qwik.dev/core';
 import { useNavigate } from '@qwik.dev/router';
+import { HTMLProps } from 'react';
 import CartContents from '~/components/cart-contents/CartContents';
 import CartTotals from '~/components/cart-totals/CartTotals';
 import ChevronRightIcon from '~/components/icons/ChevronRightIcon';
@@ -8,7 +9,6 @@ import Shipping from '~/components/shipping/Shipping';
 import { APP_STATE, CUSTOMER_NOT_DEFINED_ID } from '~/constants';
 import { CreateAddressInput, CreateCustomerInput } from '~/generated/graphql';
 import {
-	addPaymentToOrderMutation,
 	transitionOrderToStateMutation,
 } from '~/providers/shop/checkout/checkout';
 import {
@@ -36,11 +36,9 @@ export default component$(() => {
 		}
 	});
 
-	const confirmPayment = $(async () => {
+	const confirmPayment = $(async ({ orderCode }: { orderCode: string }) => {
 		await transitionOrderToStateMutation();
-		const activeOrder = await addPaymentToOrderMutation();
-		appState.activeOrder = activeOrder;
-		navigate(`/checkout/confirmation/${activeOrder.code}`);
+		navigate(`/checkout/confirmation/${orderCode}`);
 	});
 
 	return (
@@ -87,8 +85,6 @@ export default component$(() => {
 												if (isEnvVariableEnabled('VITE_SHOW_PAYMENT_STEP')) {
 													state.step = 'PAYMENT';
 													window && window.scrollTo(0, 0);
-												} else {
-													confirmPayment();
 												}
 											}
 										};

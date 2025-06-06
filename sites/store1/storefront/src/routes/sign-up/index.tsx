@@ -1,5 +1,6 @@
 import { $, component$, useSignal } from '@qwik.dev/core';
 import XCircleIcon from '~/components/icons/XCircleIcon';
+import { Input } from '~/Elements/Input';
 import { registerCustomerAccountMutation } from '~/providers/shop/account/account';
 
 export default component$(() => {
@@ -60,13 +61,12 @@ export default component$(() => {
 						<div>
 							<label class="block text-sm font-medium text-neutral-dark">Email address</label>
 							<div class="mt-1">
-								<input
+								<Input
 									type="email"
 									autoComplete="email"
 									value={email.value}
 									required
-									onInput$={(_, el) => (email.value = el.value)}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+									onInput$={(_: any, el: any) => (email.value = el.value)}
 								/>
 							</div>
 						</div>
@@ -74,12 +74,11 @@ export default component$(() => {
 						<div>
 							<label class="block text-sm font-medium text-neutral-dark">Firstname</label>
 							<div class="mt-1">
-								<input
+								<Input
 									type="text"
 									value={firstName.value}
 									required
-									onInput$={(_, el) => (firstName.value = el.value)}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+									onInput$={(_: any, el: any) => (firstName.value = el.value)}
 								/>
 							</div>
 						</div>
@@ -87,12 +86,11 @@ export default component$(() => {
 						<div>
 							<label class="block text-sm font-medium text-neutral-dark">Lastname</label>
 							<div class="mt-1">
-								<input
+								<Input
 									type="text"
 									value={lastName.value}
 									required
-									onInput$={(_, el) => (lastName.value = el.value)}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+									onInput$={(_: any, el: any) => (lastName.value = el.value)}
 								/>
 							</div>
 						</div>
@@ -100,12 +98,11 @@ export default component$(() => {
 						<div>
 							<label class="block text-sm font-medium text-neutral-dark">Password</label>
 							<div class="mt-1">
-								<input
+								<Input
 									type="password"
 									value={password.value}
 									required
-									onInput$={(_, el) => (password.value = el.value)}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+									onInput$={(_: any, el: any) => (password.value = el.value)}
 								/>
 							</div>
 						</div>
@@ -113,12 +110,11 @@ export default component$(() => {
 						<div>
 							<label class="block text-sm font-medium text-neutral-dark">Repeat Password</label>
 							<div class="mt-1">
-								<input
+								<Input
 									type="password"
 									value={confirmPassword.value}
 									required
-									onInput$={(_, el) => (confirmPassword.value = el.value)}
-									class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+									onInput$={(_: any, el: any) => (confirmPassword.value = el.value)}
 								/>
 							</div>
 						</div>
