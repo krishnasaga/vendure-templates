@@ -1,6 +1,8 @@
 import { $, component$, useSignal } from '@qwik.dev/core';
 import { useNavigate } from '@qwik.dev/router';
 import XCircleIcon from '~/components/icons/XCircleIcon';
+import { Checkbox } from '~/Elements/Checkbox';
+import { Input } from '~/Elements/Input';
 import { loginMutation } from '~/providers/shop/account/account';
 
 export default component$(() => {
@@ -34,13 +36,12 @@ export default component$(() => {
 								<div>
 									<label class="block text-sm font-bold text-neutral-dark">EMAIL</label>
 									<div class="mt-1">
-										<input
+										<Input
 											type="email"
 											autoComplete="email"
 											value={email.value}
 											required
-											onInput$={(_, el) => (email.value = el.value)}
-											class="text-md appearance-none block w-full p-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+											onInput$={(_: any, el: any) => (email.value = el.value)}
 										/>
 									</div>
 								</div>
@@ -48,32 +49,28 @@ export default component$(() => {
 								<div>
 									<label class="block text-sm font-bold text-neutral-dark">PASSWORD</label>
 									<div class="mt-1">
-										<input
+										<Input
 											type="password"
 											value={password.value}
 											required
-											onInput$={(_, el) => (password.value = el.value)}
-											onKeyUp$={(ev, el) => {
+											onInput$={(_: any, el: any) => (password.value = el.value)}
+											onKeyUp$={(ev: any, el: any) => {
 												if (ev.key === 'Enter' && !!el.value) {
 													login();
 												}
 											}}
-											class="text-md appearance-none block w-full p-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
 										/>
 									</div>
 								</div>
 
 								<div class="flex items-center justify-between">
-									<div class="flex items-center">
-										<input
-											type="checkbox"
-											checked
-											onChange$={(_, el) => (rememberMe.value = el.checked)}
-											class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-										/>
-										<label class="ml-2 block text-sm text-neutral-dark">Remember me</label>
-									</div>
-
+									<Checkbox
+										id="remember-me"
+										type="checkbox"
+										checked
+										onChange$={(_: any, el: any) => (rememberMe.value = el.checked)}
+										label={'Remember me'}
+									/>
 									<div class="text-sm">
 										<button
 											onClick$={() => navigate('/forgot-password')}
