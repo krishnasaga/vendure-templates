@@ -19,6 +19,7 @@ import { Collection } from '~/types';
 // });
 
 export const ProductCard = component$<{ product: any }>(({ product }) => {
+	console.log(product);
 	const selectedVariantId = useSignal(product.variants?.[0]?.sku ?? '');
 	const selectedVariant = () =>
 		product.variants?.find((v: any) => v.sku === selectedVariantId.value) ?? product.variants?.[0];
@@ -100,7 +101,6 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 				<button
 					class="w-full bg-primary-500 hover:bg-orange-900 text-white font-medium py-2 px-4 rounded-md transition duration-300"
 					onClick$={async () => {
-						// if (quantitySignal.value[selectedVariantId.value] <= 7) {
 							const addItemToOrder = await addItemToOrderMutation(
 							selectedVariantId.value,
 							1
@@ -110,7 +110,6 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 							} else {
 								appState.activeOrder = addItemToOrder as Order;
 							}
-						// }
 					}}
 				>
 					Add to Cartw
