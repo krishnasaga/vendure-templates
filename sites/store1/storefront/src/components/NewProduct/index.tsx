@@ -102,7 +102,7 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 					class="w-full bg-primary-500 hover:bg-orange-900 text-white font-medium py-2 px-4 rounded-md transition duration-300"
 					onClick$={async () => {
 						console.log("product");
-						console.log(product);
+						console.log(product.variants);
 							const addItemToOrder = await addItemToOrderMutation(
 							selectedVariantId.value,
 							1
