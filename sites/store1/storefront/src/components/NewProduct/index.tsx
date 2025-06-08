@@ -1,11 +1,42 @@
-import { component$, useSignal } from '@builder.io/qwik';
-import { ProductVariant } from '~/generated/graphql';
+import { component$, useContext, useSignal } from '@builder.io/qwik';
+import { APP_STATE } from '~/constants';
+import { Order, ProductVariant } from '~/generated/graphql';
+import { addItemToOrderMutation } from '~/providers/shop/orders/order';
 import { Collection } from '~/types';
+
+// export const useProductLoader = routeLoader$(async ({ params }) => {
+// 	const { slug } = cleanUpParams(params);
+// 	const product = await getProductBySlug(slug);
+// 	if (product?.assets.length === 1) {
+// 		product?.assets.push({
+// 			...product?.assets[0],
+// 			id: 'placeholder_2',
+// 			name: 'placeholder',
+// 			preview: '/asset_placeholder.webp',
+// 		});
+// 	}
+// 	return product;
+// });
 
 export const ProductCard = component$<{ product: any }>(({ product }) => {
 	const selectedVariantId = useSignal(product.variants?.[0]?.sku ?? '');
 	const selectedVariant = () =>
 		product.variants?.find((v: any) => v.sku === selectedVariantId.value) ?? product.variants?.[0];
+	// const productSignal = useProductLoader();
+	const addItemToOrderErrorSignal = useSignal('');
+	const appState = useContext(APP_STATE);
+	// const quantitySignal = useComputed$<Record<string, number>>(() => {
+	// 		const result: Record<string, number> = {};
+	// 		(productSignal.value.variants || []).forEach((variant: Variant) => {
+	// 			const orderLine = (appState.activeOrder?.lines || []).find(
+	// 				(l: OrderLine) =>
+	// 					l?.productVariant?.id === variant?.id &&
+	// 					l?.productVariant?.product?.id === productSignal?.value?.id
+	// 			);
+	// 			result[variant?.id] = orderLine?.quantity || 0;
+	// 		});
+	// 		return result;
+	// 	});
 
 	return (
 		<div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 relative group">
@@ -68,9 +99,21 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 				</p>
 				<button
 					class="w-full bg-primary-500 hover:bg-orange-900 text-white font-medium py-2 px-4 rounded-md transition duration-300"
-					onClick$={() => {}}
+					onClick$={async () => {
+						// if (quantitySignal.value[selectedVariantId.value] <= 7) {
+							const addItemToOrder = await addItemToOrderMutation(
+							selectedVariantId.value,
+							1
+						);
+							if (addItemToOrder.__typename !== 'Order') {
+								addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
+							} else {
+								appState.activeOrder = addItemToOrder as Order;
+							}
+						// }
+					}}
 				>
-					Add to Cart
+					Add to Cartw
 				</button>
 			</div>
 		</div>
