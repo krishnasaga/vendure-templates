@@ -1,43 +1,45 @@
-import { component$, useContext, useSignal } from '@builder.io/qwik';
+import { component$, useComputed$, useContext, useSignal } from '@builder.io/qwik';
 import { APP_STATE } from '~/constants';
-import { Order, ProductVariant } from '~/generated/graphql';
+import { Order, OrderLine, ProductVariant} from '~/generated/graphql';
 import { addItemToOrderMutation } from '~/providers/shop/orders/order';
-import { Collection } from '~/types';
+import { Collection, Variant } from '~/types';
+import CheckIcon from '~/components/icons/CheckIcon';
 
-// export const useProductLoader = routeLoader$(async ({ params }) => {
-// 	const { slug } = cleanUpParams(params);
-// 	const product = await getProductBySlug(slug);
-// 	if (product?.assets.length === 1) {
-// 		product?.assets.push({
-// 			...product?.assets[0],
-// 			id: 'placeholder_2',
-// 			name: 'placeholder',
-// 			preview: '/asset_placeholder.webp',
-// 		});
-// 	}
-// 	return product;
-// });
 
 export const ProductCard = component$<{ product: any }>(({ product }) => {
 	console.log(product);
-	const selectedVariantId = useSignal(product.variants?.[0]?.sku ?? '');
+	const selectedVariantId = useSignal(product.variants?.[0]?.id ?? '');
+	const isAddingToCart = useSignal(false);
 	const selectedVariant = () =>
-		product.variants?.find((v: any) => v.sku === selectedVariantId.value) ?? product.variants?.[0];
-	// const productSignal = useProductLoader();
+		product.variants?.find((v: any) => v.id === selectedVariantId.value) ?? product.variants?.[0];
 	const addItemToOrderErrorSignal = useSignal('');
 	const appState = useContext(APP_STATE);
-	// const quantitySignal = useComputed$<Record<string, number>>(() => {
-	// 		const result: Record<string, number> = {};
-	// 		(productSignal.value.variants || []).forEach((variant: Variant) => {
-	// 			const orderLine = (appState.activeOrder?.lines || []).find(
-	// 				(l: OrderLine) =>
-	// 					l?.productVariant?.id === variant?.id &&
-	// 					l?.productVariant?.product?.id === productSignal?.value?.id
-	// 			);
-	// 			result[variant?.id] = orderLine?.quantity || 0;
-	// 		});
-	// 		return result;
-	// 	});
+	const quantitySignal = useComputed$<Record<string, number>>(() => {
+		const result: Record<string, number> = {};
+		(product.variants || []).forEach((variant: Variant) => {
+			const orderLine = (appState.activeOrder?.lines || []).find(
+				(l: OrderLine) =>
+					l?.productVariant?.id === variant?.id &&
+					l?.productVariant?.product?.id === product?.id
+			);
+			result[variant?.id] = orderLine?.quantity || 0;
+		});
+		return result;
+	});
+	const getAddToCartButtonClass = () => {
+		const base = 'w-full text-white font-medium py-2 px-4 rounded-md transition duration-300';
+
+		if (quantitySignal.value[selectedVariantId.value]) {
+			return `bg-green-600 hover:bg-green-700 ${base}`;
+		}
+
+		if (isAddingToCart.value) {
+			return `bg-primary-100 cursor-not-allowed ${base}`;
+		}
+
+		return `bg-primary-500 hover:bg-orange-900 ${base}`;
+	};
+
 
 	return (
 		<div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 relative group">
@@ -81,7 +83,7 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 							onChange$={(e) => (selectedVariantId.value = (e.target as HTMLSelectElement).value)}
 						>
 							{product.variants.map((option: any) => (
-								<option key={option.sku} value={option.sku}>
+								<option key={option.id} value={option.id}>
 									{option.name}
 								</option>
 							))}
@@ -98,24 +100,43 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 						? (parseInt(selectedVariant()?.priceWithTax) / 100).toFixed(2)
 						: ''}
 				</p>
-				<button
-					class="w-full bg-primary-500 hover:bg-orange-900 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+				<button disabled={isAddingToCart.value}
+					class={getAddToCartButtonClass()}
 					onClick$={async () => {
-						console.log("product");
-						console.log(product.variants);
-							const addItemToOrder = await addItemToOrderMutation(
+						isAddingToCart.value = true;
+						const addItemToOrder = await addItemToOrderMutation(
 							selectedVariantId.value,
 							1
-						);
-							if (addItemToOrder.__typename !== 'Order') {
-								addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
-							} else {
-								appState.activeOrder = addItemToOrder as Order;
-							}
-					}}
+					);
+					isAddingToCart.value = false;
+
+					if (addItemToOrder.__typename !== 'Order') {
+						addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
+					} else {
+						appState.activeOrder = addItemToOrder as Order;
+					}
+				}}
 				>
-					Add to Cartw
-				</button>
+				{quantitySignal.value[selectedVariantId.value] ? (
+					<span class="flex items-center justify-center gap-2">
+						{isAddingToCart.value ? (
+						$localize`Adding...`
+						) : (
+						<>
+							<CheckIcon />
+							{$localize`${quantitySignal.value[selectedVariantId.value]} in cart`}
+						</>
+						)}
+					</span>
+				) : (
+					<span>
+						{isAddingToCart.value
+							? $localize`Adding...`
+							: $localize`Add to cart`}
+					</span>
+				)}
+			</button>
+
 			</div>
 		</div>
 	);

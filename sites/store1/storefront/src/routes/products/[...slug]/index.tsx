@@ -143,6 +143,7 @@ export default component$(() => {
 		});
 		return result;
 	});
+	const isAddingToCart = useSignal(false);
 
 	return (
 		<div class="bg-primary-100">
@@ -234,24 +235,26 @@ export default component$(() => {
 									forcedClass="text-3xl text-gray-900 mr-4"
 								></Price>
 								<div class="flex sm:flex-col1 align-baseline">
-									<button
-										class={{
-											'max-w-xs flex-1 transition-colors border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary-500 sm:w-full':
-												true,
-											'bg-primary-600 hover:bg-primary-700':
-												quantitySignal.value[selectedVariantIdSignal.value] === 0,
-											'bg-green-600 active:bg-green-700 hover:bg-green-700':
-												quantitySignal.value[selectedVariantIdSignal.value] >= 1 &&
-												quantitySignal.value[selectedVariantIdSignal.value] <= 7,
-											'bg-gray-600 cursor-not-allowed':
-												quantitySignal.value[selectedVariantIdSignal.value] > 7,
+									<button disabled={isAddingToCart.value}
+										 class={{
+										'max-w-xs flex-1 transition-colors border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary-500 sm:w-full': true,
+
+										'bg-primary-100 cursor-not-allowed': isAddingToCart.value,
+
+										'bg-primary-600 hover:bg-primary-700': !isAddingToCart.value && quantitySignal.value[selectedVariantIdSignal.value] === 0,
+
+										'bg-green-600 active:bg-green-700 hover:bg-green-700': !isAddingToCart.value && quantitySignal.value[selectedVariantIdSignal.value] >= 1 && quantitySignal.value[selectedVariantIdSignal.value] <= 7,
+
+										'bg-gray-600 cursor-not-allowed': !isAddingToCart.value && quantitySignal.value[selectedVariantIdSignal.value] > 7,
 										}}
 										onClick$={async () => {
 											if (quantitySignal.value[selectedVariantIdSignal.value] <= 7) {
+												isAddingToCart.value = true;
 												const addItemToOrder = await addItemToOrderMutation(
 													selectedVariantIdSignal.value,
 													1
 												);
+												isAddingToCart.value = false;
 												if (addItemToOrder.__typename !== 'Order') {
 													addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
 												} else {
