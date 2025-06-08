@@ -101,6 +101,8 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 				<button
 					class="w-full bg-primary-500 hover:bg-orange-900 text-white font-medium py-2 px-4 rounded-md transition duration-300"
 					onClick$={async () => {
+						console.log("product");
+						console.log(product);
 							const addItemToOrder = await addItemToOrderMutation(
 							selectedVariantId.value,
 							1
