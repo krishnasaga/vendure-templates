@@ -33,7 +33,8 @@
     "prepare": "husky install",
     "preview": "qwik build preview && vite preview --open",
     "start": "pnpm generate && vite --open --mode ssr",
-    "qwik": "qwik"
+    "qwik": "qwik",
+    "test": "playwright test"
   },
   "devDependencies": {
     "@angular/compiler": "^17.1.3",
@@ -68,7 +69,8 @@
     "undici": "^6.21.3",
     "vite": "^5.4.19",
     "vite-tsconfig-paths": "4.3.1",
-    "wrangler": "^4.16.0"
+    "wrangler": "^4.16.0",
+    "@playwright/test": "^1.42.1"
   },
   "dependencies": {
     "@angular/localize": "^17.1.3",
