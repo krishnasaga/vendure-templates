@@ -26,21 +26,18 @@ module.exports = {
 				muted: colors.gray,
 			},
 			keyframes: {
-				slideFade: {
-					'0%': { transform: 'translateY(40%) ', opacity: '0', zIndex: '0' },
-					'15%': { transform: 'translateY(20%) ', opacity: '0.8', zIndex: '5' },
-					'35%': { transform: 'translateY(0%) ', opacity: '1', zIndex: '10' },
-					'50%': { transform: 'translateY(0%) ', opacity: '1', zIndex: '10' },
-					'55%': { transform: 'translateY(0%) ', opacity: '1', zIndex: '5' },
-					'75%': { transform: 'translateY(-40%) ', opacity: '0.8', zIndex: '0' },
-					'100%': { transform: 'translateY(-60%) ', opacity: '0', zIndex: '0' },
+				'slide-up-fade': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(1)' },
+					'100%': { opacity: '1', transform: 'scale(0.5)' },
 				},
 			},
 			animation: {
-				'slide-fade-1': 'slideFade 3s linear infinite 0s',
-				'slide-fade-2': 'slideFade 3s linear infinite 2s',
-				'slide-fade-3': 'slideFade 3s linear infinite 3s',
-				'slide-fade-4': 'slideFade 3s linear infinite 4s',
+				'slide-up-fade': 'slide-up-fade 0.8s ease-out forwards',
+        'scale-in': 'scale-in 0.8s ease-out forwards',
 			},
 		},
 		container: {
