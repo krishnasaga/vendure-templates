@@ -15,7 +15,7 @@ export default component$(() => {
 	});
 
 	return (
-		<header class="bg-neutral-light border-b-[3px] border-primary-500 relative z-20">
+		<header class="bg-neutral-light border-b-[3px] border-primary-500 top-0 sticky z-20">
 			<div class="container mx-auto px-4 py-3 flex items-center justify-between">
 				{/* Mobile menu button */}
 				<button onClick$={() => (isMenuOpen.value = true)} class="md:hidden text-neutral-dark">

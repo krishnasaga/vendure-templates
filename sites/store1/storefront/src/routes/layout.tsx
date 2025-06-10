@@ -22,7 +22,10 @@ import Footer from '../components/footer/footer';
 import TopNav from '../components/TopNavigation1';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
-	cacheControl({ staleWhileRevalidate: 60 * 60 * 24 * 7, maxAge: 5 });
+	cacheControl(
+		{ staleWhileRevalidate: 60 * 60 * 24 * 7, maxAge: 120, public: true },
+		'CDN-Cache-Control'
+	);
 };
 
 export const useCollectionsLoader = routeLoader$(async () => {
@@ -33,7 +36,11 @@ export const useAvailableCountriesLoader = routeLoader$(async () => {
 	return await getAvailableCountriesQuery();
 });
 
-export const onRequest: RequestHandler = ({ request, locale }) => {
+export const onRequest: RequestHandler = ({ request, locale, cacheControl }) => {
+	cacheControl(
+		{ staleWhileRevalidate: 60 * 60 * 24 * 7, maxAge: 120, public: true },
+		'CDN-Cache-Control'
+	);
 	locale(extractLang(request.headers.get('accept-language'), request.url));
 };
 

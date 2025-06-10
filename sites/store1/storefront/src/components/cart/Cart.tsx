@@ -28,7 +28,7 @@ const CartPanel = component$(
 			if (open) {
 				setTimeout(() => {
 					shouldRender.value = true;
-				}, 200);
+				},20);
 			} else {
 				setTimeout(() => {
 					shouldRender.value = false;
@@ -78,7 +78,7 @@ const CartHeader = component$(({ shouldRender }: { shouldRender: Signal<boolean>
 				<div class="ml-3 h-7 flex items-center">
 					<button
 						type="button"
-						class="-m-2 p-2 text-muted hover:text-secondary"
+						class="-m-2 p-2 text-muted hover:text-secondary hover:bg-grey-100 round-sm"
 						onClick$={() => (shouldRender.value = false)}
 					>
 						<span class="sr-only">Close panel</span>

@@ -148,66 +148,68 @@ export default component$(() => {
 	});
 
 	return (
-		<div
-			class="max-w-6xl mx-auto px-4 py-10"
-			onKeyDown$={(event: KeyboardEvent) => {
-				if (event.key === 'Escape') {
-					state.showMenu = false;
-				}
-			}}
-		>
-			<div class="flex justify-between items-center">
-				<h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
-					{collectionSignal.value.name}
-				</h2>
+		<div class={"w-full bg-primary-100"}>
+			<div
+				class="container mx-auto px-4 py-10"
+				onKeyDown$={(event: KeyboardEvent) => {
+					if (event.key === 'Escape') {
+						state.showMenu = false;
+					}
+				}}
+			>
+				<div class="flex justify-between items-center">
+					<h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 my-8">
+						{collectionSignal.value.name}
+					</h2>
+					<div>
+						{!!state.facedValues.length && (
+							<FiltersButton
+								onToggleMenu$={async () => {
+									state.showMenu = !state.showMenu;
+								}}
+							/>
+						)}
+					</div>
+				</div>
 				<div>
+					<Breadcrumbs items={collectionSignal.value.breadcrumbs || []}></Breadcrumbs>
+					{!!collectionSignal.value.children?.length && (
+						<div class="max-w-2xl mx-auto py-16 sm:py-16 lg:max-w-none border-b mb-16">
+							<h2 class="text-2xl font-light text-gray-900">Collections</h2>
+							<div class="mt-6 grid max-w-xs sm:max-w-none mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+								{collectionSignal.value.children.map((child) => (
+									<CollectionCard key={child.id} collection={child}></CollectionCard>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+				<div class="mt-6 grid sm:grid-cols-5 gap-x-4">
 					{!!state.facedValues.length && (
-						<FiltersButton
+						<Filters
+							showMenu={state.showMenu}
+							facetsWithValues={state.facedValues}
 							onToggleMenu$={async () => {
 								state.showMenu = !state.showMenu;
 							}}
+							onFilterChange$={onFilterChange}
+							onOpenCloseFilter$={onOpenCloseFilter}
 						/>
 					)}
-				</div>
-			</div>
-			<div>
-				<Breadcrumbs items={collectionSignal.value.breadcrumbs || []}></Breadcrumbs>
-				{!!collectionSignal.value.children?.length && (
-					<div class="max-w-2xl mx-auto py-16 sm:py-16 lg:max-w-none border-b mb-16">
-						<h2 class="text-2xl font-light text-gray-900">Collections</h2>
-						<div class="mt-6 grid max-w-xs sm:max-w-none mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
-							{collectionSignal.value.children.map((child) => (
-								<CollectionCard key={child.id} collection={child}></CollectionCard>
+					<div class="sm:col-span-5 lg:col-span-4">
+						<div class="grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
+							{state.search.items.map((item) => (
+								<ProductCard
+									key={item.productId}
+									productAsset={item.productAsset?.preview}
+									productName={item.productName}
+									slug={item.slug}
+									priceWithTax={item.priceWithTax}
+									currencyCode={item.currencyCode}
+									variants={item.varients}
+								></ProductCard>
 							))}
 						</div>
-					</div>
-				)}
-			</div>
-			<div class="mt-6 grid sm:grid-cols-5 gap-x-4">
-				{!!state.facedValues.length && (
-					<Filters
-						showMenu={state.showMenu}
-						facetsWithValues={state.facedValues}
-						onToggleMenu$={async () => {
-							state.showMenu = !state.showMenu;
-						}}
-						onFilterChange$={onFilterChange}
-						onOpenCloseFilter$={onOpenCloseFilter}
-					/>
-				)}
-				<div class="sm:col-span-5 lg:col-span-4">
-					<div class="grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
-						{state.search.items.map((item) => (
-							<ProductCard
-								key={item.productId}
-								productAsset={item.productAsset?.preview}
-								productName={item.productName}
-								slug={item.slug}
-								priceWithTax={item.priceWithTax}
-								currencyCode={item.currencyCode}
-								variants={item.varients}
-							></ProductCard>
-						))}
 					</div>
 				</div>
 			</div>
