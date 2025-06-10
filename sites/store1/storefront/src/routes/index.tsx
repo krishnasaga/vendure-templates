@@ -1,11 +1,10 @@
 /* eslint-disable qwik/use-method-usage */
 import { component$ } from '@builder.io/qwik';
 import { routeLoader$ } from '@qwik.dev/router';
-import Cat1 from '~/components/category1';
-import NewPro from '~/components/NewProduct';
-import Cat2 from '~/components/category2';
-import HeroBanner1 from '~/components/herobanner1';
+import Category from '~/components/category1';
+import ProductCollectionSlider from '~/components/NewProduct';
 import { Collection } from '~/types';
+import { HeroCarousel } from '~/components/HeroSlider1';
 
 export const useCollectionsLoader = routeLoader$(async () => {
 	const slugs = ['spices-and-masalas', 'diary-products'];
@@ -67,12 +66,11 @@ export default component$(() => {
 	const collections = data?.value?.data?.collections.items;
 	return (
 		<div>
-			<HeroBanner1 />
-			<Cat1 />
+			<HeroCarousel />
+			<Category />
 			{collections?.map((collection: Collection) => (
-				<NewPro key={collection.id} collection={collection} />
+				<ProductCollectionSlider key={collection.id} collection={collection} />
 			))}
-			<Cat2 />
 		</div>
 	);
 });

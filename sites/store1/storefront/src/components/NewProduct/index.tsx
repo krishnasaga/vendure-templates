@@ -1,15 +1,15 @@
-import { component$, useComputed$, useContext, useSignal } from '@builder.io/qwik';
+import { component$, $, useComputed$, useContext, useSignal } from '@builder.io/qwik';
 import { APP_STATE } from '~/constants';
-import { Order, OrderLine, ProductVariant} from '~/generated/graphql';
+import { Order, OrderLine, ProductVariant } from '~/generated/graphql';
 import { addItemToOrderMutation } from '~/providers/shop/orders/order';
 import { Collection, Variant } from '~/types';
 import CheckIcon from '~/components/icons/CheckIcon';
-
 
 export const ProductCard = component$<{ product: any }>(({ product }) => {
 	console.log(product);
 	const selectedVariantId = useSignal(product.variants?.[0]?.id ?? '');
 	const isAddingToCart = useSignal(false);
+
 	const selectedVariant = () =>
 		product.variants?.find((v: any) => v.id === selectedVariantId.value) ?? product.variants?.[0];
 	const addItemToOrderErrorSignal = useSignal('');
@@ -19,8 +19,7 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 		(product.variants || []).forEach((variant: Variant) => {
 			const orderLine = (appState.activeOrder?.lines || []).find(
 				(l: OrderLine) =>
-					l?.productVariant?.id === variant?.id &&
-					l?.productVariant?.product?.id === product?.id
+					l?.productVariant?.id === variant?.id && l?.productVariant?.product?.id === product?.id
 			);
 			result[variant?.id] = orderLine?.quantity || 0;
 		});
@@ -40,25 +39,42 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 		return `bg-primary-500 hover:bg-orange-900 ${base}`;
 	};
 
-
 	return (
-		<div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 relative group">
+		<div class="h-full bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 relative group">
 			<div class=" absolute top-2 right-2 bg-primary-500 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 				Save
 			</div>
 			<div class={'w-[100%] h-[280px] overflow-hidden relative'}>
 				<a href={`/products/${product.slug}`} class="block">
-					<img
-						src={(product as unknown as any)?.featuredAsset.preview + '?w=400&h=400&format=webp'}
-						alt={product.name}
-						object-fit="cover"
-						object-position="center"
-						width={400}
-						height={400}
-						class={
-							'object-cover w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96 transition-transform duration-300 group-hover:scale-105'
-						}
-					/>
+					<picture>
+						{/* Mobile image - for screens up to 639px */}
+						<source
+							srcset={
+								(product as any)?.featuredAsset.preview.replace('http', 'https') +
+								'?w=300&h=500&format=webp'
+							}
+							type="image/webp"
+							media="(max-width: 639px)"
+						/>
+						{/* Desktop image - fallback for larger screens */}
+						<source
+							srcset={
+								(product as any)?.featuredAsset.preview?.replace('http', 'https') +
+								'?w=400&h=400&format=png'
+							}
+							type="image/webp"
+						/>
+						{/* Fallback for non-WebP browsers */}
+						<img
+							src={
+								(product as any)?.featuredAsset.preview.replace('http', 'https') + '?w=400&h=400'
+							}
+							alt={product.name}
+							width={400}
+							height={400}
+							class="object-cover w-full h-64 sm:h-64 md:h-72 lg:h-80 xl:h-96 transition-transform duration-300 group-hover:scale-105"
+						/>
+					</picture>
 				</a>
 			</div>
 			<div class="p-4">
@@ -100,74 +116,85 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 						? (parseInt(selectedVariant()?.priceWithTax) / 100).toFixed(2)
 						: ''}
 				</p>
-				<button disabled={isAddingToCart.value}
+				<button
+					disabled={isAddingToCart.value}
 					class={getAddToCartButtonClass()}
 					onClick$={async () => {
 						isAddingToCart.value = true;
-						const addItemToOrder = await addItemToOrderMutation(
-							selectedVariantId.value,
-							1
-					);
-					isAddingToCart.value = false;
+						const addItemToOrder = await addItemToOrderMutation(selectedVariantId.value, 1);
+						isAddingToCart.value = false;
 
-					if (addItemToOrder.__typename !== 'Order') {
-						addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
-					} else {
-						appState.activeOrder = addItemToOrder as Order;
-					}
-				}}
+						if (addItemToOrder.__typename !== 'Order') {
+							addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
+						} else {
+							appState.activeOrder = addItemToOrder as Order;
+						}
+					}}
 				>
-				{quantitySignal.value[selectedVariantId.value] ? (
-					<span class="flex items-center justify-center gap-2">
-						{isAddingToCart.value ? (
-						$localize`Adding...`
-						) : (
-						<>
-							<CheckIcon />
-							{$localize`${quantitySignal.value[selectedVariantId.value]} in cart`}
-						</>
-						)}
-					</span>
-				) : (
-					<span>
-						{isAddingToCart.value
-							? $localize`Adding...`
-							: $localize`Add to cart`}
-					</span>
-				)}
-			</button>
-
+					{quantitySignal.value[selectedVariantId.value] ? (
+						<span class="flex items-center justify-center gap-2">
+							{isAddingToCart.value ? (
+								$localize`Adding...`
+							) : (
+								<>
+									<CheckIcon />
+									{$localize`${quantitySignal.value[selectedVariantId.value]} in cart`}
+								</>
+							)}
+						</span>
+					) : (
+						<span>{isAddingToCart.value ? $localize`Adding...` : $localize`Add to cart`}</span>
+					)}
+				</button>
 			</div>
 		</div>
 	);
 });
 
-export const AuthenticPicklesAndOils = component$(({ collection }: { collection: Collection }) => {
-	const products2 = groupVariantsByProduct((collection as unknown as any).productVariants.items);
+export const ProductCollectionSlider = component$(({ collection }: { collection: Collection }) => {
+	const products = groupVariantsByProduct((collection as unknown as any).productVariants.items);
+	const scrollRef = useSignal<HTMLElement>();
+
+	const scrollLeft = $(() => {
+		scrollRef.value?.scrollBy({ left: -300, behavior: 'smooth' });
+	});
+
+	const scrollRight = $(() => {
+		scrollRef.value?.scrollBy({ left: 300, behavior: 'smooth' });
+	});
+
 	return (
 		<div class="font-sans bg-primary-100 py-10">
 			<div class="container mx-auto">
 				<div class="flex justify-between items-center mb-8">
-					<h1 class="text-3xl font-bold text-gray-800">{collection.name}</h1>
-					<div class="hidden flex space-x-3">
-						<button class="bg-white border border-gray-300 text-gray-700 text-sm px-4 py-2 rounded-full shadow-md hover:bg-primary-300 transition duration-300">
-							Pickles
-						</button>
-						<button class="bg-white border border-gray-300 text-gray-700 text-sm px-4 py-2 rounded-full shadow-md hover:bg-primary-300 transition duration-300">
-							Oils
-						</button>
-					</div>
+					<h1 class="text-3xl font-bold text-gray-800 ">{collection.name}</h1>
 				</div>
-
 				<div class="relative">
-					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
-						{products2.map((product: any) => (
-							<ProductCard key={product.id} product={product} />
-						))}
+					<div
+						ref={scrollRef}
+						class="h-full flex gap-5 overflow-x-auto scroll-smooth no-scrollbar pb-4"
+					>
+						{products.map((product: any, index: number) => {
+							return (
+								<div
+									key={product.id}
+									class={`min-w-[260px] max-w-[260px]
+                    transition-transform
+                    delay-[${index * 200}ms]
+                    duration-500 `}
+
+								>
+									<ProductCard product={product} />
+								</div>
+							);
+						})}
 					</div>
 
-					{/* Navigation Arrows */}
-					<button class="hidden absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 hidden md:block">
+					{/* Navigation Buttons */}
+					<button
+						onClick$={scrollLeft}
+						class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 hidden md:block"
+					>
 						<svg
 							class="w-6 h-6 text-gray-600"
 							fill="none"
@@ -182,7 +209,10 @@ export const AuthenticPicklesAndOils = component$(({ collection }: { collection:
 							></path>
 						</svg>
 					</button>
-					<button class="hidden absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 hidden md:block">
+					<button
+						onClick$={scrollRight}
+						class="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 hidden md:block"
+					>
 						<svg
 							class="w-6 h-6 text-gray-600"
 							fill="none"
@@ -203,7 +233,7 @@ export const AuthenticPicklesAndOils = component$(({ collection }: { collection:
 	);
 });
 
-export default AuthenticPicklesAndOils;
+export default ProductCollectionSlider;
 
 export function groupVariantsByProduct(variants: ProductVariant[]): any[] {
 	const productMap = new Map<string, any>();
