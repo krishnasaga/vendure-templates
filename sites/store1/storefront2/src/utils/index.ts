@@ -65,13 +65,19 @@ export const enableDisableFacetValues = (_facedValues: FacetWithValues[], ids: s
 	return { facedValues, facetValueIds };
 };
 
-export const changeUrlParamsWithoutRefresh = (term: string, facetValueIds: string[]) => {
-	const f = facetValueIds.join('-');
-	return window.history.pushState(
-		'',
-		'',
-		`${window.location.origin}${window.location.pathname}?q=${term}${f ? `&f=${f}` : ''}`
-	);
+export const changeUrlParamsWithoutRefresh = (
+        term: string,
+        facetValueIds: string[]
+) => {
+        const encodedTerm = encodeURIComponent(term);
+        const encodedFacets = facetValueIds
+                .map((f) => encodeURIComponent(f))
+                .join('-');
+        return window.history.pushState(
+                '',
+                '',
+                `${window.location.origin}${window.location.pathname}?q=${encodedTerm}${encodedFacets ? `&f=${encodedFacets}` : ''}`
+        );
 };
 
 export const setCookie = (name: string, value: string, days: number) => {
