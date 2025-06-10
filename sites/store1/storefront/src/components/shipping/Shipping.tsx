@@ -112,37 +112,6 @@ export default component$<IProps>(({ onForward$ }) => {
 							/>
 						</div>
 					</div>
-					<div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-						<div>
-							<label class="block text-sm font-medium text-gray-700">{$localize`First name`}</label>
-							<div class="mt-1">
-								<input
-									type="text"
-									value={appState.customer?.firstName}
-									disabled={appState.customer?.id !== CUSTOMER_NOT_DEFINED_ID}
-									onChange$={(_, el) => {
-										appState.customer = { ...appState.customer, firstName: el.value };
-									}}
-									class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-								/>
-							</div>
-						</div>
-
-						<div>
-							<label class="block text-sm font-medium text-gray-700">{$localize`Last name`}</label>
-							<div class="mt-1">
-								<input
-									type="text"
-									value={appState.customer?.lastName}
-									disabled={appState.customer?.id !== CUSTOMER_NOT_DEFINED_ID}
-									onChange$={(_, el) => {
-										appState.customer = { ...appState.customer, lastName: el.value };
-									}}
-									class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-								/>
-							</div>
-						</div>
-					</div>
 				</form>
 			</div>
 

@@ -5,13 +5,12 @@ import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs';
 import CheckIcon from '~/components/icons/CheckIcon';
 import Price from '~/components/products/Price';
 import StockLevelLabel from '~/components/stock-level-label/StockLevelLabel';
-import TopReviews from '~/components/top-reviews/TopReviews';
 import { APP_STATE } from '~/constants';
 import { Order, OrderLine } from '~/generated/graphql';
 import { addItemToOrderMutation } from '~/providers/shop/orders/order';
 import { getProductBySlug } from '~/providers/shop/products/products';
 import { Variant } from '~/types';
-import { cleanUpParams, generateDocumentHead, isEnvVariableEnabled } from '~/utils';
+import { cleanUpParams, generateDocumentHead } from '~/utils';
 import { type StaticGenerateHandler } from '@builder.io/qwik-city';
 import { gql } from 'graphql-tag';
 
@@ -304,11 +303,6 @@ export default component$(() => {
                     </div>
                 </div>
             </div>
-            {isEnvVariableEnabled('VITE_SHOW_REVIEWS') && (
-                <div class="mt-24">
-                    <TopReviews />
-                </div>
-            )}
         </div>
     );
 });
