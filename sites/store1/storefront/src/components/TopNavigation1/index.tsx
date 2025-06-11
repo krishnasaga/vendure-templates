@@ -1,8 +1,11 @@
 import { APP_STATE } from '~/constants';
 import { $, component$, useContext, useSignal } from '@builder.io/qwik';
 import { Link } from '@qwik.dev/router'; // Make sure this import path is correct for your setup
+import { useLocation } from '@builder.io/qwik-city'; // if not already imported
 
 export default component$(() => {
+	const { url } = useLocation();
+	const isConfirmationPage = url.pathname.includes('/checkout/confirmation');
 	const isMenuOpen = useSignal(false);
 
 	const appState = useContext(APP_STATE);
@@ -82,6 +85,7 @@ export default component$(() => {
 						</svg>
 					</Link>
 
+					{!isConfirmationPage && (
 					<div class="relative">
 						<button class="hover:text-primary-500" onClick$={toggleCart}>
 							<svg
@@ -99,6 +103,7 @@ export default component$(() => {
 							</span>
 						) : null}
 					</div>
+					)}
 				</div>
 			</div>
 

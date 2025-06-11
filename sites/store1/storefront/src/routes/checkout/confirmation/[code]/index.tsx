@@ -1,4 +1,4 @@
-import { QRL, component$, useStore, useVisibleTask$ } from '@qwik.dev/core';
+import { QRL, component$, useStore, useVisibleTask$, useContext } from '@qwik.dev/core';
 import { useLocation } from '@qwik.dev/router';
 import CartContents from '~/components/cart-contents/CartContents';
 import CartTotals from '~/components/cart-totals/CartTotals';
@@ -6,6 +6,7 @@ import CheckCircleIcon from '~/components/icons/CheckCircleIcon';
 import ChevronRightIcon from '~/components/icons/ChevronRightIcon';
 import { Order } from '~/generated/graphql';
 import { getOrderByCodeQuery } from '~/providers/shop/orders/order';
+import { APP_STATE } from '~/constants';
 
 type Step = 'SHIPPING' | 'PAYMENT' | 'CONFIRMATION';
 
@@ -13,6 +14,7 @@ export default component$<{ onForward$: QRL<() => void> }>(() => {
 	const {
 		params: { code },
 	} = useLocation();
+	const appState = useContext(APP_STATE);
 	const store = useStore<{ order?: Order }>({});
 
 	const steps: { name: string; state: Step }[] = [
@@ -23,6 +25,8 @@ export default component$<{ onForward$: QRL<() => void> }>(() => {
 
 	useVisibleTask$(async () => {
 		store.order = await getOrderByCodeQuery(code);
+		// appState.activeOrder = null;
+		appState.showCart = false;
 	});
 
 	console.log(store);
@@ -61,6 +65,17 @@ export default component$<{ onForward$: QRL<() => void> }>(() => {
 											<CartContents order={store.order} />
 										</div>
 										<CartTotals order={store.order} readonly />
+										<div class="mt-12 flex justify-center">
+											<button
+												class="px-6 py-3 bg-primary-600 text-white text-base font-medium rounded-md shadow hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+												onClick$={() => {
+													window.location.href = '/';
+													window.location.reload(); // optional: reload home page
+												}}
+											>
+												{$localize`Continue Shopping`}
+											</button>
+										</div>
 									</div>
 								</div>
 							</div>
