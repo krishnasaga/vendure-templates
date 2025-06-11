@@ -7,6 +7,7 @@ import {
 	useTask$,
 	useVisibleTask$,
 } from '@qwik.dev/core';
+
 import { APP_STATE, CUSTOMER_NOT_DEFINED_ID } from '~/constants';
 import { Address, CreateAddressInput, CreateCustomerInput } from '~/generated/graphql';
 import { getActiveCustomerAddressesQuery } from '~/providers/shop/customer/customer';
@@ -94,33 +95,27 @@ export default component$<IProps>(({ onForward$ }) => {
 	});
 
 	return (
-		<div>
-			<div>
-				<h2 class="text-lg font-medium text-gray-900">{$localize`Contact information`}</h2>
-				<form>
-					<div class="mt-4">
-						<label class="block text-sm font-medium text-gray-700">{$localize`Email address`}</label>
-						<div class="mt-1">
-							<input
-								type="email"
-								value={appState.customer?.emailAddress}
-								disabled={appState.customer?.id !== CUSTOMER_NOT_DEFINED_ID}
-								onChange$={(_, el) => {
-									appState.customer = { ...appState.customer, emailAddress: el.value };
-								}}
-								class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-							/>
-						</div>
-					</div>
-				</form>
-			</div>
-
+		<div class="pt-2">
 			<input type="hidden" name="action" value="setCheckoutShipping" />
-			<div class="mt-10 border-t border-gray-200 pt-10">
+			<div>
 				<h2 class="text-lg font-medium text-gray-900">{$localize`Shipping information`}</h2>
 			</div>
-
 			<AddressForm shippingAddress={appState.shippingAddress} />
+
+			<div class="mt-4">
+				<label class="block text-sm font-medium text-gray-700">{$localize`Email address`}</label>
+				<div class="mt-1">
+					<input
+						type="email"
+						value={appState.customer?.emailAddress}
+						disabled={appState.customer?.id !== CUSTOMER_NOT_DEFINED_ID}
+						onChange$={(_, el) => {
+							appState.customer = { ...appState.customer, emailAddress: el.value };
+						}}
+						class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+					/>
+				</div>
+			</div>
 
 			<div class="mt-10 border-t border-gray-200 pt-10">
 				<ShippingMethodSelector appState={appState} />

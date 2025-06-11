@@ -124,9 +124,7 @@ export const isShippingAddressValid = (orderAddress: ShippingAddress): boolean =
 export const isActiveCustomerValid = (activeCustomer: ActiveCustomer): boolean =>
 	!!(
 		!!activeCustomer &&
-		activeCustomer.emailAddress &&
-		activeCustomer.firstName &&
-		activeCustomer.lastName
+		activeCustomer.emailAddress
 	);
 
 export const fullNameWithTitle = ({

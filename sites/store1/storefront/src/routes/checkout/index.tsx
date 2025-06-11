@@ -109,7 +109,7 @@ export default component$(() => {
 						</div>
 
 						{state.step !== 'CONFIRMATION' && appState.activeOrder?.id && (
-							<div class="mt-10 lg:mt-0">
+							<div class="mt-10 lg:mt-0 sticky top-0">
 								<h2 class="text-lg font-medium text-gray-900 mb-4">{$localize`Order summary`}</h2>
 								<CartContents />
 								<CartTotals order={appState.activeOrder} />

@@ -1,263 +1,148 @@
-import { component$, useContext } from '@qwik.dev/core';
+import { component$, $, useContext } from '@qwik.dev/core';
 import { APP_STATE } from '~/constants';
+import { Checkbox } from '~/Elements/Checkbox';
+import { TextInput } from '~/Elements/TextInput';
 import { ShippingAddress } from '~/types';
 
 type IProps = {
 	shippingAddress: ShippingAddress;
 };
-
 export default component$<IProps>(({ shippingAddress }) => {
 	const appState = useContext(APP_STATE);
 	return (
 		<div>
 			{shippingAddress.countryCode && (
 				<div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-					<div>
-						<label html-for="fullName" class="block text-sm font-medium text-secondary">
-							{$localize`Full name`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								id="fullName"
-								name="fullName"
-								value={shippingAddress.fullName}
-								autoComplete="given-name"
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										fullName: el.value,
-									};
-								}}
-							/>
-						</div>
-					</div>
-
-					<div class="sm:col-span-2">
-						<label html-for="company" class="block text-sm font-medium text-secondary">
-							{$localize`Company`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="company"
-								id="company"
-								value={shippingAddress.company}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										company: el.value,
-									};
-								}}
-							/>
-						</div>
-					</div>
-
-					<div class="sm:col-span-2">
-						<label html-for="streetLine1" class="block text-sm font-medium text-secondary">
-							{$localize`Address`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="streetLine1"
-								id="streetLine1"
-								value={shippingAddress.streetLine1}
-								autoComplete="street-address"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										streetLine1: el.value,
-									};
-								}}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-							/>
-						</div>
-					</div>
-
-					<div class="sm:col-span-2">
-						<label html-for="streetLine2" class="block text-sm font-medium text-secondary">
-							{$localize`Apartment, suite, etc.`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="streetLine2"
-								id="streetLine2"
-								value={shippingAddress.streetLine2}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										streetLine2: el.value,
-									};
-								}}
-							/>
-						</div>
-					</div>
-
-					<div>
-						<label html-for="city" class="block text-sm font-medium text-secondary">
-							{$localize`City`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="city"
-								id="city"
-								autoComplete="address-level2"
-								value={shippingAddress.city}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-								onChange$={(_, el) => {
-									appState.shippingAddress = { ...appState.shippingAddress, city: el.value };
-								}}
-							/>
-						</div>
-					</div>
-
-					<div>
-						<label html-for="countryCode" class="block text-sm font-medium text-secondary">
-							{$localize`Country`}
-						</label>
-						<div class="mt-1">
-							{appState.availableCountries && (
-								<select
-									id="countryCode"
-									name="countryCode"
-									value={shippingAddress.countryCode}
-									class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-									onChange$={(_, el) => {
-										appState.shippingAddress = {
-											...appState.shippingAddress,
-											countryCode: el.value,
-										};
-									}}
-								>
-									{appState.availableCountries.map((item) => (
-										<option
-											key={item.id}
-											value={item.code}
-											selected={item.code === shippingAddress.countryCode}
-										>
-											{item.name}
-										</option>
-									))}
-								</select>
-							)}
-						</div>
-					</div>
-
-					<div>
-						<label html-for="province" class="block text-sm font-medium text-secondary">
-							{$localize`State / Province`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="province"
-								id="province"
-								value={shippingAddress.province}
-								autoComplete="address-level1"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										province: el.value,
-									};
-								}}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-							/>
-						</div>
-					</div>
-
-					<div>
-						<label html-for="postalCode" class="block text-sm font-medium text-secondary">
-							{$localize`Postal code`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="postalCode"
-								id="postalCode"
-								value={shippingAddress.postalCode}
-								autoComplete="postal-code"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										postalCode: el.value,
-									};
-								}}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-							/>
-						</div>
-					</div>
-
-					<div class="sm:col-span-2">
-						<label html-for="phoneNumber" class="block text-sm font-medium text-secondary">
-							{$localize`Phone`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="text"
-								name="phoneNumber"
-								id="phoneNumber"
-								value={shippingAddress.phoneNumber}
-								autoComplete="tel"
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										phoneNumber: el.value,
-									};
-								}}
-								class="block w-full border-muted rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm"
-							/>
-						</div>
-					</div>
-					<div class="sm:col-span-1">
-						<label
-							html-for="defaultShippingAddress"
-							class="block text-sm font-medium text-secondary"
-						>
-							{$localize`Default Shipping Address`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="checkbox"
-								name="defaultShippingAddress"
-								id="defaultShippingAddress"
-								checked={shippingAddress.defaultShippingAddress}
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										defaultShippingAddress: el.checked,
-									};
-								}}
-							/>
-						</div>
-					</div>
-					<div class="sm:col-span-1">
-						<label
-							html-for="defaultBillingAddress"
-							class="block text-sm font-medium text-secondary"
-						>
-							{$localize`Default Billing Address`}
-						</label>
-						<div class="mt-1">
-							<input
-								type="checkbox"
-								name="defaultBillingAddress"
-								id="defaultBillingAddress"
-								checked={shippingAddress.defaultBillingAddress}
-								onChange$={(_, el) => {
-									appState.shippingAddress = {
-										...appState.shippingAddress,
-										defaultBillingAddress: el.checked,
-									};
-								}}
-							/>
-						</div>
-					</div>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.phoneNumber}
+						label={$localize`Phone`}
+						name="phoneNumber"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								phoneNumber: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.fullName}
+						label={$localize`Full name`}
+						name="fullName"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								fullName: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2 hidden"
+						value={shippingAddress.company}
+						label={$localize`Company`}
+						name="company"
+						onChange$={(_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								company: el.value,
+							};
+						}}
+					/>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.streetLine1}
+						label={$localize`Address`}
+						name="streetLine1"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								streetLine1: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.streetLine2}
+						label={$localize`Apartment, suite, etc.`}
+						name="streetLine2"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								streetLine2: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.city}
+						label={$localize`City`}
+						name="city"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								city: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2 hidden"
+						value={shippingAddress.countryCode}
+						label={$localize`Country`}
+						name="countryCode"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								countryCode: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.province}
+						label={$localize`State`}
+						name="province"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								province: el.value,
+							};
+						})}
+					/>
+					<TextInput
+						class="sm:col-span-2"
+						value={shippingAddress.postalCode}
+						label={$localize`PIN CODE`}
+						name="postalCode"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								postalCode: el.value,
+							};
+						})}
+					/>
+					<Checkbox
+						value={shippingAddress.defaultShippingAddress}
+						label={$localize`Default Shipping Address`}
+						name="defaultShippingAddress"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								defaultShippingAddress: el.checked,
+							};
+						})}
+					/>
+					<Checkbox
+						value={shippingAddress.defaultBillingAddress}
+						label={$localize`Default Billing Address`}
+						name="defaultBillingAddress"
+						onChange$={$((_: any, el: any) => {
+							appState.shippingAddress = {
+								...appState.shippingAddress,
+								defaultBillingAddress: el.checked,
+							};
+						})}
+					/>
 				</div>
 			)}
 		</div>
