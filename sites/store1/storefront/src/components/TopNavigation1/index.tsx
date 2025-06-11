@@ -5,7 +5,7 @@ import { useLocation } from '@builder.io/qwik-city'; // if not already imported
 
 export default component$(() => {
 	const { url } = useLocation();
-	const isConfirmationPage = url.pathname.includes('/checkout/confirmation');
+	const isConfirmationPage = url.pathname.includes('/checkout');
 	const isMenuOpen = useSignal(false);
 
 	const appState = useContext(APP_STATE);
@@ -18,6 +18,8 @@ export default component$(() => {
 	});
 
 	return (
+		<>
+		{!isConfirmationPage && (
 		<header class="bg-neutral-light border-b-[3px] border-primary-500 top-0 sticky z-20">
 			<div class="container mx-auto px-4 py-3 flex items-center justify-between">
 				{/* Mobile menu button */}
@@ -85,7 +87,7 @@ export default component$(() => {
 						</svg>
 					</Link>
 
-					{!isConfirmationPage && (
+					
 					<div class="relative">
 						<button class="hover:text-primary-500" onClick$={toggleCart}>
 							<svg
@@ -103,7 +105,6 @@ export default component$(() => {
 							</span>
 						) : null}
 					</div>
-					)}
 				</div>
 			</div>
 
@@ -171,5 +172,7 @@ export default component$(() => {
 				</div>
 			)}
 		</header>
+		)}
+		</>
 	);
 });

@@ -70,7 +70,6 @@ export default component$<{ onForward$: QRL<() => void> }>(() => {
 												class="px-6 py-3 bg-primary-600 text-white text-base font-medium rounded-md shadow hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
 												onClick$={() => {
 													window.location.href = '/';
-													window.location.reload(); // optional: reload home page
 												}}
 											>
 												{$localize`Continue Shopping`}
