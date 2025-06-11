@@ -14,8 +14,9 @@ export default component$<{ onForward$: QRL<({ orderCode }: { orderCode: string 
 		const paymentMethods = useSignal<EligiblePaymentMethods[]>();
 
 		const startRazorpayPayment$ = $(async () => {
-			await shopSdk.setOrderShippingMethod({shippingMethodId: '1'});
+			await shopSdk.setOrderShippingMethod({ shippingMethodId: '1' });
 			await shopSdk.transitionOrderToState({ state: 'ArrangingPayment' });
+
 			try {
 				const order = await shopSdk.addPaymentToOrder({
 					input: {
@@ -27,6 +28,7 @@ export default component$<{ onForward$: QRL<({ orderCode }: { orderCode: string 
 				const vendureOrderCode = (order as any)?.addPaymentToOrder.code;
 				const amount = (order as any)?.addPaymentToOrder.payments[0].amount;
 				const razorpayOrderId = (order as any)?.addPaymentToOrder.payments[0].transactionId;
+
 				if (!razorpayOrderId) {
 					alert('Payment setup failed (missing order ID).');
 					return;
@@ -39,9 +41,7 @@ export default component$<{ onForward$: QRL<({ orderCode }: { orderCode: string 
 					order_id: razorpayOrderId,
 					handler: async () => {
 						await shopSdk.activeOrder({});
-						onForward$({ 
-							orderCode: vendureOrderCode
-						 });
+						onForward$({ orderCode: vendureOrderCode });
 					},
 					onabort: async () => {
 						await shopSdk.transitionOrderToState({ state: 'AddingItems' });
