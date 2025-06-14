@@ -12,6 +12,15 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 
 	const selectedVariant = () =>
 		product.variants?.find((v: any) => v.id === selectedVariantId.value) ?? product.variants?.[0];
+
+	const selectVariant = useComputed$(() =>
+		product.variants?.find((v: any) => v.id === selectedVariantId.value) ?? product.variants?.[0]
+	);
+
+	const isOutOfStock = useComputed$(() => {
+		const variant = selectVariant.value;
+		return variant?.stockLevel === 'OUT_OF_STOCK' || variant?.stockOnHand === 0;
+	});
 	const addItemToOrderErrorSignal = useSignal('');
 	const appState = useContext(APP_STATE);
 	const quantitySignal = useComputed$<Record<string, number>>(() => {
@@ -117,9 +126,11 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 						: ''}
 				</p>
 				<button
-					disabled={isAddingToCart.value}
+					disabled={isOutOfStock.value || isAddingToCart.value}
 					class={getAddToCartButtonClass()}
 					onClick$={async () => {
+						if (isOutOfStock.value) return;
+
 						isAddingToCart.value = true;
 						const addItemToOrder = await addItemToOrderMutation(selectedVariantId.value, 1);
 						isAddingToCart.value = false;
@@ -131,7 +142,9 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 						}
 					}}
 				>
-					{quantitySignal.value[selectedVariantId.value] ? (
+					{isOutOfStock.value ? (
+						<span>Out of Stock</span>
+					) : quantitySignal.value[selectedVariantId.value] ? (
 						<span class="flex items-center justify-center gap-2">
 							{isAddingToCart.value ? (
 								$localize`Adding...`
@@ -146,6 +159,7 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 						<span>{isAddingToCart.value ? $localize`Adding...` : $localize`Add to cart`}</span>
 					)}
 				</button>
+
 			</div>
 		</div>
 	);
