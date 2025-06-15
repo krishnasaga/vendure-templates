@@ -234,44 +234,63 @@ export default component$(() => {
                                     forcedClass="text-3xl text-gray-900 mr-4"
                                 ></Price>
                                 <div class="flex sm:flex-col1 align-baseline">
-                                    <button disabled={isAddingToCart.value}
+                                    <button
+                                        disabled={
+                                        isAddingToCart.value ||
+                                        selectedVariantSignal.value?.stockLevel === 'OUT_OF_STOCK'
+                                        }
                                         class={{
-                                            'max-w-xs flex-1 transition-colors border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary-500 sm:w-full': true,
+                                        'max-w-xs flex-1 transition-colors border rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary-500 sm:w-full': true,
 
-                                            'bg-primary-100 cursor-not-allowed': isAddingToCart.value,
+                                        'bg-gray-400 text-white border-gray-500 shadow-md cursor-not-allowed':
+                                            selectedVariantSignal.value?.stockLevel === 'OUT_OF_STOCK',
 
-                                            'bg-primary-600 hover:bg-primary-700': !isAddingToCart.value && quantitySignal.value[selectedVariantIdSignal.value] === 0,
+                                        'bg-primary-600 hover:bg-primary-700':
+                                            !isAddingToCart.value &&
+                                            quantitySignal.value[selectedVariantIdSignal.value] === 0 &&
+                                            selectedVariantSignal.value?.stockLevel !== 'OUT_OF_STOCK',
 
-                                            'bg-green-600 active:bg-green-700 hover:bg-green-700': !isAddingToCart.value && quantitySignal.value[selectedVariantIdSignal.value] >= 1 && quantitySignal.value[selectedVariantIdSignal.value] <= 7,
+                                        'bg-green-600 active:bg-green-700 hover:bg-green-700':
+                                            !isAddingToCart.value &&
+                                            quantitySignal.value[selectedVariantIdSignal.value] >= 1 &&
+                                            quantitySignal.value[selectedVariantIdSignal.value] <= 7 &&
+                                            selectedVariantSignal.value?.stockLevel !== 'OUT_OF_STOCK',
 
-                                            'bg-gray-600 cursor-not-allowed': !isAddingToCart.value && quantitySignal.value[selectedVariantIdSignal.value] > 7,
+                                        'bg-gray-600 cursor-not-allowed':
+                                            !isAddingToCart.value &&
+                                            quantitySignal.value[selectedVariantIdSignal.value] > 7,
                                         }}
                                         onClick$={async () => {
-                                            if (quantitySignal.value[selectedVariantIdSignal.value] <= 7) {
-                                                isAddingToCart.value = true;
-                                                const addItemToOrder = await addItemToOrderMutation(
-                                                    selectedVariantIdSignal.value,
-                                                    1
-                                                );
-                                                isAddingToCart.value = false;
-                                                if (addItemToOrder.__typename !== 'Order') {
-                                                    addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
-                                                } else {
-                                                    appState.activeOrder = addItemToOrder as Order;
-                                                }
+                                        if (
+                                            selectedVariantSignal.value?.stockLevel !== 'OUT_OF_STOCK' &&
+                                            quantitySignal.value[selectedVariantIdSignal.value] <= 7
+                                        ) {
+                                            isAddingToCart.value = true;
+                                            const addItemToOrder = await addItemToOrderMutation(
+                                            selectedVariantIdSignal.value,
+                                            1
+                                            );
+                                            isAddingToCart.value = false;
+                                            if (addItemToOrder.__typename !== 'Order') {
+                                            addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
+                                            } else {
+                                            appState.activeOrder = addItemToOrder as Order;
                                             }
+                                        }
                                         }}
                                     >
-                                        {quantitySignal.value[selectedVariantIdSignal.value] ? (
-                                            <span class="flex items-center">
-                                                <CheckIcon />
-                                                {$localize`${quantitySignal.value[selectedVariantIdSignal.value]} in cart`}
-                                            </span>
+                                        {selectedVariantSignal.value?.stockLevel === 'OUT_OF_STOCK' ? (
+                                        <span>Sold Out</span>
+                                        ) : quantitySignal.value[selectedVariantIdSignal.value] ? (
+                                        <span class="flex items-center">
+                                            <CheckIcon />
+                                            {$localize`${quantitySignal.value[selectedVariantIdSignal.value]} in cart`}
+                                        </span>
                                         ) : (
-                                            $localize`Add to cart`
+                                        $localize`Add to cart`
                                         )}
                                     </button>
-                                </div>
+                                    </div>
                             </div>
                             <div class="mt-2 flex items-center space-x-2">
                                 <span class="text-gray-500">{selectedVariantSignal.value?.sku}</span>

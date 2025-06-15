@@ -26,11 +26,6 @@ export default component$(
 				<div class="p-2">
 					<h3 class="font-semibold text-neutral-dark text-sm mb-1">{productName}</h3>
 
-					<div class="flex items-center text-yellow-500 text-sm mb-2">
-						★★★★★
-						<span class="text-gray-600 ml-2">4.9 · 2k+ Reviews</span>
-					</div>
-
 					{/* Price Section */}
 					<div class="mb-3">
 						<span class="text-lg font-bold text-neutral-darkest mr-2">{CurrencyCode}27.73</span>
