@@ -27,6 +27,7 @@ query GetCollectionsBySlugs($slugs: [String!]) {
           name
           priceWithTax
           sku
+          stockLevel
           product {
            id,
            slug,
