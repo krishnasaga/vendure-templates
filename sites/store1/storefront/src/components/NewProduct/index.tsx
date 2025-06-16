@@ -108,17 +108,17 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 						: ''}
 				</p>
 				<button
-					disabled={isAddingToCart.value || selectedVariant()?.stockLevel === 'OUT_OF_STOCK'}
+					disabled={isAddingToCart.value }
 					class={getAddToCartButtonClass()}
 					onClick$={async () => {
 						// if (selectedVariant()?.stockLevel === 'OUT_OF_STOCK') return;
-						isAddingToCart.value = true;
+							isAddingToCart.value = true;
 						const addItemToOrder = await addItemToOrderMutation(selectedVariantId.value, 1);
 						isAddingToCart.value = false;
 
 						if (addItemToOrder.__typename !== 'Order') {
 							addItemToOrderErrorSignal.value = addItemToOrder.errorCode;
-						} else {
+							} else {
 							appState.activeOrder = addItemToOrder as Order;
 						}
 					}}
