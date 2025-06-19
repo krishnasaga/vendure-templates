@@ -4,6 +4,7 @@ import slide2 from './slide2.png';
 import slide3 from './slide3.png';
 import slide4 from './slide4.png';
 import slide5 from './slide5.png';
+import slide2_2 from './slide2.2.png';
 
 const Slide1 = component$(() => (
 	<div class="relative w-full overflow-hidden md:h-[600px] h-auto flex flex-col md:flex-row items-center justify-center py-4 md:py-8 bg-primary-100">
@@ -12,7 +13,7 @@ const Slide1 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">All Spices at Flat 25% OFF!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-6 animate-slide-up-fade">Bring home the taste of authentic Indian masalas.</p>
-				<button class="px-9 py-7 animation-scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-5 py-4 animation-scale-in md:text-2xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
 			</div>
@@ -31,12 +32,13 @@ const Slide2 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">What makes a perfect curry?</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-2 animate-slide-up-fade">It's the right mix of masalas!</p>
-			</div>
-			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full h-full flex flex-col justify-start items-center overflow-hidden">
-				<img src={slide2} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-down-fade"/>
-        <button class="px-5 py-4 mt-4 animation-scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-5 py-4 animation-scale-in md:text-2xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
+			</div>
+			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full h-full flex flex-col justify-start items-center overflow-hidden">
+				<img src={slide2} width={'500'} height={'300'} object-fit={'cover'} class="animate-slide-down-fade"/>
+				<img src={slide2_2} width={'500'} height={'300'} object-fit={'cover'} class="animate-slide-up-fade"/>
 			</div>
 		</div>
 	</div>
