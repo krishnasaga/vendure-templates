@@ -12,7 +12,7 @@ const Slide1 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">All Spices at Flat 25% OFF!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-6 animate-slide-up-fade">Bring home the taste of authentic Indian masalas.</p>
-				<button class="px-9 py-7 scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-9 py-7 animation-scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
 			</div>
@@ -31,7 +31,7 @@ const Slide2 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">What makes a perfect curry?</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-2 animate-slide-up-fade">It's the right mix of masalas!</p>
-				<button class="px-9 py-7 md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-9 py-7 animation-scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
 			</div>
@@ -50,7 +50,7 @@ const Slide3 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">Choose only the best - no compromise!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-2 animate-slide-up-fade">From daily tadka to festive feasts - good masala makes all the difference.</p>
-				<button class="px-9 py-7 md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-9 py-7 animation-scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
 			</div>
@@ -86,7 +86,7 @@ const Slide5 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">Pure Desi Ghee - A Must-Have!</h1>
 				<p class="text-xl md:text-2xl font-bold text-green-500 mb-6 font-semibold animate-slide-up-fade">Made for Indian kitchens</p>
-				<button class="px-6 py-3 bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-6 py-3 animation-scale-in bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Order Now</a>
 				</button>
 			</div>
