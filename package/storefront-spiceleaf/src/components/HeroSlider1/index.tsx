@@ -10,11 +10,9 @@ const Slide1 = component$(() => (
 		<div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-8 relative z-10">
 			<div class="flex flex-col items-center md:items-start text-center md:text-left py-4 md:py-8 z-10">
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
-				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">Limited Time Offer!</h1>
-				<p class="text-xl md:text-2xl text-neutral-dark mb-2 animate-slide-up-fade">Buy Now – All Spices at Flat 25% OFF!</p>
+				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">All Spices at Flat 25% OFF!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-6 animate-slide-up-fade">Bring home the taste of authentic Indian masalas.</p>
-				<p class="text-xl md:text-2xl font-bold text-green-500 mb-6 font-semibold animate-slide-up-fade">Offer valid for limited time</p>
-				<button class="px-6 py-3 bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-9 py-7 md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
 			</div>
