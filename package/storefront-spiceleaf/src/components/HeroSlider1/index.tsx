@@ -12,7 +12,7 @@ const Slide1 = component$(() => (
 				<p class="text-sm md:text-base text-primary-500 mb-2 uppercase tracking-wide">Farm SpiceLeaf</p>
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">All Spices at Flat 25% OFF!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-6 animate-slide-up-fade">Bring home the taste of authentic Indian masalas.</p>
-				<button class="px-9 py-7 md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
+				<button class="px-9 py-7 scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
 					<a href="/collections/spices-and-masalas/">Shop Now</a>
 				</button>
 			</div>
