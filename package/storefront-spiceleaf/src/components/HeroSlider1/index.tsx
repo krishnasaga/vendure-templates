@@ -19,7 +19,7 @@ const Slide1 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide1} width={'500'} height={'600'} object-fit={'cover'} />
+				<img src={slide1} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-up-fade" />
 			</div>
 		</div>
 	</div>
@@ -39,7 +39,7 @@ const Slide2 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide2} width={'500'} height={'600'} object-fit={'cover'} />
+				<img src={slide2} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-up-fade"/>
 			</div>
 		</div>
 	</div>
@@ -59,7 +59,7 @@ const Slide3 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide3} width={'500'} height={'600'} object-fit={'cover'} />
+				<img src={slide3} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-up-fade"/>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@ const Slide4 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide4} width={'500'} height={'600'} object-fit={'cover'} />
+				<img src={slide4} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-up-fade"/>
 			</div>
 		</div>
 	</div>
@@ -99,7 +99,7 @@ const Slide5 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide5} width={'500'} height={'600'} object-fit={'cover'} />
+				<img src={slide5} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-up-fade"/>
 			</div>
 		</div>
 	</div>
