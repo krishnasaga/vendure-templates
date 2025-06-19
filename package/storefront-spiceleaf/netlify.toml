@@ -1,7 +1,7 @@
 # netlify.toml  ── final, working version
 [build]
 command        = "npm run build"
-publish        = "sites/store1/storefront/dist"
+publish        = "package/storefront-spiceleaf/dist"
 edge_functions = "netlify/edge-functions"
 
 [[edge_functions]]
