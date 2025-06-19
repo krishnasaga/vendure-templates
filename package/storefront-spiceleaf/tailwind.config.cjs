@@ -30,6 +30,18 @@ module.exports = {
 					'0%': { opacity: '0', transform: 'translateY(20px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' },
 				},
+				'slide-left-fade': {
+					'0%': { opacity: '0', transform: 'translateX(20px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' },
+				},
+				'slide-right-fade': {
+					'0%': { opacity: '0', transform: 'translateX(-20px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' },
+				},
+				'slide-down-fade': {
+					'0%': { opacity: '0', transform: 'translateY(-20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
 				'scale-in': {
 					'0%': { opacity: '0', transform: 'scale(1)' },
 					'100%': { opacity: '1', transform: 'scale(0.5)' },
@@ -37,7 +49,10 @@ module.exports = {
 			},
 			animation: {
 				'slide-up-fade': 'slide-up-fade 0.8s ease-out forwards',
-        'scale-in': 'scale-in 0.8s ease-out forwards',
+				'slide-down-fade': 'slide-down-fade 0.8s ease-out forwards',
+				'slide-right-fade': 'slide-right-fade 0.8s ease-out forwards',
+				'slide-left-fade': 'slide-left-fade 0.8s ease-out forwards',
+				'scale-in': 'scale-in 0.8s ease-out forwards',
 			},
 		},
 		container: {
