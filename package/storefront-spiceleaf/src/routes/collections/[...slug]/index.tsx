@@ -1,4 +1,4 @@
-import { $, component$, useStore, useTask$ } from '@qwik.dev/core';
+import { $, component$, useStore, useTask$, useSignal } from '@qwik.dev/core';
 import { DocumentHead, routeLoader$, useLocation } from '@qwik.dev/router';
 import Breadcrumbs from '~/components/breadcrumbs/Breadcrumbs';
 import CollectionCard from '~/components/collection-card/CollectionCard';
@@ -10,6 +10,7 @@ import { getCollectionBySlug } from '~/providers/shop/collections/collections';
 import {
 	searchQueryWithCollectionSlug,
 	searchQueryWithTerm,
+	getProductBySlug,
 } from '~/providers/shop/products/products';
 import { FacetWithValues } from '~/types';
 import {
@@ -105,12 +106,16 @@ export default component$(() => {
 		search: SearchResponse;
 		facedValues: FacetWithValues[];
 		facetValueIds: string[];
-	}>({
-		showMenu: false,
-		search: searchSignal.value as SearchResponse,
-		facedValues: groupFacetValues(searchSignal.value as SearchResponse, activeFacetValueIds),
-		facetValueIds: activeFacetValueIds,
-	});
+	}>(
+		{
+			showMenu: false,
+			search: searchSignal.value as SearchResponse,
+			facedValues: groupFacetValues(searchSignal.value as SearchResponse, activeFacetValueIds),
+			facetValueIds: activeFacetValueIds,
+		},
+	);
+
+	const detailedProducts = useSignal<any[]>([]);
 
 	useTask$(async ({ track }) => {
 		track(() => collectionSignal.value.slug);
@@ -120,6 +125,12 @@ export default component$(() => {
 			? await searchQueryWithTerm(params.slug, '', state.facetValueIds)
 			: await searchQueryWithCollectionSlug(params.slug);
 		state.facedValues = groupFacetValues(state.search as SearchResponse, state.facetValueIds);
+
+		// fetch detailed product data
+		const results = await Promise.all(
+			state.search.items.map((item) => getProductBySlug(item.slug))
+		);
+		detailedProducts.value = results;
 	});
 
 	const onFilterChange = $(async (id: string) => {
@@ -136,6 +147,11 @@ export default component$(() => {
 		state.search = facetValueIds.length
 			? await searchQueryWithTerm(params.slug, '', state.facetValueIds)
 			: await searchQueryWithCollectionSlug(params.slug);
+
+		const results = await Promise.all(
+			state.search.items.map((item) => getProductBySlug(item.slug))
+		);
+		detailedProducts.value = results;
 	});
 
 	const onOpenCloseFilter = $((id: string) => {
@@ -198,16 +214,16 @@ export default component$(() => {
 					)}
 					<div class="sm:col-span-5 lg:col-span-4">
 						<div class="grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
-							{state.search.items.map((item) => (
+							{detailedProducts.value.map((item) => (
 								<ProductCard
-									key={item.productId}
-									productAsset={item.productAsset?.preview}
-									productName={item.productName}
+									key={item.id}
+									productAsset={item.featuredAsset?.preview}
+									productName={item.name}
 									slug={item.slug}
-									priceWithTax={item.priceWithTax}
-									currencyCode={item.currencyCode}
-									variants={item.varients}
-								></ProductCard>
+									priceWithTax={item.variants?.[0]?.priceWithTax}
+									CurrencyCode={item.variants?.[0]?.currencyCode}
+									varients={item.variants}
+								/>
 							))}
 						</div>
 					</div>
