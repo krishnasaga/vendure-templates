@@ -25,18 +25,18 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
-      working-directory: packages/storefront-spiceleaf
+      working-directory: package/storefront-spiceleaf
 
     - name: Build the project
       run: npm run build --if-present
-      working-directory: packages/storefront-spiceleaf
+      working-directory: package/storefront-spiceleaf
       
     - name: Install Netlify CLI
       run: npm install -g netlify-cli
 
     - name: Deploy to Netlify
       run: netlify deploy --prod --site=$NETLIFY_SITE_ID --no-build
-      working-directory: packages/storefront-spiceleaf
+      working-directory: package/storefront-spiceleaf
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
