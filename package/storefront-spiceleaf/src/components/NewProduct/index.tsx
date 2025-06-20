@@ -166,7 +166,7 @@ export const ProductCollectionSlider = component$(({ collection }: { collection:
 				<div class="relative">
 					<div
 						ref={scrollRef}
-						class="h-full flex gap-5 overflow-x-auto scroll-smooth no-scrollbar pb-4"
+						class="h-full flex gap-5 overflow-x-auto scroll-smooth scrollbar-hide pb-4"
 					>
 						{products.map((product: any, index: number) => {
 							return (

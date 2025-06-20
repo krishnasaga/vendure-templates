@@ -113,7 +113,7 @@ export default component$(() => {
 	);
 
 	return (
-		<div>
+		<div class="main-container">
 			<TopNav />
 			<Cart />
 			<Menu />
