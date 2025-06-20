@@ -18,7 +18,7 @@ const Slide1 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide1} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade" />
+				<Image src={slide1} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade" />
 			</div>
 		</div>
 	</div>
@@ -37,8 +37,8 @@ const Slide2 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full h-full flex flex-col justify-start items-center overflow-hidden">
-				<img src={slide2} width={'500'} height={'300'} object-fit={'cover'} class="animate-slide-down-fade"/>
-				<img src={slide2_2} width={'500'} height={'300'} object-fit={'cover'} class="animate-slide-up-fade"/>
+				<Image src={slide2} width={'500'} height={'300'} object-fit={'cover'} class="animate-slide-down-fade"/>
+				<Image src={slide2_2} width={'500'} height={'300'} object-fit={'cover'} class="animate-slide-up-fade"/>
 			</div>
 		</div>
 	</div>
@@ -57,7 +57,7 @@ const Slide3 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide3} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade"/>
+				<Image src={slide3} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade"/>
 			</div>
 		</div>
 	</div>
@@ -75,7 +75,7 @@ const Slide4 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide4} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade"/>
+				<Image src={slide4} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade"/>
 			</div>
 		</div>
 	</div>
@@ -93,7 +93,7 @@ const Slide5 = component$(() => (
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
-				<img src={slide5} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade"/>
+				<Image src={slide5} width={'500'} height={'600'} object-fit={'cover'} class="animate-slide-left-fade"/>
 			</div>
 		</div>
 	</div>
@@ -126,4 +126,13 @@ export const HeroCarousel = component$(() => {
 			</div>
 		</div>
 	);
+});
+
+
+const Image = component$((props : any) => {
+	const isImageLoaded = useSignal(false);
+	return <img src={props.image} width={'500'} height={'600'} object-fit={'cover'} 
+	   style={{ opacity: isImageLoaded.value ? 1 : 0 }} onLoad={() => {
+		isImageLoaded.value === true;
+	}} {...props}/>
 });
