@@ -45,18 +45,21 @@ export default component$(() => {
 						Home
 					</Link>
 					<div class="relative group">
-						<button class="hover:text-primary-500 py-5 px-4">View Collections ▾</button>
-						<div class="absolute hidden group-hover:block bg-neutral-light border shadow-md mt-2 z-10">
-							{collections.map((collection: { name: string; id: string }) => (
-								<Link
-									key={collection.id}
-									href={`/collections/${collection.id}`}
-									class="block px-4 py-2 hover:bg-neutral-accent-light"
-								>
-									{collection.name}
-								</Link>
-							))}
-						</div>
+					<button class="hover:text-primary-500 py-5 px-4">
+						View Collections ▾
+					</button>
+
+					<div class="absolute hidden group-hover:block bg-white text-black border border-gray-200 shadow-lg mt-2 z-50 min-w-[200px] rounded-md">
+						{collections.map((collection: { name: string; id: string }) => (
+						<Link
+							key={collection.id}
+							href={`/collections/${collection.id}`}
+							class="block px-4 py-2 hover:bg-gray-100 transition"
+						>
+							{collection.name}
+						</Link>
+						))}
+					</div>
 					</div>
 					<Link href="/collections/shop-all" class="hover:text-primary-500 py-5 px-4">
 						Shop All

@@ -1,4 +1,4 @@
-import { $, component$, useContext, useStore, useVisibleTask$ } from '@qwik.dev/core';
+import { $, component$, useContext, useStore, useVisibleTask$, useSignal } from '@qwik.dev/core';
 import { useNavigate } from '@qwik.dev/router';
 import CartContents from '~/components/cart-contents/CartContents';
 import CartTotals from '~/components/cart-totals/CartTotals';
@@ -27,11 +27,15 @@ export default component$(() => {
 		{ name: $localize`Payment`, state: 'PAYMENT' },
 		{ name: $localize`Confirmation`, state: 'CONFIRMATION' },
 	];
+	const cartLoading = useSignal(true);
 
 	useVisibleTask$(async () => {
 		appState.showCart = false;
 		if (appState.activeOrder?.lines?.length === 0) {
 			navigate('/');
+		}
+		if (appState.activeOrder?.lines?.length >= 0) {
+			cartLoading.value = false;
 		}
 	});
 
@@ -111,8 +115,16 @@ export default component$(() => {
 						{state.step !== 'CONFIRMATION' && appState.activeOrder?.id && (
 							<div class="mt-10 lg:mt-0 sticky top-0">
 								<h2 class="text-lg font-medium text-gray-900 mb-4">{$localize`Order summary`}</h2>
-								<CartContents />
-								<CartTotals order={appState.activeOrder} />
+								{cartLoading.value ? (
+									<div class="flex justify-center items-center py-8">
+										<div class="animate-spin h-10 w-10 border-4 border-primary-600 border-t-transparent rounded-full"></div>
+									</div>
+								) : (
+									<>
+										<CartContents />
+										<CartTotals order={appState.activeOrder} />
+									</>
+								)}
 							</div>
 						)}
 					</div>
