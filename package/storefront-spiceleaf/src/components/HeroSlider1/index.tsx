@@ -79,7 +79,7 @@ export const HeroCarousel = component$(() => {
                 Shop Now
               </button>
             </div>
-            <div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
+            <div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-start items-start">
               <img src={slide.img} width={'500'} height={'500'} style={{ objectFit: 'contain' }} />
             </div>
           </div>
