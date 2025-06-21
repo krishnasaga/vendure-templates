@@ -49,6 +49,7 @@ export default component$(
           <div class="mb-3">
             <span class="text-lg font-bold text-neutral-darkest mr-2">
               {CurrencyCode} {(selectedPrice.value / 100).toFixed(2)}
+              {CurrencyCode === 'INR' ? 'Rs.' : CurrencyCode} {(selectedPrice.value / 100).toFixed(2)}
             </span>
           </div>
 
