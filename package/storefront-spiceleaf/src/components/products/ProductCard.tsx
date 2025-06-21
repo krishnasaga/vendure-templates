@@ -4,7 +4,7 @@ import { APP_STATE } from '~/constants';
 import type { Order } from '~/generated/graphql';
 
 export default component$(
-  ({ bestSeller, discount, productName, CurrencyCode, productAsset, varients }: any) => {
+  ({ bestSeller, discount, productName, slug, CurrencyCode, productAsset, varients }: any) => {
     const selectedVariantId = useSignal(varients?.[0]?.id || '');
     const selectedPrice = useSignal(varients?.[0]?.priceWithTax || 0);
     const stockLevel = useSignal(varients?.[0]?.stockLevel || 'IN_STOCK');
@@ -24,13 +24,15 @@ export default component$(
     return (
       <div class="max-w-sm rounded-md overflow-hidden shadow-sm border border-gray-200 bg-white">
         <div class="relative">
-          <img
-            src={productAsset}
-            alt={productName}
-            width={400}
-            height={400}
-            class="w-full h-64 object-cover bg-yellow-100"
-          />
+          <a href={`/products/${slug}`} class="block">
+            <img
+              src={productAsset}
+              alt={productName}
+              width={400}
+              height={400}
+              class="w-full h-64 object-cover bg-yellow-100"
+            />
+          </a>
           {discount && (
             <div class="absolute top-2 left-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-semibold">
               Save 11%

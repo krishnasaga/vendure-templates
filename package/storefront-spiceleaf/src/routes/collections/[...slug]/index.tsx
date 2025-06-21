@@ -212,21 +212,23 @@ export default component$(() => {
 							onOpenCloseFilter$={onOpenCloseFilter}
 						/>
 					)}
-					<div class="sm:col-span-5 lg:col-span-4">
-						<div class="grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
-							{detailedProducts.value.map((item) => (
-								<ProductCard
-									key={item.id}
-									productAsset={item.featuredAsset?.preview}
-									productName={item.name}
-									slug={item.slug}
-									priceWithTax={item.variants?.[0]?.priceWithTax}
-									CurrencyCode={item.variants?.[0]?.currencyCode}
-									varients={item.variants}
-								/>
-							))}
-						</div>
-					</div>
+				<div class="sm:col-span-5 lg:col-span-4">
+  <div class="grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-2">
+    {detailedProducts.value.map((item) => {
+      return (
+        <ProductCard
+          key={item.id}
+          productAsset={item.featuredAsset?.preview}
+          productName={item.name}
+          slug={item.slug}
+          priceWithTax={item.variants?.[0]?.priceWithTax}
+          CurrencyCode={item.variants?.[0]?.currencyCode}
+          varients={item.variants}
+        />
+      );
+    })}
+  </div>
+</div>
 				</div>
 			</div>
 		</div>

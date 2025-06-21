@@ -22,6 +22,7 @@ export const HeroCarousel = component$(() => {
       line1: 'From daily tadka to festive feasts - good masala makes all the difference.',
       line2: 'Choose only the best - no compromise!',
       line3: 'Trusted in every pinch',
+      link: '/collections/spices-and-masalas',
     },
     {
       img: slide2,
@@ -30,6 +31,7 @@ export const HeroCarousel = component$(() => {
       line1: 'Unlock the secrets of authentic Indian cuisine with our premium spices.',
       line2: 'Sourced from the best farms, for a taste you can trust.',
       line3: 'Trusted in every pinch',
+      link: '/collections/spices-and-masalas',
     },
     {
       img: slide3,
@@ -38,14 +40,16 @@ export const HeroCarousel = component$(() => {
       line1: 'Hand-picked and traditionally ground to preserve flavor and aroma.',
       line2: 'Bring home the taste of real India.',
       line3: 'Trusted in every pinch',
+      link: '/products/kashmiri-chilli-powder',
     },
     {
       img: slide4,
       subtitle: 'FARM SPICELEAF',
-      title: 'Spice Up Your Life!',
-      line1: 'Explore our wide range of spices and bring your culinary creations to life.',
-      line2: 'From the mild to the fiery, we have it all.',
-      line3: 'Trusted in every pinch',
+      title: 'Sweetness of Tradition',
+      line1: 'Indulge in the rich, melt-in-mouth flavor of Ghee Mysore Pak.',
+      line2: 'Handcrafted with pure ghee for a truly authentic experience.',
+      line3: 'A taste of heritage in every bite',
+      link: '/products/ghee-mysore-pak',
     },
     {
       img: slide5,
@@ -54,6 +58,7 @@ export const HeroCarousel = component$(() => {
       line1: 'No artificial colors, no preservatives. Just pure, natural goodness.',
       line2: 'Experience the difference that quality makes.',
       line3: 'Trusted in every pinch',
+      link: '/products/a2-cow-ghee',
     },
   ];
 
@@ -76,7 +81,7 @@ export const HeroCarousel = component$(() => {
               <p class="text-lg md:text-xl text-[#6B462B] mb-6">{slide.line2}</p>
               <p class="text-xl md:text-2xl font-semibold text-green-600 mb-6">{slide.line3}</p>
               <button class="px-8 py-3 bg-[#F97316] text-white font-bold rounded-md shadow-md hover:bg-[#EA580C] transition duration-300 ease-in-out transform hover:scale-105">
-                Shop Now
+                <a href={slide.link}>Shop Now</a>
               </button>
             </div>
             <div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-start items-start">
