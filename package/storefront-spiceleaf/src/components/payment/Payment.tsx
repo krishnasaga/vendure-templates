@@ -79,9 +79,10 @@ export default component$<{ onForward$: QRL<({ orderCode }: { orderCode: string 
 		});
 
 		return (
-			<div class="text-center mt-20 text-lg font-medium text-gray-600">
-				Loading payment gateway...
-			</div>
+		<div class="flex flex-col items-center justify-center mt-20 text-lg font-medium text-gray-600">
+			<div class="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-primary-600 mb-4"></div>			
+			<div>Loading payment gateway...</div>
+		</div>
 		);
 	}
 );
