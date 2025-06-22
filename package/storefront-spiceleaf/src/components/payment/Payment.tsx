@@ -1,5 +1,4 @@
 import { component$, QRL, useSignal, useVisibleTask$, $ } from '@builder.io/qwik';
-import { useNavigate } from '@builder.io/qwik-city';
 import { getEligiblePaymentMethodsQuery } from '~/providers/shop/checkout/checkout';
 import { EligiblePaymentMethods } from '~/types';
 import { shopSdk } from '~/graphql-wrapper';
@@ -13,7 +12,6 @@ declare global {
 export default component$<{ onForward$: QRL<({ orderCode }: { orderCode: string }) => void> }>(
 	({ onForward$ }) => {
 		const paymentMethods = useSignal<EligiblePaymentMethods[]>();
-		const navigate = useNavigate();
 
 		const startRazorpayPayment$ = $(async () => {
 			await shopSdk.setOrderShippingMethod({ shippingMethodId: '1' });
@@ -52,12 +50,6 @@ export default component$<{ onForward$: QRL<({ orderCode }: { orderCode: string 
 					theme: {
 						color: '#EA570C',
 					},
-					modal: {
-						ondismiss: async () => {
-							await shopSdk.transitionOrderToState({ state: 'AddingItems' });
-							navigate('/');
-						}
-					}
 				});
 
 				rzp.open();
