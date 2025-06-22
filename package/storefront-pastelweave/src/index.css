@@ -2,14 +2,30 @@
 
 @source "../../react-cart/src";
 
+
+.container {
+  max-width: 80rem; /* You can change this to 600px, 720px, etc. */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* Override container sizes */
 @theme {
-  /* Set custom container width at each breakpoint */
-  --container-sm: 640px;    /* sm */
-  --container-md: 768px;    /* md */
-  --container-lg: 1024px;   /* lg */
-  --container-xl: 1024px;   /* xl */
-  --container-2xl: 1536px;  /* 2xl */
+  --container-3xs: 18rem;
+  --container-2xs: 18rem;
+  --container-xs: 18rem;
+  --container-sm: 20rem;
+  --container-md: 20rem;
+  --container-lg: 20rem;
+  --container-xl: 20rem
+  --container-2xl: 20rem;
+  --container-3xl: 20rem;
+  --container-4xl: 20rem;
+  --container-5xl: 18rem;
+  --container-6xl: 18rem;
+  --container-7xl: 18rem;
   /* You can customize, e.g.: --
      --container-2xl: 1400px;
   --container-lg: initial;  // To disable default and control manually */
