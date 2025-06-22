@@ -2,6 +2,7 @@ import { component$, useContext, useSignal, useTask$ } from '@qwik.dev/core';
 import { addItemToOrderMutation } from '~/providers/shop/orders/order';
 import { APP_STATE } from '~/constants';
 import type { Order } from '~/generated/graphql';
+import CheckIcon from '../icons/CheckIcon';
 
 export default component$(
   ({ bestSeller, discount, productName, slug, CurrencyCode, productAsset, varients }: any) => {
@@ -99,7 +100,17 @@ export default component$(
               const line = appState.activeOrder?.lines?.find(
                 (line) => line.productVariant.id === selectedVariantId.value
               );
-              return line ? `${line.quantity} in cart` : 'ADD TO CART';
+
+              if (line) {
+                return (
+                  <span class="flex items-center justify-center gap-2 text-green-700">
+                    <CheckIcon/>
+                    {line.quantity} in cart
+                  </span>
+                );
+              }
+
+              return 'ADD TO CART';
             })()}
           </button>
         </div>
