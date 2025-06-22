@@ -5,7 +5,7 @@
     "@types/react-dom": "^19.1.5"
   },
     "workspaces": [
-    "packages/*"
+    "package/*"
   ],
   "dependencies": {
     "icons": "^1.0.0",
