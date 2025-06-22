@@ -53,7 +53,7 @@ const Slide3 = component$(() => (
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">Choose only the best - no compromise!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-2 animate-slide-up-fade">From daily tadka to festive feasts - good masala makes all the difference.</p>
 				<button class="px-9 py-7 animation-scale-in md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
-					<a href="/collections/spices-and-masalas/">Shop Now</a>
+					<a href="/products/kashmiri-chilli-powder/">Shop Now</a>
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
@@ -71,7 +71,7 @@ const Slide4 = component$(() => (
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">Special Combo Deal!</h1>
 				<p class="text-xl md:text-2xl text-neutral-dark mb-2 animate-slide-up-fade">Get our Ghee Misure Pack with Essential Spices</p>
 				<button class="px-9 py-7 md:text-5xl bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
-					<a href="/collections/spices-and-masalas/">Order Now</a>
+					<a href="/products/ghee-mysore-pak/">Order Now</a>
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
@@ -89,7 +89,7 @@ const Slide5 = component$(() => (
 				<h1 class="text-5xl md:text-7xl font-extrabold text-neutral-dark leading-tight mb-4 animate-slide-up-fade">Pure Desi Ghee - A Must-Have!</h1>
 				<p class="text-xl md:text-2xl font-bold text-green-500 mb-6 font-semibold animate-slide-up-fade">Made for Indian kitchens</p>
 				<button class="px-6 py-3 animation-scale-in bg-primary-500 text-primary-100 font-bold rounded-md shadow-md hover:bg-secondary-500 transition duration-300 ease-in-out transform hover:scale-105">
-					<a href="/collections/spices-and-masalas/">Order Now</a>
+					<a href="/products/a2-cow-ghee/">Order Now</a>
 				</button>
 			</div>
 			<div class="flex-shrink-0 mt-8 md:mt-0 md:ml-auto md:w-1/2 w-full flex justify-center items-center overflow-hidden">
