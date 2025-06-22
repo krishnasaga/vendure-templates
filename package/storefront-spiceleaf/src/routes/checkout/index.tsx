@@ -121,16 +121,16 @@ export default component$(() => {
 
 						{state.step !== 'CONFIRMATION' && appState.activeOrder?.id && (
 							<div class="mt-10 lg:mt-0 sticky top-0">
-								<h2 class="text-lg font-medium text-gray-900 mb-4">{$localize`Order summary`}</h2>
-								{cartLoading.value ? (
-									<div class="flex justify-center items-center py-8">
-										<div class="animate-spin h-10 w-10 border-4 border-primary-600 border-t-transparent rounded-full"></div>
-									</div>
+								<h2 class="text-lg font-medium text-gray-900 mb-4">{$localize`Order summary`}</h2>								
+								{!appState.activeOrder?.lines || cartLoading.value ? (
+								<div class="flex justify-center items-center py-8">
+									<div class="animate-spin h-10 w-10 border-4 border-primary-600 border-t-transparent rounded-full"></div>
+								</div>
 								) : (
-									<>
-										<CartContents />
-										<CartTotals order={appState.activeOrder} />
-									</>
+								<>
+									<CartContents />
+									<CartTotals order={appState.activeOrder} />
+								</>
 								)}
 							</div>
 						)}

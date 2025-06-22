@@ -92,11 +92,15 @@ export default component$(
               }
             }}
           >
-            {stockLevel.value === 'OUT_OF_STOCK'
-              ? 'SOLD OUT'
-              : isAddingToCart.value
-              ? 'ADDING...'
-              : 'ADD TO CART'}
+            {(() => {
+              if (stockLevel.value === 'OUT_OF_STOCK') return 'Out of stock';
+              if (isAddingToCart.value) return 'ADDING...';
+
+              const line = appState.activeOrder?.lines?.find(
+                (line) => line.productVariant.id === selectedVariantId.value
+              );
+              return line ? `${line.quantity} in cart` : 'ADD TO CART';
+            })()}
           </button>
         </div>
       </div>

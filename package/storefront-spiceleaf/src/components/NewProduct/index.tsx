@@ -124,7 +124,7 @@ export const ProductCard = component$<{ product: any }>(({ product }) => {
 					}}
 				>
 					{selectedVariant()?.stockLevel === 'OUT_OF_STOCK' ? (
-						<span>Sold Out</span>
+						<span>Out of stock</span>
 					) : quantitySignal.value[selectedVariantId.value] ? (
 						<span class="flex items-center justify-center gap-2">
 							{isAddingToCart.value ? (
