@@ -14,3 +14,91 @@
      --container-2xl: 1400px;
   --container-lg: initial;  // To disable default and control manually */
 }
+
+/* animations.css (or inside your main Tailwind CSS file) */
+
+@theme  {
+  --color-primary: #F3A71E;
+  --color-primary-50:  #FFF8EC;
+  --color-primary-100: #FFEFCB;
+  --color-primary-200: #FFE39D;
+  --color-primary-300: #FFD66D;
+  --color-primary-400: #FDC53D;
+  --color-primary-500: #F3A71E;
+  --color-primary-600: #D78613;
+  --color-primary-700: #B6680C;
+  --color-primary-800: #955107;
+  --color-primary-900: #7A4205;
+}
+
+@keyframes slide-up-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-left-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-down-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.5);
+  }
+}
+
+/* Add utility classes manually */
+.animate-slide-up-fade {
+  animation: slide-up-fade 0.8s ease-out forwards;
+}
+.animate-slide-down-fade {
+  animation: slide-down-fade 0.8s ease-out forwards;
+}
+.animate-slide-left-fade {
+  animation: slide-left-fade 0.8s ease-out forwards;
+}
+.animate-slide-right-fade {
+  animation: slide-right-fade 0.8s ease-out forwards;
+}
+.animation-scale-in {
+  animation: scale-in 0.8s ease-out forwards;
+}
