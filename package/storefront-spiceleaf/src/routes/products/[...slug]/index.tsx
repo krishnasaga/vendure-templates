@@ -280,7 +280,7 @@ export default component$(() => {
                                         }}
                                     >
                                         {selectedVariantSignal.value?.stockLevel === 'OUT_OF_STOCK' ? (
-                                        <span>Sold Out</span>
+                                        <span>Out of stock</span>
                                         ) : quantitySignal.value[selectedVariantIdSignal.value] ? (
                                         <span class="flex items-center">
                                             <CheckIcon />
