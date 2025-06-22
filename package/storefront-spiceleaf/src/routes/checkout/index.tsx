@@ -29,14 +29,21 @@ export default component$(() => {
 	];
 	const cartLoading = useSignal(true);
 
-	useVisibleTask$(async () => {
+	useVisibleTask$(() => {
+		cartLoading.value = true;
 		appState.showCart = false;
-		if (appState.activeOrder?.lines?.length === 0) {
-			navigate('/');
-		}
-		if (appState.activeOrder?.lines?.length >= 0) {
-			cartLoading.value = false;
-		}
+
+		const checkDataReady = setInterval(() => {
+			if (appState.activeOrder && Array.isArray(appState.activeOrder.lines)) {
+				if (appState.activeOrder.lines.length === 0) {
+					clearInterval(checkDataReady);
+					navigate('/');
+				} else {
+					clearInterval(checkDataReady);
+					cartLoading.value = false;
+				}
+			}
+		}, 50);
 	});
 
 	const confirmPayment = $(async ({ orderCode }: { orderCode: string }) => {
