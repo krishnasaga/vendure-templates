@@ -29,21 +29,14 @@ export default component$(() => {
 	];
 	const cartLoading = useSignal(true);
 
-	useVisibleTask$(() => {
-		cartLoading.value = true;
+	useVisibleTask$(async () => {
 		appState.showCart = false;
-
-		const checkDataReady = setInterval(() => {
-			if (appState.activeOrder && Array.isArray(appState.activeOrder.lines)) {
-				if (appState.activeOrder.lines.length === 0) {
-					clearInterval(checkDataReady);
-					navigate('/');
-				} else {
-					clearInterval(checkDataReady);
-					cartLoading.value = false;
-				}
-			}
-		}, 50);
+		if (appState.activeOrder?.lines?.length === 0) {
+			navigate('/');
+		}
+		if (appState.activeOrder?.lines?.length >= 0) {
+			cartLoading.value = false;
+		}
 	});
 
 	const confirmPayment = $(async ({ orderCode }: { orderCode: string }) => {
@@ -121,16 +114,16 @@ export default component$(() => {
 
 						{state.step !== 'CONFIRMATION' && appState.activeOrder?.id && (
 							<div class="mt-10 lg:mt-0 sticky top-0">
-								<h2 class="text-lg font-medium text-gray-900 mb-4">{$localize`Order summary`}</h2>								
-								{!appState.activeOrder?.lines || cartLoading.value ? (
-								<div class="flex justify-center items-center py-8">
-									<div class="animate-spin h-10 w-10 border-4 border-primary-600 border-t-transparent rounded-full"></div>
-								</div>
+								<h2 class="text-lg font-medium text-gray-900 mb-4">{$localize`Order summary`}</h2>
+								{cartLoading.value ? (
+									<div class="flex justify-center items-center py-8">
+										<div class="animate-spin h-10 w-10 border-4 border-primary-600 border-t-transparent rounded-full"></div>
+									</div>
 								) : (
-								<>
-									<CartContents />
-									<CartTotals order={appState.activeOrder} />
-								</>
+									<>
+										<CartContents />
+										<CartTotals order={appState.activeOrder} />
+									</>
 								)}
 							</div>
 						)}

@@ -76,8 +76,15 @@ export default component$(
             disabled={stockLevel.value === 'OUT_OF_STOCK' || isAddingToCart.value}
             class={`w-full font-semibold py-2 rounded transition ${
               stockLevel.value === 'OUT_OF_STOCK' || isAddingToCart.value
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-primary-600 hover:bg-primary-700 text-white'
+                ? 'bg-gray-400 cursor-not-allowed text-white'
+                : (() => {
+                    const line = appState.activeOrder?.lines?.find(
+                      (line) => line.productVariant.id === selectedVariantId.value
+                    );
+                    return line
+                      ? 'bg-green-600 hover:bg-green-700 text-white'
+                      : 'bg-primary-600 hover:bg-primary-700 text-white';
+                  })()
             }`}
             onClick$={async () => {
               if (stockLevel.value === 'OUT_OF_STOCK') return;
@@ -103,13 +110,12 @@ export default component$(
 
               if (line) {
                 return (
-                  <span class="flex items-center justify-center gap-2 text-green-700">
-                    <CheckIcon/>
+                  <span class="flex items-center justify-center gap-2 text-white">
+                    <CheckIcon />
                     {line.quantity} in cart
                   </span>
                 );
               }
-
               return 'ADD TO CART';
             })()}
           </button>
