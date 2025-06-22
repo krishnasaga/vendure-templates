@@ -26,6 +26,7 @@ export const detailedProductFragment = gql`
 		id
 		name
 		description
+		slug
 		collections {
 			id
 			slug

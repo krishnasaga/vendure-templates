@@ -81,7 +81,7 @@ export default component$(() => {
 						<p class="text-neutral-accent mb-4">
 							Be the first to know about exclusive offers & deals.
 						</p>
-						<form>
+						{/* <form>
 							<input
 								type="email"
 								placeholder="Enter your email"
@@ -90,7 +90,7 @@ export default component$(() => {
 							<button type="submit" class="bg-primary-500 text-neutral-light p-2 w-full">
 								Subscribe
 							</button>
-						</form>
+						</form> */}
 					</div>
 				</div>
 			</div>
