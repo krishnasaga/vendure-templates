@@ -2,6 +2,7 @@ import Layout from '../../Layout';
 import HeroSlider from 'react-cart/src/components/HeroSlider-VariantA';
 import ProductCarousel from 'react-cart/src/components/ProductCarousel-VariantA';
 import ProductCard from 'react-cart/src/components/ProductCard-VariantA';
+import { TopStrip } from 'react-cart/src/components/PromotionStript-VariantA';
 
 
 const products = [
@@ -61,13 +62,16 @@ const ProductCardWrapper = ({ product }: { product: any }) => (
 
 export const HomePage = () => {
     return (
-        <Layout>
-            <main className='w-full text-green-900'>
-            <HeroSlider />
-            <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
-            <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
-            </main>
-        </Layout>
+        <>
+            <TopStrip />
+            <Layout>
+                <main className='w-full text-green-900 pt-[50px]'>
+                <HeroSlider />
+                <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
+                <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
+                </main>
+            </Layout>
+        </>
     );
 }
 
