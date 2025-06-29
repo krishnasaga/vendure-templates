@@ -60,7 +60,7 @@ This starter helps developers and agencies create production-ready storefronts f
 | #  | Template Name     | Visual Description                                                                  | Status        | Preview URL                      |
 |----|-------------------|--------------------------------------------------------------------------------------|---------------|----------------------------------|
 | 1  | VogueRack         | High-contrast, magazine-style grid with bold typefaces and hero banners              | Planned       | /preview/voguerack               |
-| 2  | PastelWeave       | Soft color palette with flowing sections and rounded product cards                   | Planned       | /preview/pastelweave             |
+| 2  | PastelWeave       | Soft color palette with flowing sections and rounded product cards                   | Inprogress       | /preview/pastelweave             |
 | 3  | UrbanDrape        | Modern card layout with dark themes and edge-to-edge imagery                         | Planned       | /preview/urbandrape              |
 | 4  | SareeScroll       | Long scroll-based showcase with drape movement-inspired animations                   | Planned       | /preview/sareescroll             |
 | 5  | LuxeLookbook      | Minimalist layout with focus on collections, editorials, and large visuals           | Planned       | /preview/luxelookbook            |
