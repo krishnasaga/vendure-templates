@@ -66,7 +66,7 @@ export const HomePage = () => {
             <TopStrip />
             <Layout>
                 <main className='w-full text-green-900 pt-[50px]'>
-                <HeroSlider />
+                <HeroSlider className={"h-[calc(100vh-218px)]"} />
                 <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
                 <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
                 </main>

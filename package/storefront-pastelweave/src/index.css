@@ -31,6 +31,10 @@
   --container-lg: initial;  // To disable default and control manually */
 }
 
+@theme {
+  --text-xs: 0.75rem;
+  --text-xs-weight: 300;
+}
 /* animations.css (or inside your main Tailwind CSS file) */
 
 @theme  {
@@ -45,12 +49,24 @@
   --color-primary-700: #B6680C;
   --color-primary-800: #955107;
   --color-primary-900: #7A4205;
+
+  --color-neautral: #606060;
+  --color-neautral-50: #f5f5f5;
+  --color-neautral-100: #e0e0e0;
+  --color-neautral-200: #cccccc;
+  --color-neautral-300: #b3b3b3;
+  --color-neautral-400: #999999;
+  --color-neautral-500: #808080;
+  --color-neautral-600: #606060;
+  --color-neautral-700: #404040;
+  --color-neautral-800: #262626;
+  --color-neautral-900: #121212;
 }
 
 @keyframes slide-up-fade {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(80px);
   }
   100% {
     opacity: 1;
@@ -61,7 +77,7 @@
 @keyframes slide-left-fade {
   0% {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(80px);
   }
   100% {
     opacity: 1;
@@ -72,7 +88,7 @@
 @keyframes slide-right-fade {
   0% {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-80px);
   }
   100% {
     opacity: 1;
@@ -83,7 +99,7 @@
 @keyframes slide-down-fade {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-80px);
   }
   100% {
     opacity: 1;
@@ -104,17 +120,17 @@
 
 /* Add utility classes manually */
 .animate-slide-up-fade {
-  animation: slide-up-fade 0.8s ease-out forwards;
+  animation: slide-up-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .animate-slide-down-fade {
-  animation: slide-down-fade 0.8s ease-out forwards;
+  animation: slide-down-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .animate-slide-left-fade {
-  animation: slide-left-fade 0.8s ease-out forwards;
+  animation: slide-left-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .animate-slide-right-fade {
-  animation: slide-right-fade 0.8s ease-out forwards;
+  animation: slide-right-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .animation-scale-in {
-  animation: scale-in 0.8s ease-out forwards;
+  animation: scale-in 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
