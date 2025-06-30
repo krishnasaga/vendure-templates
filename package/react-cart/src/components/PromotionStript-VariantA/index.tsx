@@ -19,7 +19,8 @@ export const TopStrip = () => {
 
     return (
         <div className="w-full bg-[#f5ebdc] flex justify-center items-start h-[40px] overflow-hidden">
-            <div className={`translate-y-[${currentIndex * -40}px] transition-transform duration-500 ease-in-out flex flex-col items-center`}>
+            <div className={`transition-transform duration-500 ease-in-out`} 
+                style={{ transform: `translateY(${-1*currentIndex*40}px)`}}>
                 {messages.map((message) => {
                     return <div className='h-[40px] flex justify-center items-center'><span className="text-xs md:text-sm text-neautral-600 font-nromal">{message}</span></div>
                 })}
