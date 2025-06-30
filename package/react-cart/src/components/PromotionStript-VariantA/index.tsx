@@ -12,30 +12,19 @@ export const TopStrip = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % messages.length);
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, [messages.length]);
 
     return (
-        <div className="fixed top-0 left-0 w-full z-[1000] shadow-sm">
-
-            <div className="w-full bg-[#f5ebdc] px-4 py-2 flex justify-between items-center min-h-[40px]">
-
-                <div className="w-16"></div>
-
-
-                <div className="flex-1 flex justify-center items-center">
-                    <span className="text-sm text-gray-700 font-medium">
-                        {messages[currentIndex]}
-                    </span>
-                </div>
-
-                <div className="flex items-center gap-1.5 text-sm text-gray-700 w-16 justify-end">
-                    <span>🇮🇳</span>
-                    <span>INR ▼</span>
-                </div>
+        <div className="w-full bg-[#f5ebdc] flex justify-center items-start h-[40px] overflow-hidden">
+            <div className={`translate-y-[${currentIndex * -40}px] transition-transform duration-500 ease-in-out flex flex-col items-center`}>
+                {messages.map((message) => {
+                    return <div className='h-[40px] flex justify-center items-center'><span className="text-xs md:text-sm text-neautral-600 font-nromal">{message}</span></div>
+                })}
             </div>
         </div>
+
     );
 };
