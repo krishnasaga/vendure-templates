@@ -1,5 +1,3 @@
-import image1 from './image.png';
-
 interface ProductCardProps {
   title: string;
   subtitle: string;
@@ -18,7 +16,7 @@ export default function ProductCard({
   return (
     <div className="w-full overflow-hidden text-center">
       <img
-        src={image1}
+        src={imageUrl}
         alt={title}
         className="w-full h-[420px] object-cover"
       />
