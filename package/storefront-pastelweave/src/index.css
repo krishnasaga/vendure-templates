@@ -48,19 +48,8 @@
   --color-primary-600: #D78613;
   --color-primary-700: #B6680C;
   --color-primary-800: #955107;
-  --color-primary-900: #7A4205;
-
-  --color-neautral: #606060;
-  --color-neautral-50: #f5f5f5;
-  --color-neautral-100: #e0e0e0;
-  --color-neautral-200: #cccccc;
-  --color-neautral-300: #b3b3b3;
-  --color-neautral-400: #999999;
-  --color-neautral-500: #808080;
-  --color-neautral-600: #606060;
-  --color-neautral-700: #404040;
-  --color-neautral-800: #262626;
-  --color-neautral-900: #121212;
+  --color-primary-900: #F4A61E;
+  --color-secondary-900: #606060;
 }
 
 @keyframes slide-up-fade {
@@ -132,5 +121,13 @@
   animation: slide-right-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 .animation-scale-in {
-  animation: scale-in 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  animation: scale-in 0.8s ease-out forwards;
+}
+
+.text-primary-900 {
+  color: var(--color-primary-900);
+}
+
+.text-secondary-800 {
+  color: var(--color-secondary-900);
 }
