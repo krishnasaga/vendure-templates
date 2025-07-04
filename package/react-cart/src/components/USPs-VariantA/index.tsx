@@ -5,7 +5,7 @@ const values = [
   },
   {
     image: "https://d2gansr34f2te0.cloudfront.net/Circular.webp   ",
-    title: "Fashion that Returns",
+    title: "Restyle",
   },
   {
     image: "https://d2gansr34f2te0.cloudfront.net/Sustainable.avif   ",
@@ -13,17 +13,17 @@ const values = [
   },
   {
     image: "https://d2gansr34f2te0.cloudfront.net/Heirloom%20Crafts.avif   ",
-    title: "Timeless Traditions",
+    title: "Crafted",
   },
   {
     image: "https://d2gansr34f2te0.cloudfront.net/Easy%20Returns.avif   ",
-    title: "Hassle-Free Returns",
+    title: "Free Returns",
   },
 ];
 
 const ValuesSection = ({ className }: { className: string }) => {
   return (
-    <section className={`container mx-auto flex justify-center gap-4 md:gap-14 ${className}`}>
+    <section className={`container mx-auto flex justify-between md:justify-center gap-4 md:gap-14 ${className}`}>
       {values.map((value, index) => (
         <div className=" md:h-[100px] w-auto flex flex-col items-center justify-between">
           <img
