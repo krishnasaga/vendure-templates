@@ -49,21 +49,22 @@ const products = [
   },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProductCardWrapper = ({ product }: { product: any }) => (
-  <ProductCard
-    title={product.title}
-    subtitle={product.subtitle}
-    price={product.price}
-    imageUrl={product.image || product.imageUrl}
-    rating={product.rating}
-  />
+    <ProductCard
+        title={product.title}
+        subtitle={product.subtitle}
+        price={product.price}
+        rating={product.rating}
+        imageUrl={product.image || ''}
+    />
 );
 
 export const HomePage = () => {
   return (
     <Layout>
       <main className="w-full text-green-900">
-        <HeroSlider className="h-[calc(100vh-218px)]" />
+        <HeroSlider className="h-[calc(100vh-180px)]" />
         <USPs className="mt-10"/>
         <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
         <ProductCarousel products={products} CardComponent={ProductCardWrapper} />
