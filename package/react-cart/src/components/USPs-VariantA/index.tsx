@@ -1,6 +1,6 @@
 const values = [
   {
-    image: "https://d2gansr34f2te0.cloudfront.net/usp1.avif   ",
+    image: "https://pestelwave-assets.s3.us-east-1.amazonaws.com/femme+forward.png",
     title: "Femme Forward",
   },
   {
