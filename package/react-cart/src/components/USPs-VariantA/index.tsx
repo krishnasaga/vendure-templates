@@ -1,22 +1,22 @@
 const values = [
   {
-    image: "https://pestelwave-assets.s3.us-east-1.amazonaws.com/femme+forward.png",
+    image: "https://d2gansr34f2te0.cloudfront.net/femme+forward.png",
     title: "Femme Forward",
   },
   {
-    image: "https://d2gansr34f2te0.cloudfront.net/Circular.webp   ",
+    image: "https://d2gansr34f2te0.cloudfront.net/restyle.png",
     title: "Restyle",
   },
   {
-    image: "https://d2gansr34f2te0.cloudfront.net/Sustainable.avif   ",
+    image: "https://d2gansr34f2te0.cloudfront.net/earthkind.png",
     title: "Earth Kind",
   },
   {
-    image: "https://d2gansr34f2te0.cloudfront.net/Heirloom%20Crafts.avif   ",
+    image: "https://d2gansr34f2te0.cloudfront.net/crafted.png",
     title: "Crafted",
   },
   {
-    image: "https://d2gansr34f2te0.cloudfront.net/Easy%20Returns.avif   ",
+    image: "https://d2gansr34f2te0.cloudfront.net/free+returns.png",
     title: "Free Returns",
   },
 ];
