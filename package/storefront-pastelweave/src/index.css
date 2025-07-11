@@ -46,7 +46,7 @@
   --color-primary-400: #FDC53D;
   --color-primary-500: #F3A71E;
   --color-primary-600: #D78613;
-  --color-primary-700: #B6680C;
+  --color-primary-700: #AEAEAE;
   --color-primary-800: #955107;
   --color-primary-900: #F4A61E;
   --color-secondary-900: #606060;
@@ -130,4 +130,28 @@
 
 .text-secondary-800 {
   color: var(--color-secondary-900);
+}
+
+.bg-primary-900 {
+  background-color: var(--color-primary-900);
+}
+
+.bg-secondary-900 {
+  background-color: var(--color-secondary-900);
+}
+
+.bg-secondary-700 {
+  background-color: var(--color-secondary-700);
+}
+
+.bg-footer-gray {
+  background-color: #a4a4a4;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

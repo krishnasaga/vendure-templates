@@ -1,6 +1,5 @@
 interface ProductCardProps {
   title: string;
-  subtitle: string;
   price: number;
   imageUrl: string;
   rating?: number;
@@ -8,21 +7,27 @@ interface ProductCardProps {
 
 export default function ProductCard({
   title,
-  subtitle,
   price,
   imageUrl,
   rating = 5,
 }: ProductCardProps) {
   return (
     <div className="w-full overflow-hidden text-center">
+      {/* Product Image */}
       <img
         src={imageUrl}
         alt={title}
         className="w-full h-[420px] object-cover"
       />
-      <div className="p-4">
-        <h3 className="text-gray-800 font-semibold">{title}</h3>
-        <p className="text-gray-600 text-sm mb-2">{subtitle}</p>
+
+      {/* Product Info */}
+      <div className="pt-4 pb-2 px-2">
+        {/* Title */}
+        <h3 className="text-[15px] font-normal text-secondary-900 mb-1">
+          {title}
+        </h3>
+
+        {/* Rating */}
         <div className="flex justify-center text-yellow-400 mb-2">
           {Array.from({ length: rating }).map((_, i) => (
             <svg
@@ -35,7 +40,9 @@ export default function ProductCard({
             </svg>
           ))}
         </div>
-        <p className="text-gray-700 text-lg font-semibold">£{price.toFixed(2)}</p>
+
+        {/* Price */}
+        <p className="text-[16px] font-normal text-gray-800">₹ {price.toFixed(2)}</p>
       </div>
     </div>
   );

@@ -107,7 +107,7 @@ const HeaderVariantA = () => {
       {/* Navigation Bar */}
       <nav className="hidden md:block">
         <div className="max-w-[1440px] mx-auto px-12 relative">
-          <ul className="flex justify-between pt-[8px] pb-[16px] text-[18px] font-[TCM]">
+          <ul className="flex justify-between pt-[8px] pb-[16px] text-[18px]">
             {NAV_ITEMS.map((label) => (
               <li key={label} className="group relative cursor-pointer">
                 <button
