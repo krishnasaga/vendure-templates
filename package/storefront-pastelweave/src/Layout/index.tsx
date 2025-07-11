@@ -15,7 +15,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
 
       <div className="w-full">{children}</div>
 
-      <div className="container mx-auto">
+      <div className="mx-auto">
         <Footer />
       </div>
     </div>
