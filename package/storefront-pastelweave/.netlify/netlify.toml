@@ -1,0 +1,27 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/krishnasagar/Desktop/projects/vendure-templates/package/storefront-pastelweave/dist"
+publishOrigin = "ui"
+commandOrigin = "ui"
+command = "yarn workspace storefront-pastelweave build"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
