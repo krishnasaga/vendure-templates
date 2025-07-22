@@ -11,18 +11,11 @@ export default function ProductCardB({
   price,
   imageUrl,
   rating = 5,
-  sizes = ["XS", "S", "M", "L", "XL", "XXL"],
 }: ProductCardProps) {
   return (
     <div className="w-full overflow-hidden text-center">
       {/* Image container with size overlay */}
-      <div className="relative">
-        {/* Sizes at bottom-left */}
-        <div className="absolute bottom-4 left-2 flex flex-col space-y-1 text-[12px] text-secondary-900 font-semibold z-10">
-          {sizes.map((size, idx) => (
-            <span key={idx}>{size}</span>
-          ))}
-        </div>
+      <div className="relative">        
 
         {/* Product Image */}
         <img
