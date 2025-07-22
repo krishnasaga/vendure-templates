@@ -1,13 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
-import CollectionPage from './Pages/Collections'; // This will handle /collections/:slug
+import ProductPage from './Pages/ProductPage';
+import CollectionPage from './Pages/Collections';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/collections/:slug" element={<CollectionPage />} />
+        <Route path="/product/:slug" element={<ProductPage />} />
+        <Route path="/collections/" element={<CollectionPage />} />
       </Routes>
     </Router>
   );
