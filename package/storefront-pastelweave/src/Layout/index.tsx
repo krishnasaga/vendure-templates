@@ -11,6 +11,7 @@ const Layout = ({ children }: { children: ReactElement }) => {
         <div className="container mx-auto">
           <Header />
         </div>
+        <hr className="border-t border-gray-200 my-4" />
       </div>
 
       <div className="w-full">{children}</div>

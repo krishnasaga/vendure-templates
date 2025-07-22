@@ -1,6 +1,6 @@
 // src/components/CategorySection.tsx
 
-import CategoryCardVariantA from 'react-cart/src/components/CategoryCard-VariantA';
+import CategoryInstaCard from 'react-cart/src/components/CategoryInstaComponent';
 
 const collections = [
   {
@@ -58,7 +58,7 @@ const CategorySection = () => {
     <section className="max-w-[1200px]  mt-10 mx-auto w-full px-0 md:px-0">
       <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
         {collections.map((item, idx) => (
-          <CategoryCardVariantA
+          <CategoryInstaCard
             key={idx}
             title={item.title}
             imageUrl={item.imageUrl}
