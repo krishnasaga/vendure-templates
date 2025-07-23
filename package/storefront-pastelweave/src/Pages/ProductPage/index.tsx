@@ -10,7 +10,6 @@ import {
   FaListUl, FaShippingFast, FaGift, FaUndoAlt, FaTruckMoving,
   FaInfoCircle, FaHandsWash
 } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
 
 
 const mainImages = [
@@ -70,7 +69,6 @@ const AccordionSection = ({ title, icon }: AccordionSectionProps) => {
 
 
 const ProductPage = () => {
-  const { slug } = useParams();
   const [qty, setQty] = useState(1);
   const [stickyRight, setStickyRight] = useState(false);
   const [showFooterBar, setShowFooterBar] = useState(false);

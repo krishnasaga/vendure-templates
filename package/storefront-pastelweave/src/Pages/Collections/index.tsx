@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 import Layout from '../../Layout';
 import SideFilters from '../../SideFilter';
 import ProductPageCard from '../../ProductPageCard';
-import SortDropdown from '../../SortDropdown';
+// import SortDropdown from '../../SortDropdown';
 
 const products = [
   {
@@ -87,7 +87,7 @@ const products = [
 ];
 
 export const CollectionsPage = () => {
-  const [sortOption, setSortOption] = useState('Sort');
+  // const [setSortOption] = useState('Sort');
   const rightContentRef = useRef<HTMLDivElement>(null);
   const [rightHeight, setRightHeight] = useState<number | undefined>();
 
@@ -117,7 +117,7 @@ export const CollectionsPage = () => {
               {products.length} Products
             </div>
 
-            <SortDropdown onSortChange={(value) => setSortOption(value)} />
+            {/* <SortDropdown onSortChange={(value) => setSortOption(value)} /> */}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
