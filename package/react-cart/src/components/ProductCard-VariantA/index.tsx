@@ -12,7 +12,7 @@ export default function ProductCard({
   rating = 5,
 }: ProductCardProps) {
   return (
-    <div className="w-full overflow-hidden text-center">
+    <div className="w-full overflow-hidden text-center" data-component="ProductCard-VariantA">
       {/* Product Image */}
       <img
         src={imageUrl}

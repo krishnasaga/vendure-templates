@@ -17,10 +17,10 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products, CardCompone
   };
 
   return (
-    <div className="relative container mx-auto my-8">
+    <div className="relative container mx-auto my-8" data-component="ProductCarousel-VariantA">
       <div className='flex justify-between items-center mb-4'>
         <h2 className="text-2xl font-bold text-secondary-900">Featured Products</h2>
-        
+
       </div>
       {/* Left Arrow */}
       <button

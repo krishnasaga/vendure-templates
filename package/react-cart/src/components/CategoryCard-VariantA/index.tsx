@@ -6,7 +6,7 @@ interface CategoryCardProps {
 
 const CategoryCardVariantA = ({ title, imageUrl, height = 415 }: CategoryCardProps) => {
   return (
-    <div className="text-center">
+    <div className="text-center" data-component="CategoryCard-VariantA">
       <img
         src={imageUrl}
         alt={title}
