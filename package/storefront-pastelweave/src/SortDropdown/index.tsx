@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
 const SortDropdown = ({ onSortChange }: { onSortChange: (value: string) => void }) => {

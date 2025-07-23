@@ -1,16 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const SlideImage = ({ src = "", alt = "", className = "", ...props }) => {
   const [loaded, setLoaded] = useState(false);
-  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (!src) return;
-    if (!imageRef?.current) {
-      imageRef.current = new window.Image();
-    }
-    imageRef.current.src = src;
-    imageRef.current.onload = () => setLoaded(true);
+
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setLoaded(true);
   }, [src]);
 
   return (

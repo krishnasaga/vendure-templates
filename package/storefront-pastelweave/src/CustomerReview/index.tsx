@@ -1,5 +1,3 @@
-import React from 'react';
-
 const StarIcon = () => (
   <svg
     className="w-3 h-3 text-orange-400"
