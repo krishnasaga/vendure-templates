@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaPinterestP, FaYoutube } from 'react-icons/f
 
 const FooterVariantA = () => {
   return (
-    <footer className="bg-footer-gray text-secondary-900 text-sm font-light relative overflow-hidden mt-20">
+    <footer className="bg-footer-gray text-secondary-900 text-sm font-light relative overflow-hidden mt-20" data-component="Footer-VariantA">
       {/* Top Section: Stay in Touch */}
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-center gap-6 px-4 md:px-10 pt-10 pb-8 text-white">
         <p className="font-semibold text-lg md:text-xl font-light">Stay in touch with us</p>
@@ -91,7 +91,7 @@ const FooterVariantA = () => {
                   className="w-[80px] h-[80px] object-cover"
                 />
               </div>
-            </div>            
+            </div>
           </div>
         </div>
       </div>

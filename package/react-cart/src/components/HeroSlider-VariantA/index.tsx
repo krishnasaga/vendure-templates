@@ -201,7 +201,10 @@ export const HeroCarousel = (props: { className: string }) => {
   }, [slides.length]);
 
   return (
-    <div className={`relative w-full  overflow-hidden ${props?.className}`}>
+    <div
+      className={`relative w-full  overflow-hidden ${props?.className}`}
+      data-component="HeroSlider-VariantA"
+    >
       <div className="absolute inset-0 transition-all duration-700">
         {slides[index]}
       </div>
