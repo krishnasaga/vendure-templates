@@ -7,6 +7,7 @@ import MobileMenu from './MobileMenu';
 import logo1 from './logo1.png';
 import { MdArrowDropDown } from 'react-icons/md';
 import CartDrawer from 'react-cart/src/components/Cart-VariantA';
+import { Link } from 'react-router-dom';
 
 const NAV_ITEMS = [
   'Apparel',
@@ -46,7 +47,9 @@ const HeaderVariantA = () => {
         onClick={() => setMobileMenuOpen(true)}
         className="text-gray-600 text-2xl cursor-pointer"
       />
-      <img src={logo1} alt="Logo" className=" h-10 w-auto" />
+      <Link to="/">
+        <img src={logo1} alt="Logo" className="h-10 w-auto cursor-pointer" />
+      </Link>
     </div>
     <div className="flex items-center gap-4">
       <FaUser className="cursor-pointer text-gray-700 text-lg" />
@@ -73,7 +76,9 @@ const HeaderVariantA = () => {
   {/* Desktop Header */}
   <div className="hidden md:flex justify-between items-start pt-2 pb-2">
     <div className="flex items-center gap-4">
-      <img src={logo1} alt="Logo" className="h-[48px] w-auto mt-4" />
+      <Link to="/">
+        <img src={logo1} alt="Logo" className="h-[48px] w-auto mt-4 cursor-pointer" />
+      </Link>
     </div>
 
     <div className="flex flex-col items-end">

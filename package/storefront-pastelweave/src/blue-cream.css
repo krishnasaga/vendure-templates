@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@source "../../react-cart/src";
+
+.container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Override Tailwind Theme via Custom Properties */
+:root {
+  /* Container Sizes (customized) */
+  --container-3xs: 18rem;
+  --container-2xs: 18rem;
+  --container-xs: 18rem;
+  --container-sm: 20rem;
+  --container-md: 20rem;
+  --container-lg: 20rem;
+  --container-xl: 20rem;
+  --container-2xl: 20rem;
+  --container-3xl: 20rem;
+  --container-4xl: 20rem;
+  --container-5xl: 18rem;
+  --container-6xl: 18rem;
+  --container-7xl: 18rem;
+
+  /* Typography */
+  --text-xs: 0.75rem;
+  --text-xs-weight: 300;
+
+  
+  --color-primary-50: #F5F8FF;
+  --color-primary-100: #E0ECFF;
+  --color-primary-200: #BFDFFF;
+  --color-primary-300: #99CEFF;
+  --color-primary-400: #66B5FF;
+  --color-primary-500: #339BFF;
+  --color-primary-600: #007FFF;
+  --color-primary-700: #0066CC;
+  --color-primary-800: #004C99;
+  --color-primary-900: #003366;
+
+  --color-secondary-50: #FFFDF8;
+  --color-secondary-100: #FFF9E6;
+  --color-secondary-200: #FFF4CC;
+  --color-secondary-300: #FFECA3;
+  --color-secondary-400: #FFE47A;
+  --color-secondary-500: #FFDA4D;
+  --color-secondary-600: #F5C10F;
+  --color-secondary-700: #D1A20B;
+  --color-secondary-800: #AD8408;
+  --color-secondary-900: #8A6605;
+}
+
+/* Animations */
+@keyframes slide-up-fade {
+  0% { opacity: 0; transform: translateY(80px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-down-fade {
+  0% { opacity: 0; transform: translateY(-80px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide-left-fade {
+  0% { opacity: 0; transform: translateX(80px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-right-fade {
+  0% { opacity: 0; transform: translateX(-80px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(1); }
+  100% { opacity: 1; transform: scale(0.5); }
+}
+
+.animate-slide-up-fade { animation: slide-up-fade 0.8s ease-out forwards; }
+.animate-slide-down-fade { animation: slide-down-fade 0.8s ease-out forwards; }
+.animate-slide-left-fade { animation: slide-left-fade 0.8s ease-out forwards; }
+.animate-slide-right-fade { animation: slide-right-fade 0.8s ease-out forwards; }
+.animation-scale-in { animation: scale-in 0.8s ease-out forwards; }
+
+.text-primary-900 { color: var(--color-primary-900); }
+.bg-primary-900 { background-color: var(--color-primary-900); }
+.text-secondary-800 { color: var(--color-secondary-800); }
+.bg-secondary-900 { background-color: var(--color-secondary-900); }
+.bg-secondary-700 { background-color: var(--color-secondary-700); }
