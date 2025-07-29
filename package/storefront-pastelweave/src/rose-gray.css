@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @source "../../react-cart/src";
 
 .container {
@@ -10,8 +9,9 @@
   padding-right: 1rem;
 }
 
-/* Override container sizes */
-@theme {
+/* Override Tailwind Theme via Custom Properties */
+:root {
+  /* Container Sizes (customized) */
   --container-3xs: 18rem;
   --container-2xs: 18rem;
   --container-xs: 18rem;
@@ -25,109 +25,63 @@
   --container-5xl: 18rem;
   --container-6xl: 18rem;
   --container-7xl: 18rem;
-  /* You can customize, e.g.: --
-     --container-2xl: 1400px;
-  --container-lg: initial;  // To disable default and control manually */
-}
 
-@theme {
+  /* Typography */
   --text-xs: 0.75rem;
   --text-xs-weight: 300;
-}
-/* animations.css (or inside your main Tailwind CSS file) */
 
-@theme  {
-  --color-primary: #F3A71E;
-  --color-primary-50:  #FFF8EC;
-  --color-primary-100: #FFEFCB;
-  --color-primary-200: #FFE39D;
-  --color-primary-300: #FFD66D;
-  --color-primary-400: #FDC53D;
-  --color-primary-500: #F3A71E;
-  --color-primary-600: #D78613;
-  --color-primary-700: #B3660A;
-  --color-primary-800: #955107;
-  --color-primary-900: #7A3D00;
+  
+  --color-primary-50: #fdf1f4;
+  --color-primary-100: #fbd8e1;
+  --color-primary-200: #f8bacc;
+  --color-primary-300: #f49bb6;
+  --color-primary-400: #f080a3;
+  --color-primary-500: #ec6691;
+  --color-primary-600: #d44c77;
+  --color-primary-700: #b53f64;
+  --color-primary-800: #953251;
+  --color-primary-900: #75253e;
 
-  /* Secondary (Gray) Shades */
-  --color-secondary-50:  #F8F8F8;
-  --color-secondary-100: #E8E8E8;
-  --color-secondary-200: #D8D8D8;
-  --color-secondary-300: #C0C0C0;
-  --color-secondary-400: #A8A8A8;
-  --color-secondary-500: #909090;
-  --color-secondary-600: #787878;
-  --color-secondary-700: #606060;
-  --color-secondary-800: #484848;
-  --color-secondary-900: #303030;
-
-  /* Footer Background */
-  --color-footer-gray: #a4a4a4;
+  --color-secondary-50: #f9f9fa;
+  --color-secondary-100: #e6e7e9;
+  --color-secondary-200: #cfd1d4;
+  --color-secondary-300: #b7babf;
+  --color-secondary-400: #a0a3aa;
+  --color-secondary-500: #898d95;
+  --color-secondary-600: #707278;
+  --color-secondary-700: #5a5c60;
+  --color-secondary-800: #434548;
+  --color-secondary-900: #2d2f30;
 }
 
 /* Animations */
 @keyframes slide-up-fade {
-  0% {
-    opacity: 0;
-    transform: translateY(80px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(80px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-
+@keyframes slide-down-fade {
+  0% { opacity: 0; transform: translateY(-80px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 @keyframes slide-left-fade {
-  0% {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translateX(80px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes slide-right-fade {
-  0% {
-    opacity: 0;
-    transform: translateX(-80px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translateX(-80px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(0.5);
-  }
+  0% { opacity: 0; transform: scale(1); }
+  100% { opacity: 1; transform: scale(0.5); }
 }
 
-/* Add utility classes manually */
-.animate-slide-up-fade {
-  animation: slide-up-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-}
-.animate-slide-down-fade {
-  animation: slide-down-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-}
-.animate-slide-left-fade {
-  animation: slide-left-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-}
-.animate-slide-right-fade {
-  animation: slide-right-fade 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-}
-.animation-scale-in {
-  animation: scale-in 0.8s ease-out forwards;
-}
+.animate-slide-up-fade { animation: slide-up-fade 0.8s ease-out forwards; }
+.animate-slide-down-fade { animation: slide-down-fade 0.8s ease-out forwards; }
+.animate-slide-left-fade { animation: slide-left-fade 0.8s ease-out forwards; }
+.animate-slide-right-fade { animation: slide-right-fade 0.8s ease-out forwards; }
+.animation-scale-in { animation: scale-in 0.8s ease-out forwards; }
 
-/* Color Utilities */
 .text-primary-50 { color: var(--color-primary-50); }
 .text-primary-100 { color: var(--color-primary-100); }
 .text-primary-200 { color: var(--color-primary-200); }
@@ -172,16 +126,3 @@
 .bg-secondary-700 { background-color: var(--color-secondary-700); }
 .bg-secondary-800 { background-color: var(--color-secondary-800); }
 .bg-secondary-900 { background-color: var(--color-secondary-900); }
-
-
-.bg-footer-gray {
-  background-color: var(--color-footer-gray);
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
