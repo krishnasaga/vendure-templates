@@ -16,7 +16,7 @@ import CategoryInsta from '../../CategoryInsta';
 export const HomePage = () => {
   return (
     <Layout>
-      <main className="w-full text-green-900">
+      <main className="w-full">
         <HeroSlider className="h-[calc(100vh-180px)]" />
         <USPs className="mt-10"/>
         <CategorySection />
