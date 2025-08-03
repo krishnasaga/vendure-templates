@@ -44,10 +44,8 @@ const SideFilters = () => {
   };
 
   return (
-    <div className="w-full md:w-[250px] px pr-2 text-secondary-900">
-      {/* Top Heading */}
+    <div className="w-full text-secondary-900">
       <h2 className="text-md font-semibold mb-4 tracking-wide">Filters</h2>
-
       {filtersData.map((filter) => (
         <div key={filter.title} className="border-b border-gray-300 pb-2 mb-2">
           <button
