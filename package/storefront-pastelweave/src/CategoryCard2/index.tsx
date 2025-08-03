@@ -27,29 +27,32 @@ const collectionsA = [
 ];
 
 const CategoryCard2 = () => {
-  const sliderRef = useRef<Slider | null>(null);
+  const desktopSliderRef = useRef<Slider | null>(null);
+  const mobileSliderRef = useRef<Slider | null>(null);
 
-  const settings = {
+  const desktopSettings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+  };
+
+  const mobileSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
     <section className="max-w-[1200px] mt-20 mx-auto w-full px-4 md:px-0">
-      <div className="flex flex-col md:flex-row gap-8 items-center relative">
-        <div className="w-full md:w-1/3 relative">
+      {/* Desktop + Tablet View */}
+      <div className="hidden md:flex flex-row gap-8 items-center relative">
+        <div className="w-full md:w-1/3">
           <CategoryCardVariantB
             title="New Arrivals"
             subtitle="Crafted with love"
@@ -59,14 +62,14 @@ const CategoryCard2 = () => {
           />
           <button
             className="absolute -left-6 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow hover:bg-gray-100"
-            onClick={() => sliderRef.current?.slickPrev()}
+            onClick={() => desktopSliderRef.current?.slickPrev()}
           >
             <FaArrowLeft size={18} />
           </button>
         </div>
 
         <div className="w-full md:w-2/3 relative">
-          <Slider ref={sliderRef} {...settings}>
+          <Slider ref={desktopSliderRef} {...desktopSettings}>
             {collectionsA.map((item, idx) => (
               <div key={idx} className="px-2">
                 <CategoryCardVariantA
@@ -80,11 +83,40 @@ const CategoryCard2 = () => {
 
           <button
             className="absolute -right-6 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow hover:bg-gray-100"
-            onClick={() => sliderRef.current?.slickNext()}
+            onClick={() => desktopSliderRef.current?.slickNext()}
           >
             <FaArrowRight size={18} />
           </button>
         </div>
+      </div>
+
+      {/* Mobile View */}
+      <div className="md:hidden relative">
+        <button
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow"
+          onClick={() => mobileSliderRef.current?.slickPrev()}
+        >
+          <FaArrowLeft size={16} />
+        </button>
+
+        <Slider ref={mobileSliderRef} {...mobileSettings}>
+          {collectionsA.map((item, idx) => (
+            <div key={idx} className="px-2">
+              <CategoryCardVariantA
+                title={item.title}
+                imageUrl={item.imageUrl}
+                height={380}
+              />
+            </div>
+          ))}
+        </Slider>
+
+        <button
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow"
+          onClick={() => mobileSliderRef.current?.slickNext()}
+        >
+          <FaArrowRight size={16} />
+        </button>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import ProductCard from "react-cart/src/components/ProductCard-VariantA";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
@@ -28,9 +28,19 @@ const collections = [
   },
 ];
 
+const getCardSize = (width: number) => {
+  if (width < 640) {
+    return { width: 150, height: 250 };
+  } else if (width < 900) {
+    return { width: 180, height: 360 };
+  } else {
+    return { width: 220, height: 420 };
+  }
+};
+
 const NextArrow = ({ onClick }: { onClick?: () => void }) => (
   <div
-    className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100"
+    className="absolute right-2 top-1/3 transform -translate-y-1/3 z-10 cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100"
     onClick={onClick}
   >
     <FaArrowRight size={18} />
@@ -39,35 +49,50 @@ const NextArrow = ({ onClick }: { onClick?: () => void }) => (
 
 const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
   <div
-    className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100"
+    className="absolute left-2 top-1/3 transform -translate-y-1/3 z-10 cursor-pointer bg-white p-2 rounded-full shadow hover:bg-gray-100"
     onClick={onClick}
   >
     <FaArrowLeft size={18} />
   </div>
 );
 
-
 const ProductSection1 = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const cardSize = getCardSize(windowWidth);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: windowWidth < 640 ? 2 : 4,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 640,
         settings: {
           slidesToShow: 2,
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 900,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
         },
       },
     ],
@@ -84,11 +109,19 @@ const ProductSection1 = () => {
 
       <Slider {...settings}>
         {collections.map((item, idx) => (
-          <div key={idx} className="px-2">
+          <div
+            key={idx}
+            className="px-2 flex justify-center"
+            style={{
+              width: cardSize.width,
+              maxWidth: "100%",
+            }}
+          >
             <ProductCard
               title={item.title}
               imageUrl={item.imageUrl}
               price={item.price}
+              height={cardSize.height}
             />
           </div>
         ))}
