@@ -3,7 +3,7 @@ interface ProductCardProps {
   price: number;
   imageUrl: string;
   rating?: number;
-  sizes?: string[];
+  height?: number;
 }
 
 export default function ProductCardB({
@@ -11,17 +11,16 @@ export default function ProductCardB({
   price,
   imageUrl,
   rating = 5,
+  height = 420,
 }: ProductCardProps) {
   return (
     <div className="w-full overflow-hidden text-center">
-      {/* Image container with size overlay */}
-      <div className="relative">        
-
-        {/* Product Image */}
+      <div className="relative">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-[420px] object-cover"
+          className="w-full object-cover"
+          style={{ height: `${height}px` }}
         />
       </div>
 

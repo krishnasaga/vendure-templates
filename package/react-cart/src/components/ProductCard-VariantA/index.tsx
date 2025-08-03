@@ -3,6 +3,7 @@ interface ProductCardProps {
   price: number;
   imageUrl: string;
   rating?: number;
+  height?: number; // Add height prop
 }
 
 export default function ProductCard({
@@ -10,6 +11,7 @@ export default function ProductCard({
   price,
   imageUrl,
   rating = 5,
+  height = 420,
 }: ProductCardProps) {
   return (
     <div className="w-full overflow-hidden text-center" data-component="ProductCard-VariantA">
@@ -17,7 +19,8 @@ export default function ProductCard({
       <img
         src={imageUrl}
         alt={title}
-        className="w-full h-[420px] object-cover"
+        className="w-full object-cover"
+        style={{ height: `${height}px` }} // Use height prop
       />
 
       {/* Product Info */}

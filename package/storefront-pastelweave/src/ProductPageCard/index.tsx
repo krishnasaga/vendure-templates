@@ -8,6 +8,7 @@ interface ProductProps {
   title: string;
   price: number;
   mrp: number;
+  height?: number; // Add height prop
 }
 
 const ProductPageCard: React.FC<ProductProps> = ({
@@ -17,6 +18,7 @@ const ProductPageCard: React.FC<ProductProps> = ({
   title,
   price,
   mrp,
+  height = 320, // Default height if not provided
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -35,7 +37,10 @@ const ProductPageCard: React.FC<ProductProps> = ({
   return (
     <div className="relative text-secondary-900 group overflow-hidden">
       {/* Image Carousel */}
-      <div className="relative h-[420px] overflow-hidden">
+      <div
+        className="relative overflow-hidden"
+        style={{ height: `${height}px` }}
+      >
         <img
           src={images[currentImageIndex]}
           alt={title}
@@ -57,14 +62,14 @@ const ProductPageCard: React.FC<ProductProps> = ({
           <>
             <button
               onClick={handlePrev}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white hover: z-10 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <FaChevronLeft size={16} />
             </button>
 
             <button
               onClick={handleNext}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white hover: z-10 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity"
             >
               <FaChevronRight size={16} />
             </button>
@@ -80,7 +85,9 @@ const ProductPageCard: React.FC<ProductProps> = ({
         </div>
 
         {/* Title */}
-        <h3 className="font-medium text-[13px] leading-snug mt-4 mb-2">{title}</h3>
+        <h3 className="font-medium text-[13px] leading-snug mt-4 mb-2">
+          {title}
+        </h3>
 
         {/* Price and MRP */}
         <div className="flex items-center gap-2 mb-4">
