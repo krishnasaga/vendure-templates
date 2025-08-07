@@ -1,0 +1,161 @@
+Product ID,Variant ID,Product Title,Category,Price (₹),Material,Color Name,Color Code,Size,Gender,In Stock
+011,011-S-OG,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Olive Green,#808000,S,Women,9
+011,011-M-OG,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Olive Green,#808000,M,Women,9
+011,011-L-OG,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Olive Green,#808000,L,Women,9
+011,011-XL-OG,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Olive Green,#808000,XL,Women,19
+011,011-S-DR,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Dusty Rose,#DCAE96,S,Women,10
+011,011-M-DR,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Dusty Rose,#DCAE96,M,Women,19
+011,011-L-DR,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Dusty Rose,#DCAE96,L,Women,15
+011,011-XL-DR,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Dusty Rose,#DCAE96,XL,Women,11
+011,011-S-SB,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Steel Blue,#4682B4,S,Women,15
+011,011-M-SB,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Steel Blue,#4682B4,M,Women,24
+011,011-L-SB,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Steel Blue,#4682B4,L,Women,6
+011,011-XL-SB,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Steel Blue,#4682B4,XL,Women,25
+011,011-S-MY,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Marigold Yellow,#FADA5E,S,Women,17
+011,011-M-MY,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Marigold Yellow,#FADA5E,M,Women,7
+011,011-L-MY,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Marigold Yellow,#FADA5E,L,Women,5
+011,011-XL-MY,‘Royal Path’ Handcrafted Cotton Kurta with Embroidered Placket and Side Slits,Kurta,2616,Cotton,Marigold Yellow,#FADA5E,XL,Women,17
+012,012-S-OG,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Olive Green,#808000,S,Women,16
+012,012-M-OG,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Olive Green,#808000,M,Women,10
+012,012-L-OG,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Olive Green,#808000,L,Women,18
+012,012-XL-OG,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Olive Green,#808000,XL,Women,23
+012,012-S-DR,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Dusty Rose,#DCAE96,S,Women,25
+012,012-M-DR,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Dusty Rose,#DCAE96,M,Women,6
+012,012-L-DR,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Dusty Rose,#DCAE96,L,Women,15
+012,012-XL-DR,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Dusty Rose,#DCAE96,XL,Women,12
+012,012-S-SB,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Steel Blue,#4682B4,S,Women,22
+012,012-M-SB,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Steel Blue,#4682B4,M,Women,6
+012,012-L-SB,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Steel Blue,#4682B4,L,Women,20
+012,012-XL-SB,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Steel Blue,#4682B4,XL,Women,15
+012,012-S-MY,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Marigold Yellow,#FADA5E,S,Women,12
+012,012-M-MY,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Marigold Yellow,#FADA5E,M,Women,8
+012,012-L-MY,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Marigold Yellow,#FADA5E,L,Women,15
+012,012-XL-MY,‘Earth Tone’ Pure Linen Kurta with Mandarin Collar and Wooden Buttons,Kurta,1663,Linen,Marigold Yellow,#FADA5E,XL,Women,24
+013,013-S-OG,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Olive Green,#808000,S,Women,12
+013,013-M-OG,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Olive Green,#808000,M,Women,11
+013,013-L-OG,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Olive Green,#808000,L,Women,19
+013,013-XL-OG,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Olive Green,#808000,XL,Women,8
+013,013-S-DR,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Dusty Rose,#DCAE96,S,Women,12
+013,013-M-DR,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Dusty Rose,#DCAE96,M,Women,16
+013,013-L-DR,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Dusty Rose,#DCAE96,L,Women,16
+013,013-XL-DR,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Dusty Rose,#DCAE96,XL,Women,8
+013,013-S-SB,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Steel Blue,#4682B4,S,Women,25
+013,013-M-SB,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Steel Blue,#4682B4,M,Women,10
+013,013-L-SB,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Steel Blue,#4682B4,L,Women,5
+013,013-XL-SB,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Steel Blue,#4682B4,XL,Women,11
+013,013-S-MY,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Marigold Yellow,#FADA5E,S,Women,22
+013,013-M-MY,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Marigold Yellow,#FADA5E,M,Women,6
+013,013-L-MY,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Marigold Yellow,#FADA5E,L,Women,14
+013,013-XL-MY,‘Evening Bloom’ Printed Mulmul Kurta with 3/4 Sleeves and A-Line Silhouette,Kurta,2127,Cotton,Marigold Yellow,#FADA5E,XL,Women,19
+014,014-S-OG,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Olive Green,#808000,S,Women,25
+014,014-M-OG,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Olive Green,#808000,M,Women,25
+014,014-L-OG,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Olive Green,#808000,L,Women,19
+014,014-XL-OG,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Olive Green,#808000,XL,Women,10
+014,014-S-DR,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Dusty Rose,#DCAE96,S,Women,25
+014,014-M-DR,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Dusty Rose,#DCAE96,M,Women,8
+014,014-L-DR,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Dusty Rose,#DCAE96,L,Women,16
+014,014-XL-DR,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Dusty Rose,#DCAE96,XL,Women,14
+014,014-S-SB,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Steel Blue,#4682B4,S,Women,16
+014,014-M-SB,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Steel Blue,#4682B4,M,Women,12
+014,014-L-SB,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Steel Blue,#4682B4,L,Women,17
+014,014-XL-SB,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Steel Blue,#4682B4,XL,Women,6
+014,014-S-MY,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Marigold Yellow,#FADA5E,S,Women,19
+014,014-M-MY,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Marigold Yellow,#FADA5E,M,Women,23
+014,014-L-MY,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Marigold Yellow,#FADA5E,L,Women,21
+014,014-XL-MY,‘Desert Sky’ Khadi Cotton Kurta with Contrast Stitch and Side Pockets,Kurta,1931,Khadi,Marigold Yellow,#FADA5E,XL,Women,25
+015,015-S-OG,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Olive Green,#808000,S,Women,15
+015,015-M-OG,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Olive Green,#808000,M,Women,24
+015,015-L-OG,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Olive Green,#808000,L,Women,25
+015,015-XL-OG,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Olive Green,#808000,XL,Women,23
+015,015-S-DR,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Dusty Rose,#DCAE96,S,Women,6
+015,015-M-DR,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Dusty Rose,#DCAE96,M,Women,23
+015,015-L-DR,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Dusty Rose,#DCAE96,L,Women,12
+015,015-XL-DR,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Dusty Rose,#DCAE96,XL,Women,19
+015,015-S-SB,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Steel Blue,#4682B4,S,Women,5
+015,015-M-SB,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Steel Blue,#4682B4,M,Women,9
+015,015-L-SB,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Steel Blue,#4682B4,L,Women,19
+015,015-XL-SB,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Steel Blue,#4682B4,XL,Women,22
+015,015-S-MY,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Marigold Yellow,#FADA5E,S,Women,24
+015,015-M-MY,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Marigold Yellow,#FADA5E,M,Women,15
+015,015-L-MY,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Marigold Yellow,#FADA5E,L,Women,22
+015,015-XL-MY,‘Lotus Whisper’ Chikankari Embroidered Kurta in Pastel Shades,Kurta,2329,Cotton,Marigold Yellow,#FADA5E,XL,Women,18
+016,016-S-OG,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Olive Green,#808000,S,Women,18
+016,016-M-OG,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Olive Green,#808000,M,Women,5
+016,016-L-OG,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Olive Green,#808000,L,Women,17
+016,016-XL-OG,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Olive Green,#808000,XL,Women,15
+016,016-S-DR,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Dusty Rose,#DCAE96,S,Women,14
+016,016-M-DR,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Dusty Rose,#DCAE96,M,Women,19
+016,016-L-DR,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Dusty Rose,#DCAE96,L,Women,6
+016,016-XL-DR,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Dusty Rose,#DCAE96,XL,Women,7
+016,016-S-SB,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Steel Blue,#4682B4,S,Women,18
+016,016-M-SB,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Steel Blue,#4682B4,M,Women,17
+016,016-L-SB,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Steel Blue,#4682B4,L,Women,24
+016,016-XL-SB,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Steel Blue,#4682B4,XL,Women,17
+016,016-S-MY,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Marigold Yellow,#FADA5E,S,Women,13
+016,016-M-MY,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Marigold Yellow,#FADA5E,M,Women,18
+016,016-L-MY,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Marigold Yellow,#FADA5E,L,Women,15
+016,016-XL-MY,‘Twilight Hue’ Solid Kurta with Side Tassels and Soft Drape Fit,Kurta,2417,Cotton,Marigold Yellow,#FADA5E,XL,Women,24
+017,017-S-OG,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Olive Green,#808000,S,Women,9
+017,017-M-OG,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Olive Green,#808000,M,Women,22
+017,017-L-OG,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Olive Green,#808000,L,Women,23
+017,017-XL-OG,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Olive Green,#808000,XL,Women,8
+017,017-S-DR,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Dusty Rose,#DCAE96,S,Women,7
+017,017-M-DR,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Dusty Rose,#DCAE96,M,Women,20
+017,017-L-DR,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Dusty Rose,#DCAE96,L,Women,20
+017,017-XL-DR,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Dusty Rose,#DCAE96,XL,Women,16
+017,017-S-SB,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Steel Blue,#4682B4,S,Women,16
+017,017-M-SB,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Steel Blue,#4682B4,M,Women,16
+017,017-L-SB,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Steel Blue,#4682B4,L,Women,12
+017,017-XL-SB,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Steel Blue,#4682B4,XL,Women,18
+017,017-S-MY,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Marigold Yellow,#FADA5E,S,Women,22
+017,017-M-MY,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Marigold Yellow,#FADA5E,M,Women,5
+017,017-L-MY,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Marigold Yellow,#FADA5E,L,Women,12
+017,017-XL-MY,‘Heritage Line’ Ikat Print Kurta with Button Down Yoke and Box Pleats,Kurta,1829,Cotton,Marigold Yellow,#FADA5E,XL,Women,21
+018,018-S-OG,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Olive Green,#808000,S,Women,20
+018,018-M-OG,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Olive Green,#808000,M,Women,13
+018,018-L-OG,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Olive Green,#808000,L,Women,7
+018,018-XL-OG,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Olive Green,#808000,XL,Women,22
+018,018-S-DR,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Dusty Rose,#DCAE96,S,Women,8
+018,018-M-DR,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Dusty Rose,#DCAE96,M,Women,22
+018,018-L-DR,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Dusty Rose,#DCAE96,L,Women,7
+018,018-XL-DR,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Dusty Rose,#DCAE96,XL,Women,7
+018,018-S-SB,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Steel Blue,#4682B4,S,Women,8
+018,018-M-SB,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Steel Blue,#4682B4,M,Women,8
+018,018-L-SB,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Steel Blue,#4682B4,L,Women,19
+018,018-XL-SB,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Steel Blue,#4682B4,XL,Women,22
+018,018-S-MY,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Marigold Yellow,#FADA5E,S,Women,20
+018,018-M-MY,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Marigold Yellow,#FADA5E,M,Women,20
+018,018-L-MY,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Marigold Yellow,#FADA5E,L,Women,9
+018,018-XL-MY,‘Spring Verse’ Light Cotton Kurta with Pintucks and Floral Motifs,Kurta,1269,Cotton,Marigold Yellow,#FADA5E,XL,Women,18
+019,019-S-OG,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Olive Green,#808000,S,Women,5
+019,019-M-OG,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Olive Green,#808000,M,Women,5
+019,019-L-OG,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Olive Green,#808000,L,Women,24
+019,019-XL-OG,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Olive Green,#808000,XL,Women,21
+019,019-S-DR,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Dusty Rose,#DCAE96,S,Women,15
+019,019-M-DR,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Dusty Rose,#DCAE96,M,Women,22
+019,019-L-DR,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Dusty Rose,#DCAE96,L,Women,17
+019,019-XL-DR,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Dusty Rose,#DCAE96,XL,Women,8
+019,019-S-SB,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Steel Blue,#4682B4,S,Women,16
+019,019-M-SB,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Steel Blue,#4682B4,M,Women,7
+019,019-L-SB,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Steel Blue,#4682B4,L,Women,9
+019,019-XL-SB,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Steel Blue,#4682B4,XL,Women,21
+019,019-S-MY,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Marigold Yellow,#FADA5E,S,Women,25
+019,019-M-MY,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Marigold Yellow,#FADA5E,M,Women,22
+019,019-L-MY,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Marigold Yellow,#FADA5E,L,Women,15
+019,019-XL-MY,‘Monsoon Mist’ Linen Blend Kurta with Curved Hem and Ladder Lace Detail,Kurta,2628,Linen,Marigold Yellow,#FADA5E,XL,Women,8
+020,020-S-OG,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Olive Green,#808000,S,Women,14
+020,020-M-OG,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Olive Green,#808000,M,Women,7
+020,020-L-OG,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Olive Green,#808000,L,Women,5
+020,020-XL-OG,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Olive Green,#808000,XL,Women,16
+020,020-S-DR,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Dusty Rose,#DCAE96,S,Women,13
+020,020-M-DR,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Dusty Rose,#DCAE96,M,Women,11
+020,020-L-DR,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Dusty Rose,#DCAE96,L,Women,6
+020,020-XL-DR,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Dusty Rose,#DCAE96,XL,Women,8
+020,020-S-SB,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Steel Blue,#4682B4,S,Women,23
+020,020-M-SB,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Steel Blue,#4682B4,M,Women,11
+020,020-L-SB,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Steel Blue,#4682B4,L,Women,20
+020,020-XL-SB,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Steel Blue,#4682B4,XL,Women,19
+020,020-S-MY,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Marigold Yellow,#FADA5E,S,Women,12
+020,020-M-MY,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Marigold Yellow,#FADA5E,M,Women,7
+020,020-L-MY,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Marigold Yellow,#FADA5E,L,Women,22
+020,020-XL-MY,‘Urban Grace’ Panelled Cotton Kurta with Pocket Embellishment,Kurta,1788,Cotton,Marigold Yellow,#FADA5E,XL,Women,14
