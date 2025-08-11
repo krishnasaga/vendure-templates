@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const xlsx = require('xlsx');
 
 const nodeFetch = require('node-fetch');
@@ -9,35 +10,229 @@ const endpoint = 'http://localhost:3000/admin-api';
 const adminEmail = 'superadmin';
 const adminPassword = 'superadmin';
 
-const workbook = xlsx.readFile('./Okhai_Fashion_Catalog_10_Sarees.xlsx');
-const sheetName = workbook.SheetNames[0];
-const sheet = workbook.Sheets[sheetName];
-const rows = xlsx.utils.sheet_to_json(sheet);
-
-const products = {};
-
-rows.forEach(row => {
-  const pid = String(row['Product ID']).padStart(3, '0');
-
-  if (!products[pid]) {
-    products[pid] = {
-      productTitle: row['Product Title'],
-      category: row['Category'],
-      material: row['Material'],
-      variants: []
-    };
+// Function to get the data file path from command line arguments or find one
+function getDataFilePath() {
+  // Check if a file path was provided as a command-line argument
+  const args = process.argv.slice(2);
+  const filePathIndex = args.findIndex(arg => arg === '--file' || arg === '-f');
+  
+  if (filePathIndex !== -1 && args.length > filePathIndex + 1) {
+    const filePath = args[filePathIndex + 1];
+    if (fs.existsSync(filePath)) {
+      return filePath;
+    } else {
+      console.error(`❌ Specified file not found: ${filePath}`);
+      process.exit(1);
+    }
   }
+  
+  // If no valid file path was provided, search for files in the current directory
+  console.log('No specific file provided, searching for Excel/CSV files in the current directory...');
+  
+  const dir = './';
+  const files = fs.readdirSync(dir);
+  // Look for Excel files first, then CSV
+  const excelFile = files.find(file => file.endsWith('.xlsx') || file.endsWith('.xls'));
+  if (excelFile) return path.join(dir, excelFile);
+  
+  const csvFile = files.find(file => file.endsWith('.csv'));
+  if (csvFile) return path.join(dir, csvFile);
+  
+  console.error('❌ No Excel or CSV file found in the current directory');
+  console.error('Please specify a file using: node index.js --file <path/to/file.xlsx>');
+  process.exit(1);
+}
 
-  products[pid].variants.push({
-    variantId: row['Variant ID'],
-    price: Number(row['Price (₹)']),
-    colorName: row['Color Name'],
-    colorCode: row['Color Code'],
-    size: row['Size'],
-    gender: row['Gender'],
-    stock: Number(row['In Stock'])
+// Function to parse data file
+function parseDataFile(filePath) {
+  console.log(`📂 Loading data from: ${filePath}`);
+  
+  // Check if the file exists
+  if (!fs.existsSync(filePath)) {
+    console.error(`❌ File not found: ${filePath}`);
+    process.exit(1);
+  }
+  
+  try {
+    const workbook = xlsx.readFile(filePath);
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const rows = xlsx.utils.sheet_to_json(sheet);
+    
+    if (rows.length === 0) {
+      console.error('❌ No data found in the file');
+      process.exit(1);
+    }
+    
+    console.log(`📊 Found ${rows.length} rows of data`);
+    return rows;
+  } catch (error) {
+    console.error(`❌ Error parsing file: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+// Map common column names to standardized names
+function mapColumnNames(rows) {
+  if (rows.length === 0) return [];
+  
+  const firstRow = rows[0];
+  const keys = Object.keys(firstRow);
+  
+  const columnMap = {
+    // Product ID variations
+    'product id': 'Product ID',
+    'product_id': 'Product ID',
+    'productid': 'Product ID',
+    'prod_id': 'Product ID',
+    'id': 'Product ID',
+    
+    // Title variations
+    'title': 'Product Title',
+    'product title': 'Product Title',
+    'product_title': 'Product Title',
+    'name': 'Product Title',
+    'product name': 'Product Title',
+    'product_name': 'Product Title',
+    
+    // Category variations
+    'category': 'Category',
+    'categories': 'Category',
+    'category_name': 'Category',
+    'product category': 'Category',
+    'product_category': 'Category',
+    'type': 'Category',
+    'product type': 'Category',
+    'product_type': 'Category',
+    
+    // Material variations
+    'material': 'Material',
+    'material_type': 'Material',
+    'fabric': 'Material',
+    'composition': 'Material',
+    
+    // Variant ID variations
+    'variant id': 'Variant ID',
+    'variant_id': 'Variant ID',
+    'variantid': 'Variant ID',
+    'sku': 'Variant ID',
+    
+    // Price variations
+    'price': 'Price (₹)',
+    'price (rs)': 'Price (₹)',
+    'price(rs)': 'Price (₹)',
+    'price_inr': 'Price (₹)',
+    'cost': 'Price (₹)',
+    
+    // Color variations
+    'color': 'Color Name',
+    'colour': 'Color Name',
+    'color name': 'Color Name',
+    'color_name': 'Color Name',
+    
+    // Color code variations
+    'color code': 'Color Code',
+    'color_code': 'Color Code',
+    'colour code': 'Color Code',
+    'color hex': 'Color Code',
+    'hex': 'Color Code',
+    
+    // Size variations
+    'size': 'Size',
+    'size_name': 'Size',
+    'size code': 'Size',
+    
+    // Gender variations
+    'gender': 'Gender',
+    'sex': 'Gender',
+    'for': 'Gender',
+    
+    // Stock variations
+    'stock': 'In Stock',
+    'in stock': 'In Stock',
+    'inventory': 'In Stock',
+    'quantity': 'In Stock',
+    'qty': 'In Stock'
+  };
+  
+  // Create a map for the actual columns in this file
+  const actualColumnMap = {};
+  keys.forEach(key => {
+    const lowerKey = key.toLowerCase();
+    if (columnMap[lowerKey]) {
+      actualColumnMap[key] = columnMap[lowerKey];
+    } else {
+      // Keep original if no mapping found
+      actualColumnMap[key] = key;
+    }
   });
-});
+  
+  // Create new rows with mapped column names
+  return rows.map(row => {
+    const newRow = {};
+    Object.keys(row).forEach(key => {
+      const newKey = actualColumnMap[key] || key;
+      newRow[newKey] = row[key];
+    });
+    return newRow;
+  });
+}
+
+// Function to extract products from mapped rows
+function extractProducts(mappedRows) {
+  const products = {};
+  const requiredFields = ['Product ID', 'Product Title'];
+  const optionalFields = {
+    'Category': 'Uncategorized',
+    'Material': 'Various',
+    'Size': 'One Size',
+    'Color Name': 'Default',
+    'Color Code': '#000000',
+    'Gender': 'Unisex',
+    'Price (₹)': 1000,
+    'In Stock': 10
+  };
+  
+  mappedRows.forEach((row, index) => {
+    // Check if required fields exist
+    const missingFields = requiredFields.filter(field => !row[field] && row[field] !== 0);
+    if (missingFields.length > 0) {
+      console.warn(`⚠️ Row ${index + 1}: Missing required fields: ${missingFields.join(', ')}`);
+      return;
+    }
+    
+    const pid = String(row['Product ID']).padStart(3, '0');
+    
+    if (!products[pid]) {
+      products[pid] = {
+        productTitle: row['Product Title'],
+        category: row['Category'] || optionalFields['Category'],
+        material: row['Material'] || optionalFields['Material'],
+        variants: []
+      };
+    }
+    
+    // Create variant with fallbacks for optional fields
+    products[pid].variants.push({
+      variantId: row['Variant ID'] || `${pid}-V${products[pid].variants.length + 1}`,
+      price: Number(row['Price (₹)'] || optionalFields['Price (₹)']),
+      colorName: row['Color Name'] || optionalFields['Color Name'],
+      colorCode: row['Color Code'] || optionalFields['Color Code'],
+      size: row['Size'] || optionalFields['Size'],
+      gender: row['Gender'] || optionalFields['Gender'],
+      stock: Number(row['In Stock'] !== undefined ? row['In Stock'] : optionalFields['In Stock'])
+    });
+  });
+  
+  console.log(`🏭 Extracted ${Object.keys(products).length} unique products`);
+  return products;
+}
+
+// Find and load data
+const dataFilePath = getDataFilePath();
+const rawRows = parseDataFile(dataFilePath);
+const mappedRows = mapColumnNames(rawRows);
+const products = extractProducts(mappedRows);
 
 let authToken = '';
 
@@ -1492,6 +1687,21 @@ async function getImportedProducts() {
 // Enhance CLI options
 if (require.main === module) {
   const args = process.argv.slice(2);
+  
+  // Add help option
+  if (args.includes('--help') || args.includes('-h')) {
+    console.log('\nUsage: node index.js [options]');
+    console.log('\nOptions:');
+    console.log('  --file, -f <path>    Specify Excel or CSV file to import');
+    console.log('  --view, -v           View imported products');
+    console.log('  --check-variants     Check for products with missing variants');
+    console.log('  --list-categories    List all categories');
+    console.log('  --list-facets        List all facets and their values');
+    console.log('  --reimport <ids>     Reimport specific products by ID');
+    console.log('  --help, -h           Show this help message\n');
+    process.exit(0);
+  }
+  
   if (args.includes('--view') || args.includes('-v')) {
     getImportedProducts().catch(console.error);
   } else if (args.includes('--check-variants')) {
