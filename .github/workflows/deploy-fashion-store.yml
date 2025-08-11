@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: storefront-ci
     steps:
       - name: Add droplet to known_hosts
         run: |
@@ -20,9 +21,8 @@ jobs:
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            REPO_URL="git@github.com:you/your-repo.git"
+            REPO_URL="https://github.com/krishnasaga/vendure-templates.git"
             APP_DIR=“/live-code“
-
             if [ -d "$APP_DIR/.git" ]; then
               echo "Repo exists. Pulling latest changes..."
               cd "$APP_DIR"
