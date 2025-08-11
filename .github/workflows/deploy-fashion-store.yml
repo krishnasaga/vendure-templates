@@ -21,6 +21,7 @@ jobs:
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
+            ls
             REPO_URL="https://github.com/krishnasaga/vendure-templates.git"
             APP_DIR=“/live-code“
             if [ -d "$APP_DIR/.git" ]; then
@@ -31,4 +32,5 @@ jobs:
               echo "Cloning repository..."
               git clone "$REPO_URL" "$APP_DIR"
             fi
+
 
