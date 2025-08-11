@@ -23,17 +23,12 @@ if (!process.env.COOKIE_SECRET) {
 
 export const config: VendureConfig = {
     apiOptions: {
-        port: serverPort,
-        adminApiPath: 'admin-api',
-        shopApiPath: 'shop-api',
-        trustProxy: IS_DEV ? false : 1,
-        // The following options are useful in development mode,
-        // but are best turned off for production for security
-        // reasons.
-        ...(IS_DEV ? {
-            adminApiDebug: true,
-            shopApiDebug: true,
-        } : {}),
+        port: 4002,
+        hostname: '0.0.0.0', // Allow connections from all IPs
+        cors: {
+            origin: ['https://your-domain.com', 'http://localhost:5173'],
+            credentials: true
+        },
     },
     authOptions: {
         tokenMethod: ['bearer', 'cookie'],
