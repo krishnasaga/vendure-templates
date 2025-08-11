@@ -11,7 +11,10 @@
     "build:frontend": "cd frontend && npm run build",
     "start:server": "node ./dist/index.js",
     "start:worker": "node ./dist/index-worker.js",
-    "start": "concurrently npm:start:*"
+    "start": "concurrently npm:start:*",
+    "migration:generate": "ts-node migration generate",
+    "migration:run": "ts-node migration run",
+    "migration:revert": "ts-node migration revert"
   },
   "dependencies": {
     "@vendure/admin-ui-plugin": "3.4.0",
@@ -25,6 +28,7 @@
   "devDependencies": {
     "@vendure/cli": "3.4.0",
     "concurrently": "9.2.0",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "ts-node": "^10.9.2"
   }
 }

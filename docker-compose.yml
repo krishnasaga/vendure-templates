@@ -87,6 +87,19 @@ services:
         labels:
             - "io.vendure.create.name=my-shop"
 
+    # Add your application service
+    vendure:
+        build: .
+        ports:
+            - "4002:4002"  # Main API port
+            - "4004:4004"  # Admin UI port
+        depends_on:
+            - postgres_db
+        environment:
+            - APP_ENV=dev
+            - PORT=4002
+            - COOKIE_SECRET=some_strong_secret_key_for_cookies
+
 volumes:
     postgres_db_data:
         driver: local

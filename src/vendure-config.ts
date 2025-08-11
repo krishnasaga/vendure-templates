@@ -13,7 +13,8 @@ import 'dotenv/config';
 import path from 'path';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
-const serverPort = +process.env.PORT || 3000;
+// Set the main port to 4002 directly instead of using environment variable
+const serverPort = 4002;
 
 // Make sure the COOKIE_SECRET environment variable exists
 if (!process.env.COOKIE_SECRET) {
@@ -23,7 +24,7 @@ if (!process.env.COOKIE_SECRET) {
 
 export const config: VendureConfig = {
     apiOptions: {
-        port: 4002,
+        port: serverPort,
         hostname: '0.0.0.0', // Allow connections from all IPs
         cors: {
             origin: ['https://your-domain.com', 'http://localhost:5173'],
@@ -85,9 +86,11 @@ export const config: VendureConfig = {
         }),
         AdminUiPlugin.init({
             route: 'admin',
-            port: serverPort + 2,
+            port: serverPort + 2, // Admin UI will run on 4004
             adminUiConfig: {
-                apiPort: serverPort,
+                apiPort: serverPort, // This will be 4002
+                apiHost: 'localhost',
+                apiPath: 'shop-api',
             },
         }),
     ],
