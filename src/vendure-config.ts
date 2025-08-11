@@ -13,7 +13,6 @@ import 'dotenv/config';
 import path from 'path';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
-// Set the main port to 4002 directly instead of using environment variable
 const serverPort = 4002;
 
 // Make sure the COOKIE_SECRET environment variable exists
@@ -22,14 +21,37 @@ if (!process.env.COOKIE_SECRET) {
     process.exit(1);
 }
 
+// Allow your domain in CORS configuration
+const allowedOrigins = [
+    'https://indiastore2.duckdns.org', 
+    'http://localhost:5173',
+    'http://localhost:4002',
+    'http://localhost:4004',
+    'https://your-domain.com'
+];
+
 export const config: VendureConfig = {
     apiOptions: {
         port: serverPort,
         hostname: '0.0.0.0', // Allow connections from all IPs
         cors: {
-            origin: ['https://your-domain.com', 'http://localhost:5173'],
+            origin: allowedOrigins,
             credentials: true
         },
+        // Add these settings for proper URL formation
+        adminApiPath: 'admin-api',
+        shopApiPath: 'shop-api',
+        // Use absolute URLs
+        adminApiPlayground: {
+            settings: {
+                'request.credentials': 'include',
+            },
+        },
+        shopApiPlayground: {
+            settings: {
+                'request.credentials': 'include',
+            },
+        }
     },
     authOptions: {
         tokenMethod: ['bearer', 'cookie'],
@@ -61,10 +83,7 @@ export const config: VendureConfig = {
         AssetServerPlugin.init({
             route: 'assets',
             assetUploadDir: path.join(__dirname, '../static/assets'),
-            // For local dev, the correct value for assetUrlPrefix should
-            // be guessed correctly, but for production it will usually need
-            // to be set manually to match your production url.
-            assetUrlPrefix: IS_DEV ? undefined : 'https://www.my-shop.com/assets/',
+            assetUrlPrefix: IS_DEV ? undefined : 'https://indiastore2.duckdns.org/assets/',
         }),
         DefaultSchedulerPlugin.init(),
         DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true }),
@@ -76,21 +95,25 @@ export const config: VendureConfig = {
             handlers: defaultEmailHandlers,
             templateLoader: new FileBasedTemplateLoader(path.join(__dirname, '../static/email/templates')),
             globalTemplateVars: {
-                // The following variables will change depending on your storefront implementation.
-                // Here we are assuming a storefront running at http://localhost:8080.
-                fromAddress: '"example" <noreply@example.com>',
-                verifyEmailAddressUrl: 'http://localhost:8080/verify',
-                passwordResetUrl: 'http://localhost:8080/password-reset',
-                changeEmailAddressUrl: 'http://localhost:8080/verify-email-address-change'
+                // Update these URLs to use your domain
+                fromAddress: '"PastelWeave" <noreply@indiastore2.duckdns.org>',
+                verifyEmailAddressUrl: 'https://indiastore2.duckdns.org/verify',
+                passwordResetUrl: 'https://indiastore2.duckdns.org/password-reset',
+                changeEmailAddressUrl: 'https://indiastore2.duckdns.org/verify-email-address-change'
             },
         }),
         AdminUiPlugin.init({
             route: 'admin',
             port: serverPort + 2, // Admin UI will run on 4004
             adminUiConfig: {
-                apiPort: serverPort, // This will be 4002
-                apiHost: 'localhost',
-                apiPath: 'shop-api',
+                apiHost: 'https://indiastore2.duckdns.org', // Use full URL with https
+                apiPort: serverPort,
+                // Remove the invalid 'apiPath' property
+                // apiPath: 'admin-api', 
+                // Add this to ensure proper URL formation
+                brand: 'PastelWeave Store',
+                hideVendureBranding: true,
+                hideVersion: false,
             },
         }),
     ],

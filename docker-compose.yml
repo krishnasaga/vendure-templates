@@ -5,6 +5,29 @@
 # ports section in the services block. Please don't forget to update the ports in the .env file as well.
 
 services:
+    # Add your application service
+    vendure:
+        build: .
+        ports:
+            - "4002:4002"  # Main API port
+            - "4004:4004"  # Admin UI port
+        depends_on:
+            - postgres_db
+        environment:
+            - APP_ENV=dev
+            - PORT=4002
+            - COOKIE_SECRET=some_strong_secret_key_for_cookies
+            - PUBLIC_URL=https://indiastore2.duckdns.org
+            - SUPERADMIN_USERNAME=superadmin
+            - SUPERADMIN_PASSWORD=superadmin
+        # Add a healthcheck for better stability
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:4002/health"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+
     postgres_db:
         image: postgres:16-alpine
         volumes:
@@ -86,19 +109,6 @@ services:
             - "9300:9200"
         labels:
             - "io.vendure.create.name=my-shop"
-
-    # Add your application service
-    vendure:
-        build: .
-        ports:
-            - "4002:4002"  # Main API port
-            - "4004:4004"  # Admin UI port
-        depends_on:
-            - postgres_db
-        environment:
-            - APP_ENV=dev
-            - PORT=4002
-            - COOKIE_SECRET=some_strong_secret_key_for_cookies
 
 volumes:
     postgres_db_data:
