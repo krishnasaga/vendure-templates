@@ -32,5 +32,8 @@ jobs:
               echo "Cloning repository..."
               git clone "$REPO_URL" "$APP_DIR"
             fi
-
-
+            cd $APP_DIR
+            yarn install 
+            yarn workspace store-pastelwave build
+            yarn workspace store-pastelwave start
+ 
