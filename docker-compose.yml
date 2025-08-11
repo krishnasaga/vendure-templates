@@ -8,9 +8,10 @@ services:
     # Add your application service
     vendure:
         build: .
-        ports:
-            - "4002:4002"  # Main API port
-            - "4004:4004"  # Admin UI port
+        # Only expose internally to other containers, not to the host
+        expose:
+            - "4002"
+            - "4004"
         depends_on:
             - postgres_db
         environment:
@@ -27,6 +28,19 @@ services:
             timeout: 10s
             retries: 3
             start_period: 40s
+            
+    # Nginx reverse proxy
+    nginx:
+        image: nginx:alpine
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+            - /etc/letsencrypt:/etc/letsencrypt:ro
+        depends_on:
+            - vendure
+        restart: always
 
     postgres_db:
         image: postgres:16-alpine

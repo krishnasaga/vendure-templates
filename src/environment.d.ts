@@ -10,6 +10,7 @@ declare global {
             COOKIE_SECRET: string;
             SUPERADMIN_USERNAME: string;
             SUPERADMIN_PASSWORD: string;
+            PUBLIC_URL: string;
         }
     }
 }

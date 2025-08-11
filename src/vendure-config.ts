@@ -51,7 +51,17 @@ export const config: VendureConfig = {
             settings: {
                 'request.credentials': 'include',
             },
-        }
+        },
+        // Configure to work with proxy
+        middleware: [{
+            handler: (req, res, next) => {
+                if (req.headers['x-forwarded-proto'] === 'https') {
+                    req.protocol = 'https';
+                }
+                next();
+            },
+            route: '*',
+        }],
     },
     authOptions: {
         tokenMethod: ['bearer', 'cookie'],
@@ -83,7 +93,7 @@ export const config: VendureConfig = {
         AssetServerPlugin.init({
             route: 'assets',
             assetUploadDir: path.join(__dirname, '../static/assets'),
-            assetUrlPrefix: IS_DEV ? undefined : 'https://indiastore2.duckdns.org/assets/',
+            assetUrlPrefix: 'https://indiastore2.duckdns.org/assets/',
         }),
         DefaultSchedulerPlugin.init(),
         DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true }),
@@ -107,10 +117,7 @@ export const config: VendureConfig = {
             port: serverPort + 2, // Admin UI will run on 4004
             adminUiConfig: {
                 apiHost: 'https://indiastore2.duckdns.org', // Use full URL with https
-                apiPort: serverPort,
-                // Remove the invalid 'apiPath' property
-                // apiPath: 'admin-api', 
-                // Add this to ensure proper URL formation
+                apiPort: undefined, // Don't include port in URLs
                 brand: 'PastelWeave Store',
                 hideVendureBranding: true,
                 hideVersion: false,
