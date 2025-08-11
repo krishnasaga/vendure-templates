@@ -39,6 +39,5 @@ jobs:
             nvm use 22
             node --version
             yarn install 
-            yarn workspace store-pastelwave build
-            nohup yarn workspace store-pastelwave start > output.log 2>&1 &
- 
+            yarn workspace store-pastelweave build
+            nohup yarn workspace store-pastelweave start > output.log 2>&1 &
