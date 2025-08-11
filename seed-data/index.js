@@ -6,7 +6,7 @@ const nodeFetch = require('node-fetch');
 const fetchCookie = require('fetch-cookie/node-fetch')(nodeFetch);
 const fetch = fetchCookie;
 
-const endpoint = 'http://localhost:3000/admin-api';
+const endpoint = 'https://indiastore2.duckdns.org/admin-api';
 const adminEmail = 'superadmin';
 const adminPassword = 'superadmin';
 
