@@ -7,12 +7,12 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/shop-api': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:4002',
         changeOrigin: true,
         secure: false,
       },
       '/admin-api': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:4002',
         changeOrigin: true,
         secure: false,
       }
@@ -23,4 +23,17 @@ export default defineConfig({
       allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          chakra: ['@chakra-ui/react', '@emotion/react', '@emotion/styled', 'framer-motion'],
+          apollo: ['@apollo/client', 'graphql']
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+      }
+    },
+    chunkSizeWarningLimit: 800
+  }
 });
