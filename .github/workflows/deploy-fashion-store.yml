@@ -23,10 +23,10 @@ jobs:
           script: |
             ls
             REPO_URL="https://github.com/krishnasaga/vendure-templates.git"
-            APP_DIR=“/live-code“
+            APP_DIR="/live-code"
             if [ -d "$APP_DIR/.git" ]; then
               echo "Repo exists. Pulling latest changes..."
-              cd "$APP_DIR"
+              cd $APP_DIR
               git pull
             else
               echo "Cloning repository..."
