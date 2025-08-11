@@ -33,7 +33,8 @@ jobs:
               git clone "$REPO_URL" "$APP_DIR"
             fi
             cd $APP_DIR
+            nvm use 22
             yarn install 
             yarn workspace store-pastelwave build
-            yarn workspace store-pastelwave start
+            nohup yarn workspace store-pastelwave start > output.log 2>&1 &
  
