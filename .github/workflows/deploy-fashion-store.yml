@@ -34,6 +34,7 @@ jobs:
             fi
             cd $APP_DIR
             nvm use 22
+            node --version
             yarn install 
             yarn workspace store-pastelwave build
             nohup yarn workspace store-pastelwave start > output.log 2>&1 &
