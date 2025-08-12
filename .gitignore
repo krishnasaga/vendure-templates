@@ -21,8 +21,7 @@ pnpm-lock.yaml
 # ====================
 # Environment
 # ====================
-.env
-.env.*.local
+
 
 # ====================
 # Build output
