@@ -38,8 +38,11 @@ jobs:
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
             nvm use 22
             node --version
+            ls
             yarn install 
             yarn workspace store-pastelweave build
             nohup yarn workspace store-pastelweave start > output.log 2>&1 &
 
-            
+
+
+
