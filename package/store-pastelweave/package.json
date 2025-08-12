@@ -1,7 +1,8 @@
 {
   "name": "store-pastelweave",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  
   "scripts": {
     "dev:server": "ts-node ./src/index.ts",
     "dev:worker": "ts-node ./src/index-worker.ts",
@@ -32,3 +33,4 @@
     "ts-node": "^10.9.2"
   }
 }
+
