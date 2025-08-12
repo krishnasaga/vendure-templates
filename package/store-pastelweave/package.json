@@ -1,0 +1,34 @@
+{
+  "name": "my-shop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "ts-node ./src/index.ts",
+    "dev:worker": "ts-node ./src/index-worker.ts",
+    "dev": "concurrently npm:dev:*",
+    "build": "tsc",
+    "build:all": "npm run build && cd frontend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "start:server": "node ./dist/index.js",
+    "start:worker": "node ./dist/index-worker.js",
+    "start": "concurrently npm:start:*",
+    "migration:generate": "ts-node migration generate",
+    "migration:run": "ts-node migration run",
+    "migration:revert": "ts-node migration revert"
+  },
+  "dependencies": {
+    "@vendure/admin-ui-plugin": "3.4.0",
+    "@vendure/asset-server-plugin": "3.4.0",
+    "@vendure/core": "3.4.0",
+    "@vendure/email-plugin": "3.4.0",
+    "@vendure/graphiql-plugin": "3.4.0",
+    "better-sqlite3": "11.10.0",
+    "dotenv": "17.2.1"
+  },
+  "devDependencies": {
+    "@vendure/cli": "3.4.0",
+    "concurrently": "9.2.0",
+    "typescript": "5.8.2",
+    "ts-node": "^10.9.2"
+  }
+}
