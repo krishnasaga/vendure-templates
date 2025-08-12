@@ -40,8 +40,8 @@ jobs:
             node --version
             ls
             yarn install 
-            yarn workspace store-pastelweave build
-            nohup yarn workspace store-pastelweave start > output.log 2>&1 &
+            yarn workspace store build
+            nohup yarn workspace store start > output.log 2>&1 &
 
 
 
