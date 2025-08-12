@@ -24,6 +24,8 @@
     "@vendure/cli": "3.4.0",
     "concurrently": "9.2.0",
     "typescript": "5.8.2",
-    "@types/minimatch": "*"
+    "@types/minimatch": "5.1.2",
+    "@types/node": "^18.0.0",
+    "ts-node": "^10.9.0"
   }
 }
