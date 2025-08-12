@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_PRODUCTS } from '../graphql/queries';
+import { GET_PRODUCTS } from '../graphql/queries.js.js';
 import {
   Box,
   Grid,

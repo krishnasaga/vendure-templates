@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GET_PRODUCT } from '../graphql/queries';
+import { GET_PRODUCT } from '../graphql/queries.js.js';
 import { Box, Heading, Text, Spinner, Image, Grid, VStack, Button, HStack } from '@chakra-ui/react';
 
 export function ProductDetail() {

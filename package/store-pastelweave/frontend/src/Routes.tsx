@@ -1,8 +1,8 @@
 import { Routes as RouterRoutes, Route, Navigate } from 'react-router-dom';
 import { Box, Container } from '@chakra-ui/react';
-import { ProductList } from './components/ProductList';
-import { ProductDetail } from './components/ProductDetail';
-import { NotFound } from './components/NotFound';
+import { ProductList } from './components/ProductList.js';
+import { ProductDetail } from './components/ProductDetail.js';
+import { NotFound } from './components/NotFound.js';
 
 export function Routes() {
   return (
