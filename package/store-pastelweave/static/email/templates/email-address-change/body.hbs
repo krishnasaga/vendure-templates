@@ -1,21 +1,20 @@
-{{> header }}
+{{> header title="Verify Your New Email Address" }}
 
-<div style="padding: 20px; font-family: 'Arial', sans-serif; color: #333;">
-    <h2>Verify Email Change</h2>
-    
-    <p>
-        We received a request to change your email address to: <strong>{{ newEmailAddress }}</strong>
-    </p>
-    
-    <p style="text-align: center; margin: 30px 0;">
-        <a href="{{ changeEmailAddressUrl }}?token={{ identifierChangeToken }}" style="background-color: #FF9800; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-            Verify Email Change
-        </a>
-    </p>
-    
-    <p>
-        If you didn't request this change, please contact our support team immediately.
-    </p>
-</div>
+<mj-section background-color="#fafafa">
+    <mj-column>
+        <mj-text color="#525252">
+            We received a request to change your registered email address to this one.
+            Click the button below to verify this address and complete the process:
+        </mj-text>
+
+        <mj-button font-family="Helvetica"
+                   background-color="#f45e43"
+                   color="white"
+                   href="{{ changeEmailAddressUrl }}?token={{ identifierChangeToken }}">
+            Verify Me!
+        </mj-button>
+    </mj-column>
+</mj-section>
+
 
 {{> footer }}

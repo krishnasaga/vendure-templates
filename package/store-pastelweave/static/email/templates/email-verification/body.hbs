@@ -1,21 +1,20 @@
-{{> header }}
+{{> header title="Verify Your Email Address" }}
 
-<div style="padding: 20px; font-family: 'Arial', sans-serif; color: #333;">
-    <h2>Please verify your email address</h2>
-    
-    <p>
-        Thank you for registering with PastelWeave. To verify your email address, please click the button below:
-    </p>
-    
-    <p style="text-align: center; margin: 30px 0;">
-        <a href="{{ verifyEmailAddressUrl }}?token={{ verificationToken }}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-            Verify Email Address
-        </a>
-    </p>
-    
-    <p>
-        If you didn't register for an account, you can safely ignore this email.
-    </p>
-</div>
+<mj-section background-color="#fafafa">
+    <mj-column>
+        <mj-text color="#525252">
+            Thank you for creating an account. Click the button below to verify this email address and
+            complete the registration process:
+        </mj-text>
+
+        <mj-button font-family="Helvetica"
+                   background-color="#f45e43"
+                   color="white"
+                   href="{{ verifyEmailAddressUrl }}?token={{ verificationToken }}">
+            Verify Me!
+        </mj-button>
+    </mj-column>
+</mj-section>
+
 
 {{> footer }}
