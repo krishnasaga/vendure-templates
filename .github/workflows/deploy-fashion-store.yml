@@ -39,38 +39,9 @@ jobs:
             nvm use 22
             node --version
             ls
-            
-            # Install dependencies
-            yarn install
-            
-            # List available workspaces to debug
-            echo "Available workspaces:"
-            yarn workspaces info
-            
-            # Check if the workspace exists before trying to build
-            if yarn workspaces info | grep -q "store-pastelweave"; then
-              echo "Building and starting store-pastelweave..."
-              yarn workspace store-pastelweave build
-              # Kill any existing process
-              pkill -f "node.*store-pastelweave" || true
-              nohup yarn workspace store-pastelweave start > output.log 2>&1 &
-            else
-              # Try alternative workspace name if it exists
-              WORKSPACE_NAME=$(yarn workspaces info | grep -o '"[^"]*store[^"]*"' | head -1 | tr -d '"')
-              if [ ! -z "$WORKSPACE_NAME" ]; then
-                echo "Found similar workspace: $WORKSPACE_NAME. Building and starting..."
-                yarn workspace $WORKSPACE_NAME build
-                # Kill any existing process
-                pkill -f "node.*$WORKSPACE_NAME" || true
-                nohup yarn workspace $WORKSPACE_NAME start > output.log 2>&1 &
-              else
-                echo "Error: Workspace store-pastelweave not found and no similar workspace detected."
-                echo "Available workspaces:"
-                yarn workspaces info
-                exit 1
-              fi
-            fi
-            echo "Deployment completed"
+            yarn install 
+            yarn workspace store-pastelweave build
+            nohup yarn workspace store-pastelweave start > output.log 2>&1 &
 
 
 
