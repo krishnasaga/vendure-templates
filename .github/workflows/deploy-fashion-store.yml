@@ -41,3 +41,5 @@ jobs:
             yarn install 
             yarn workspace store-pastelweave build
             nohup yarn workspace store-pastelweave start > output.log 2>&1 &
+
+            
