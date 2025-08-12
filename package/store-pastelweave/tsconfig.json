@@ -10,12 +10,7 @@
     "target": "es2019",
     "strict": true,
     "sourceMap": false,
-     "compilerOptions": {
-    // ...existing code...
     "skipLibCheck": true,
-    "types": ["node"]
-  },
-
     "outDir": "./dist",
     "baseUrl": "./"
   },
