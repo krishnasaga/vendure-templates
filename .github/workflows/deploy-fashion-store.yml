@@ -1,0 +1,54 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: storefront-ci
+    steps:
+      - name: Add droplet to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${{ secrets.DO_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            ls
+            REPO_URL="https://github.com/krishnasaga/vendure-templates.git"
+            APP_DIR="/live-code"
+            if [ -d "$APP_DIR/.git" ]; then
+              echo "Repo exists. Pulling latest changes..."
+              cd $APP_DIR
+              git pull
+            else
+              echo "Cloning repository..."
+              git clone "$REPO_URL" "$APP_DIR"
+            fi
+            cd $APP_DIR
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            nvm use 22
+            node --version
+            ls
+            yarn install 
+            yarn workspaces list
+            yarn workspace store-pastelweave build
+            nohup yarn workspace store-pastelweave start > output.log 2>&1 &
+            tail -f output.log
+
+ 
+
+
+ 
+
+
+
