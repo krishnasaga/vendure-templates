@@ -1,13 +1,50 @@
-# my-shop
+# PastelWeave Store
 
-This project was generated with [`@vendure/create`](https://github.com/vendure-ecommerce/vendure/tree/master/packages/create).
+A Vendure e-commerce application for fashion products.
 
-Useful links:
+## Getting Started
 
-- [Vendure docs](https://www.vendure.io/docs)
-- [Vendure Discord community](https://www.vendure.io/community)
-- [Vendure on GitHub](https://github.com/vendure-ecommerce/vendure)
-- [Vendure plugin template](https://github.com/vendure-ecommerce/plugin-template)
+### Running locally with Docker
+
+1. Clone this repository
+2. Run `docker-compose up -d`
+3. Access the admin UI at http://localhost:4004/admin
+4. Access the GraphQL API at http://localhost:4002/shop-api
+5. Email testing UI is available at http://localhost:4002/mailbox
+
+### Default Credentials
+
+- Admin: superadmin / superadmin
+
+## Development
+
+### Running without Docker
+
+1. Install dependencies: `npm install`
+2. Start the server: `npm run dev`
+3. Start the worker (optional): `npm run dev:worker`
+
+### Database Migrations
+
+When changing the schema:
+1. Generate a migration: `npm run migration:generate -- my-migration-name`
+2. Run migrations: `npm run migration:run`
+3. Revert a migration: `npm run migration:revert`
+
+## Project Structure
+
+- `src/` - TypeScript source code
+  - `src/index.ts` - Main application entry point
+  - `src/index-worker.ts` - Worker process entry point
+  - `src/vendure-config.ts` - Vendure configuration
+- `static/` - Static assets
+  - `static/assets/` - Uploaded product images
+  - `static/email/templates/` - Email templates
+
+## Ports
+
+- 4002: API server
+- 4004: Admin UI
 
 ## Directory structure
 

@@ -1,28 +1,17 @@
 {
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
     "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
-    "target": "es2019",
-    "strict": true,
-    "sourceMap": false,
-    "skipLibCheck": true,
+    "target": "es2020",
+    "moduleResolution": "node",
+    "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strict": false
   },
-  "exclude": [
-    "node_modules",
-    "migration.ts",
-    "src/plugins/**/ui/*",
-    "src/plugins/**/dashboard/*",
-    "admin-ui",
-    "vite.*.*ts"
-  ],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

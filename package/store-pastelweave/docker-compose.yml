@@ -5,6 +5,43 @@
 # ports section in the services block. Please don't forget to update the ports in the .env file as well.
 
 services:
+    # Add your application service
+    vendure:
+        build: .
+        # Only expose internally to other containers, not to the host
+        expose:
+            - "4002"
+            - "4004"
+        depends_on:
+            - postgres_db
+        environment:
+            - APP_ENV=dev
+            - PORT=4002
+            - COOKIE_SECRET=some_strong_secret_key_for_cookies
+            - PUBLIC_URL=https://indiastore2.duckdns.org
+            - SUPERADMIN_USERNAME=superadmin
+            - SUPERADMIN_PASSWORD=superadmin
+        # Add a healthcheck for better stability
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:4002/health"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
+            
+    # Nginx reverse proxy
+    nginx:
+        image: nginx:alpine
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+            - /etc/letsencrypt:/etc/letsencrypt:ro
+        depends_on:
+            - vendure
+        restart: always
+
     postgres_db:
         image: postgres:16-alpine
         volumes:
@@ -17,7 +54,6 @@ services:
             POSTGRES_PASSWORD: 
         labels:
             - "io.vendure.create.name=my-shop"
-
     mysql_db:
         image: mysql:8
         volumes:
