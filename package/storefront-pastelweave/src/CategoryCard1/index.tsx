@@ -4,14 +4,33 @@ import CategoryCardVariantA from "react-cart/src/components/CategoryCard-Variant
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { gql, useQuery } from "@apollo/client";
 
 const collections = [
-  { title: "Kurtas", imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png" },
-  { title: "Dresses", imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png" },
-  { title: "Sarees", imageUrl: "https://d2gansr34f2te0.cloudfront.net/sarees/saree1.png" },
-  { title: "Jewellery", imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png" },
-  { title: "Tops", imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png" },
-  { title: "Dupattas", imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png" },
+  {
+    title: "Kurtas",
+    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
+  },
+  {
+    title: "Dresses",
+    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
+  },
+  {
+    title: "Sarees",
+    imageUrl: "https://d2gansr34f2te0.cloudfront.net/sarees/saree1.png",
+  },
+  {
+    title: "Jewellery",
+    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
+  },
+  {
+    title: "Tops",
+    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
+  },
+  {
+    title: "Dupattas",
+    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
+  },
 ];
 
 const getCardSize = (width: number) => {
@@ -44,6 +63,21 @@ const PrevArrow = ({ onClick }: { onClick?: () => void }) => (
 
 const CategorySection = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const { data, loading, error } = useQuery(gql`
+    query GetCollections {
+      collections(options: { take: 10 }) {
+        items {
+          id
+          name
+          slug
+          featuredAsset {
+            preview
+          }
+        }
+      }
+    }
+  `);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -106,22 +140,43 @@ const CategorySection = () => {
         </h2>
 
         <Slider {...settings}>
-          {collections.map((item, idx) => (
-            <div
-              key={`${item.title}-${idx}`}
+            {loading ? (
+            // Loading skeleton
+            Array.from({ length: 4 }).map((_, idx) => (
+              <div
+              key={`skeleton-${idx}`}
               className="px-1 sm:px-2 md:px-3 flex justify-center"
               style={{
                 width: cardSize.width,
                 maxWidth: "100%",
               }}
-            >
+              >
+              <div
+                className="bg-gray-200 animate-pulse rounded-lg"
+                style={{ height: cardSize.height, width: cardSize.width }}
+              />
+              </div>
+            ))
+            ) : error ? (
+            <div className="text-center text-red-500">Error loading collections</div>
+            ) : (
+            data?.collections?.items?.map((item: any, idx: number) => (
+              <div
+              key={`${item.id}-${idx}`}
+              className="px-1 sm:px-2 md:px-3 flex justify-center"
+              style={{
+                width: cardSize.width,
+                maxWidth: "100%",
+              }}
+              >
               <CategoryCardVariantA
-                title={item.title}
-                imageUrl={item.imageUrl}
+                title={item.name}
+                imageUrl={item.featuredAsset?.preview || "https://d2gansr34f2te0.cloudfront.net/image1.png"}
                 height={cardSize.height}
               />
-            </div>
-          ))}
+              </div>
+            ))
+            )}
         </Slider>
       </div>
     </section>
