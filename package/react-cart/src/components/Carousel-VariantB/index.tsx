@@ -1,3 +1,3 @@
 import React from 'react';
-const CarouselVariantB = () => <div>Carousel VariantB</div>;
+const CarouselVariantB = () => <div data-componentId="Carousel-VariantB">Carousel VariantB</div>;
 export default CarouselVariantB;

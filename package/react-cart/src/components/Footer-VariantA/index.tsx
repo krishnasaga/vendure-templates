@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaFacebookF, FaInstagram, FaPinterestP, FaYoutube } from 'react-icons/fa';
 import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md'; // <-- Add this import
 
@@ -56,7 +56,7 @@ const FooterVariantA = () => {
   };
 
   return (
-    <footer className="bg-footer-gray text-secondary-900 text-sm font-light relative overflow-hidden mt-20" data-component="Footer-VariantA">
+    <footer className="bg-footer-gray text-secondary-900 text-sm font-light relative overflow-hidden mt-20" data-componentId="Footer-VariantA">
       {/* Top Section: Stay in Touch */}
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-center gap-6 px-4 md:px-10 pt-10 pb-8 text-white">
         <p className="font-semibold text-lg md:text-xl font-light text-center">Stay in touch with us</p>

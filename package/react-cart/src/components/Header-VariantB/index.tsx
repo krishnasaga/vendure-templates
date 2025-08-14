@@ -1,3 +1,3 @@
 import React from 'react';
-const HeaderVariantB = () => <div>Header VariantB</div>;
+const HeaderVariantB = () => <div data-componentId="Header-VariantB">Header VariantB</div>;
 export default HeaderVariantB;
