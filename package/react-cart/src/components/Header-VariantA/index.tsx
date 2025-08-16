@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
 import { IoMdCall } from 'react-icons/io';
 import { FiSearch, FiMenu } from 'react-icons/fi';
@@ -7,7 +7,19 @@ import MobileMenu from './MobileMenu';
 import logo1 from './logo1.png';
 import { MdArrowDropDown } from 'react-icons/md';
 import CartDrawer from 'react-cart/src/components/Cart-VariantA';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+// Safe Link component that handles router context
+const SafeLink = ({ to, children, ...props }: { to: string; children: ReactNode; [key: string]: any }) => {
+  try {
+    // Test if router context is available
+    useLocation();
+    return <Link to={to} {...props}>{children}</Link>;
+  } catch {
+    // Fallback to regular anchor tag if router context is not available
+    return <a href={to} {...props}>{children}</a>;
+  }
+};
 
 const NAV_ITEMS = [
   'Apparel',
@@ -37,7 +49,7 @@ const HeaderVariantA = () => {
   }, []);
 
   return (
-    <div className="w-full sticky top-0 bg-white z-[60]">
+    <div data-componentId="Header-VariantA" className="w-full sticky top-0 bg-white z-[60]">
       {/* Top Header */}
       <header className="max-w-[1200px] mx-auto w-full px-0 md:px-0">
   {/* Mobile Header */}
@@ -47,9 +59,9 @@ const HeaderVariantA = () => {
         onClick={() => setMobileMenuOpen(true)}
         className="text-gray-600 text-2xl cursor-pointer"
       />
-      <Link to="/">
+      <SafeLink to="/">
         <img src={logo1} alt="Logo" className="h-10 w-auto cursor-pointer" />
-      </Link>
+      </SafeLink>
     </div>
     <div className="flex items-center gap-4">
       <FaUser className="cursor-pointer text-gray-700 text-lg" />
@@ -76,9 +88,9 @@ const HeaderVariantA = () => {
   {/* Desktop Header */}
   <div className="hidden md:flex justify-between items-start pt-2 pb-2">
     <div className="flex items-center gap-4">
-      <Link to="/">
+      <SafeLink to="/">
         <img src={logo1} alt="Logo" className="h-[48px] w-auto mt-4 cursor-pointer" />
-      </Link>
+      </SafeLink>
     </div>
 
     <div className="flex flex-col items-end">

@@ -1,3 +1,3 @@
 import React from 'react';
-const OrderSummaryVariantA = () => <div>OrderSummary VariantA</div>;
+const OrderSummaryVariantA = () => <div data-componentId="OrderSummary-VariantA">OrderSummary VariantA</div>;
 export default OrderSummaryVariantA;
