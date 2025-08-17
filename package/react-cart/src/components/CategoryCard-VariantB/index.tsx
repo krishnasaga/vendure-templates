@@ -19,6 +19,7 @@ const CategoryCardVariantB = ({
     <div
       className="relative w-full text-white overflow-hidden"
       style={{ height: `${height}px` }}
+      data-componentId="CategoryCard-VariantB"
     >
       {/* Background Image */}
       <img

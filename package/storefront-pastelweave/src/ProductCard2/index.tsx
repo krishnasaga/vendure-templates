@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import ProductCard2 from "react-cart/src/components/ProductCard-VariantB";
 import { Link } from "react-router-dom";
@@ -104,7 +104,7 @@ const ProductSection2 = () => {
 	};
 
 	return (
-		<section className="max-w-[1200px] mt-12 mx-auto w-full px-4 md:px-0">
+		<section className="max-w-[1200px] mt-12 mx-auto w-full px-4 md:px-0" data-componentId="ProductCarousel-VariantA">
 			<h2 className="text-center text-[26px] font-semibold text-secondary-900 mb-2">
 				Dresses for Every Curve
 			</h2>

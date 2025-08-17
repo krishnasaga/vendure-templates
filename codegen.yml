@@ -1,0 +1,12 @@
+schema: "https://indiastore2.duckdns.org/shop-api"
+documents: "package/storefront-pastelweave/src/**/*.ts*"
+generates:
+  package/storefront-pastelweave/src/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+      withHOC: false
+      withComponent: false

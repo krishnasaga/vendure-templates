@@ -23,7 +23,7 @@ const values = [
 
 const ValuesSection = ({ className }: { className: string }) => {
   return (
-    <section className={`container mx-auto flex justify-between md:justify-center gap-4 md:gap-14 ${className}`}>
+    <section data-componentId={"USPs-VariantA"} className={`container mx-auto flex justify-between md:justify-center gap-4 md:gap-14 ${className}`}>
       {values.map((value, index) => (
         <div className=" md:h-[100px] w-auto flex flex-col items-center justify-between">
           <img

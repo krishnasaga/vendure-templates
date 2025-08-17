@@ -1,7 +1,7 @@
-import { type ReactElement } from 'react';
-import Header from 'react-cart/src/components/Header-VariantA';
-import Footer from 'react-cart/src/components/Footer-VariantA';
-import { TopStrip } from 'react-cart/src/components/PromotionStript-VariantA';
+import { type ReactElement } from "react";
+import Header from "react-cart/src/components/Header-VariantA";
+import Footer from "react-cart/src/components/Footer-VariantA";
+import { TopStrip } from "react-cart/src/components/PromotionStript-VariantA";
 
 const Layout = ({ children }: { children: ReactElement }) => {
   return (
@@ -11,7 +11,6 @@ const Layout = ({ children }: { children: ReactElement }) => {
         <div className="container mx-auto">
           <Header />
         </div>
-        <hr className="border-t border-gray-200 my-4" />
       </div>
 
       <div className="w-full">{children}</div>

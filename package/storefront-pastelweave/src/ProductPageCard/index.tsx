@@ -1,36 +1,47 @@
-import React, { useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
+import React, { useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import type { Product } from "../generated/graphql";
 
-interface ProductProps {
-  images: string[];
-  discount: string;
-  tag: string;
-  title: string;
-  price: number;
-  mrp: number;
-  height?: number; // Add height prop
+interface ProductPageCardProps {
+  product: Product;
+  height?: number;
 }
 
-const ProductPageCard: React.FC<ProductProps> = ({
-  images,
-  discount,
-  tag,
-  title,
-  price,
-  mrp,
-  height = 320, // Default height if not provided
+const ProductPageCard: React.FC<ProductPageCardProps> = ({
+  product,
+  height = 320,
 }) => {
+  // Extract images from featuredAsset and assets
+  const images: string[] = [
+    ...(product.featuredAsset ? [product.featuredAsset?.preview] : []),
+    ...(product.assets ? product.assets.map((a) => a?.preview) : []),
+  ].filter(Boolean);
+
+  // Extract price and mrp from first variant (if available)
+  const firstVariant = product.variants?.[0];
+  const price = firstVariant?.priceWithTax ?? 0;
+  const mrp = firstVariant?.price ?? price;
+
+  // Extract tag from first facetValue (if available)
+  const tag = product.facetValues?.[0]?.name ?? "";
+
+  // Discount logic (example: show % off if price < mrp)
+  const discount =
+    mrp > price && mrp > 0
+      ? `${Math.round(((mrp - price) / mrp) * 100)}% OFF`
+      : "";
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handlePrev = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
     );
   };
 
   const handleNext = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
@@ -43,14 +54,16 @@ const ProductPageCard: React.FC<ProductProps> = ({
       >
         <img
           src={images[currentImageIndex]}
-          alt={title}
+          alt={product.name}
           className="w-full h-full object-cover transition-transform duration-300"
         />
 
         {/* Discount Badge (Top-Left) */}
-        <div className="absolute top-2 left-2 text-white bg-primary-900 text-xs font-semibold px-1 py-1 tracking-wide shadow-sm z-10">
-          {discount}
-        </div>
+        {discount && (
+          <div className="absolute top-2 left-2 text-white bg-primary-900 text-xs font-semibold px-1 py-1 tracking-wide shadow-sm z-10">
+            {discount}
+          </div>
+        )}
 
         {/* Sale Badge (Bottom-Left) */}
         <div className="absolute bottom-2 right-2 bg-primary-900 text-white text-xs font-semibold px-1 py-1 tracking-wide z-10">
@@ -80,22 +93,23 @@ const ProductPageCard: React.FC<ProductProps> = ({
       {/* Product Info */}
       <div className="p-2 text-secondary-900 text-sm">
         {/* Tag */}
-        <div className="inline-block border border-secondary-900 text-[10px] font-medium text-secondary-900 px-2 py-[4px] my-1">
-          {tag}
-        </div>
+        {tag && (
+          <div className="inline-block border border-secondary-900 text-[10px] font-medium text-secondary-900 px-2 py-[4px] my-1">
+            {tag}
+          </div>
+        )}
 
         {/* Title */}
         <h3 className="font-medium text-[13px] leading-snug mt-4 mb-2">
-          {title}
+          {product.name}
         </h3>
 
-        {/* Price and MRP */}
         <div className="flex items-center gap-2 mb-4">
           <span className="font-semibold text-[14px] ">
-            ₹{price.toLocaleString()}
-          </span>
-          <span className="line-through text-[12px] ">
-            ₹{mrp.toLocaleString()}
+            {Intl.NumberFormat("en-IN", {
+              style: "currency",
+              currency: firstVariant?.priceWithTax.currencyCode || "INR",
+            }).format(firstVariant?.priceWithTax.value || firstVariant?.priceWithTax.min)}
           </span>
         </div>
       </div>

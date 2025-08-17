@@ -1,37 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import CategoryCardVariantA from "react-cart/src/components/CategoryCard-VariantA";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { gql, useQuery } from "@apollo/client";
-
-const collections = [
-  {
-    title: "Kurtas",
-    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
-  },
-  {
-    title: "Dresses",
-    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
-  },
-  {
-    title: "Sarees",
-    imageUrl: "https://d2gansr34f2te0.cloudfront.net/sarees/saree1.png",
-  },
-  {
-    title: "Jewellery",
-    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
-  },
-  {
-    title: "Tops",
-    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
-  },
-  {
-    title: "Dupattas",
-    imageUrl: "https://d2gansr34f2te0.cloudfront.net/image1.png",
-  },
-];
 
 const getCardSize = (width: number) => {
   if (width < 600) {
@@ -65,16 +38,22 @@ const CategorySection = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const { data, loading, error } = useQuery(gql`
-    query GetCollections {
-      collections(options: { take: 10 }) {
+    query GetSelectedCollections {
+      collections{
         items {
           id
           name
           slug
           featuredAsset {
+            id
             preview
           }
+          parent {
+            id
+            name
+          }
         }
+        totalItems
       }
     }
   `);
@@ -133,50 +112,61 @@ const CategorySection = () => {
   const cardSize = getCardSize(windowWidth);
 
   return (
-    <section className="w-full mt-10 px-2 sm:px-4 flex justify-center">
+    <section className="w-full mt-10 px-2 sm:px-4 flex justify-center" data-componentId="Collections-VariantA">
       <div className="w-full max-w-[1200px]">
         <h2 className="text-center text-[22px] sm:text-[26px] font-semibold text-secondary-900 mb-6 sm:mb-10">
           Collections
         </h2>
 
         <Slider {...settings}>
-            {loading ? (
+          {loading ? (
             // Loading skeleton
             Array.from({ length: 4 }).map((_, idx) => (
               <div
-              key={`skeleton-${idx}`}
-              className="px-1 sm:px-2 md:px-3 flex justify-center"
-              style={{
-                width: cardSize.width,
-                maxWidth: "100%",
-              }}
+                key={`skeleton-${idx}`}
+                className="px-1 sm:px-2 md:px-3 flex justify-center"
+                style={{
+                  width: cardSize.width,
+                  maxWidth: "100%",
+                }}
               >
-              <div
-                className="bg-gray-200 animate-pulse rounded-lg"
-                style={{ height: cardSize.height, width: cardSize.width }}
-              />
+                <div
+                  className="bg-gray-200 animate-pulse rounded-lg"
+                  style={{ height: cardSize.height, width: cardSize.width }}
+                />
               </div>
             ))
-            ) : error ? (
-            <div className="text-center text-red-500">Error loading collections</div>
-            ) : (
+          ) : error ? (
+            <div className="text-center text-red-500">
+              Error loading collections
+            </div>
+          ) : (
             data?.collections?.items?.map((item: any, idx: number) => (
               <div
-              key={`${item.id}-${idx}`}
-              className="px-1 sm:px-2 md:px-3 flex justify-center"
-              style={{
-                width: cardSize.width,
-                maxWidth: "100%",
-              }}
+                key={`${item.id}-${idx}`}
+                className="px-1 sm:px-2 md:px-3 flex justify-center"
+                style={{
+                  width: cardSize.width,
+                  maxWidth: "100%",
+                }}
               >
-              <CategoryCardVariantA
-                title={item.name}
-                imageUrl={item.featuredAsset?.preview || "https://d2gansr34f2te0.cloudfront.net/image1.png"}
-                height={cardSize.height}
-              />
+                <a
+                  href={`/collections/${item.slug}`}
+                  key={item.id || idx}
+                  className="block"
+                >
+                  <CategoryCardVariantA
+                    title={item.name}
+                    imageUrl={
+                      item.featuredAsset?.preview ||
+                      "https://d2gansr34f2te0.cloudfront.net/image1.png"
+                    }
+                    height={cardSize.height}
+                  />
+                </a>
               </div>
             ))
-            )}
+          )}
         </Slider>
       </div>
     </section>

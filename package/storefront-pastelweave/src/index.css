@@ -49,17 +49,17 @@
   --color-primary-800: #955107;
   --color-primary-900: #7A3D00;
 
-  /* Secondary (Gray) Shades */
-  --color-secondary-50:  #F8F8F8;
-  --color-secondary-100: #E8E8E8;
-  --color-secondary-200: #D8D8D8;
-  --color-secondary-300: #C0C0C0;
-  --color-secondary-400: #A8A8A8;
-  --color-secondary-500: #909090;
-  --color-secondary-600: #787878;
-  --color-secondary-700: #606060;
-  --color-secondary-800: #484848;
-  --color-secondary-900: #303030;
+  /* Secondary (Bluish-Gray) Shades */
+  --color-secondary-50:  #F8F9FB;
+  --color-secondary-100: #E8EBF0;
+  --color-secondary-200: #D8DDE5;
+  --color-secondary-300: #C0C7D1;
+  --color-secondary-400: #A8B2BD;
+  --color-secondary-500: #909CA9;
+  --color-secondary-600: #788595;
+  --color-secondary-700: #606E81;
+  --color-secondary-800: #48566D;
+  --color-secondary-900: #303E59;
 
   /* Footer Background */
   --color-footer-gray: #a4a4a4;

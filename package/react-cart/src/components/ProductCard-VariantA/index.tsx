@@ -14,7 +14,10 @@ export default function ProductCard({
   height = 420,
 }: ProductCardProps) {
   return (
-    <div className="w-full overflow-hidden text-center" data-component="ProductCard-VariantA">
+    <div
+      className="w-full overflow-hidden text-center"
+      data-componentId="ProductCard-VariantA"
+    >
       {/* Product Image */}
       <img
         src={imageUrl}
@@ -45,7 +48,12 @@ export default function ProductCard({
         </div>
 
         {/* Price */}
-        <p className="text-[16px] font-normal text-gray-800">₹ {price.toFixed(2)}</p>
+        <p className="text-[16px] font-normal text-gray-800">
+          {Intl.NumberFormat("en-IN", {
+            style: "currency",
+            currency: "INR",
+          }).format(price)}
+        </p>
       </div>
     </div>
   );

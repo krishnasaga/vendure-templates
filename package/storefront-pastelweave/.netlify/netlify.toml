@@ -1,6 +1,23 @@
 plugins = []
 headers = []
-redirects = []
+
+[build]
+  publish = "dist"
+  command = "yarn build"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://indiastore2.duckdns.org/shop-api/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization, Apollo-Require-Preflight"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
 
 [functions]
 
