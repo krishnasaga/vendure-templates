@@ -48,15 +48,12 @@ const ProductPageCard: React.FC<ProductPageCardProps> = ({
   return (
     <div className="relative text-secondary-900 group overflow-hidden">
       {/* Image Carousel */}
-      <div
-        className="relative overflow-hidden"
-        style={{ height: `${height}px` }}
-      >
-        <img
-          src={images[currentImageIndex]}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300"
-        />
+        <div className="relative overflow-hidden aspect-[3.5/5]">
+          <img
+            src={images[currentImageIndex]}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300"
+          />
 
         {/* Discount Badge (Top-Left) */}
         {discount && (
