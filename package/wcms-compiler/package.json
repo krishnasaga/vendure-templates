@@ -1,0 +1,12 @@
+{
+  "name": "wcms-compiler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "wcms-compiler": "bin.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
